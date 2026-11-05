@@ -1,0 +1,1871 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Missão Português 3T</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Nenética Liloca 2: o mesmo conteúdo da versão 1, agora com cara de game:
+   personagem próprio, ilhas, moedas, loja, medalhas, corrida de obstáculos e desenhos com movimento. */
+:root {
+  --bg: #EAF4FF; --sky1: #9FD8FF; --sky2: #DDF1FF; --sky3: #FFEFFA;
+  --surface: #FFFFFF; --ink: #1C2A44; --muted: #56647F; --line: #CFDDEE; --edge: #B9CBE2;
+  --w1: #2D6BD3; --w1s: #DCE8FB; --w1d: #1D4E9E; --w2: #17866A; --w2s: #D5F0E7; --w2d: #0F6550;
+  --w3: #8048CC; --w3s: #EBDFFA; --w3d: #5F2FA0; --w4: #C2562B; --w4s: #FBE2D6; --w4d: #93401E;
+  --sun: #E9A919; --suns: #FCF0CF; --sund: #B07D0B; --ok: #198F52; --oks: #DAF3E5; --almost: #C5701C; --almosts: #FBE8D3;
+  --coin: #F5B800; --coind: #C98F00;
+  --owl: #7C5A3C; --owlb: #E7CFA8;
+  --display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", Verdana, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121A33; --sky1: #0E1430; --sky2: #1B1F4A; --sky3: #2A1A45;
+  --surface: #1C2646; --ink: #EEF2FB; --muted: #A9B4CC; --line: #2E3C62; --edge: #3A4A76;
+  --w1: #78A6F4; --w1s: #22355A; --w1d: #4C78C6; --w2: #52C6A0; --w2s: #173D36; --w2d: #2E9577;
+  --w3: #B48DF2; --w3s: #33274F; --w3d: #8562C4; --w4: #F0936A; --w4s: #45281C; --w4d: #C06A45;
+  --sun: #F4C455; --suns: #3D3320; --sund: #C49A33; --ok: #55CB8D; --oks: #173B2A; --almost: #EFA25A; --almosts: #43301D;
+  --owl: #B78D63; --owlb: #EAD5B3; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121A33; --sky1: #0E1430; --sky2: #1B1F4A; --sky3: #2A1A45;
+  --surface: #1C2646; --ink: #EEF2FB; --muted: #A9B4CC; --line: #2E3C62; --edge: #3A4A76;
+  --w1: #78A6F4; --w1s: #22355A; --w1d: #4C78C6; --w2: #52C6A0; --w2s: #173D36; --w2d: #2E9577;
+  --w3: #B48DF2; --w3s: #33274F; --w3d: #8562C4; --w4: #F0936A; --w4s: #45281C; --w4d: #C06A45;
+  --sun: #F4C455; --suns: #3D3320; --sund: #C49A33; --ok: #55CB8D; --oks: #173B2A; --almost: #EFA25A; --almosts: #43301D;
+  --owl: #B78D63; --owlb: #EAD5B3; color-scheme: dark }
+
+html, body { height: 100%; }
+html { overflow-x: hidden; } @supports (overflow: clip) { html, body { overflow-x: clip; } }
+body { margin: 0; background: var(--bg); background-image: linear-gradient(180deg, var(--sky1), var(--sky2) 55%, var(--sky3)); background-attachment: fixed; color: var(--ink); font-family: var(--body); font-size: 19px; line-height: 1.55; overflow-x: hidden; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; margin: 0; text-wrap: balance; }
+strong { font-weight: 700; }
+#app { position: relative; z-index: 1; min-height: 100%; display: flex; flex-direction: column; }
+.wrap { width: 100%; max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+.w-1 { --c: var(--w1); --cs: var(--w1s); --cd: var(--w1d); }
+.w-2 { --c: var(--w2); --cs: var(--w2s); --cd: var(--w2d); }
+.w-3 { --c: var(--w3); --cs: var(--w3s); --cd: var(--w3d); }
+.w-4 { --c: var(--w4); --cs: var(--w4s); --cd: var(--w4d); }
+.w-x { --c: var(--sun); --cs: var(--suns); --cd: var(--sund); }
+body { --c: var(--w1); --cs: var(--w1s); --cd: var(--w1d); }
+
+/* ---------- Céu animado (nuvens e brilhos no fundo) ---------- */
+.sky { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.cloud { position: absolute; width: 160px; height: 46px; border-radius: 99px; background: rgba(255,255,255,.75); animation: drift linear infinite; }
+.cloud::before, .cloud::after { content: ""; position: absolute; border-radius: 50%; background: inherit; }
+.cloud::before { width: 70px; height: 70px; left: 24px; top: -34px; }
+.cloud::after { width: 54px; height: 54px; left: 80px; top: -24px; }
+@keyframes drift { from { transform: translateX(-220px); } to { transform: translateX(calc(100vw + 220px)); } }
+.tw { position: absolute; width: 14px; height: 14px; background: #FFFFFF; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); animation: twinkle 2.6s ease-in-out infinite; opacity: .2; }
+@keyframes twinkle { 50% { opacity: .95; transform: scale(1.3) rotate(20deg); } }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .cloud { background: rgba(160,170,230,.12); } }
+:root[data-theme="dark"] .cloud { background: rgba(160,170,230,.12); }
+
+/* ---------- Botões de game (com "degrau" embaixo) ---------- */
+.btn { border: 0; border-radius: 16px; padding: 12px 18px; font-family: var(--display); font-weight: 800; font-size: 1.15rem; min-height: 56px; position: relative; transition: transform .08s, box-shadow .08s; }
+.btn.pri { background: var(--c); color: #FFFFFF; flex: 1; box-shadow: 0 5px 0 var(--cd); }
+.btn.pri:active:not([disabled]) { transform: translateY(4px); box-shadow: 0 1px 0 var(--cd); }
+.btn.pri[disabled] { background: var(--line); color: var(--muted); cursor: not-allowed; box-shadow: 0 5px 0 var(--edge); }
+.btn.pri:not([disabled])::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 45%, transparent 60%); background-size: 250% 100%; animation: shine 2.8s ease-in-out infinite; pointer-events: none; }
+@keyframes shine { 0% { background-position: 130% 0; } 60%, 100% { background-position: -60% 0; } }
+.btn.sec { background: var(--surface); border: 2px solid var(--line); box-shadow: 0 4px 0 var(--edge); }
+.btn.sec:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--edge); }
+.btn.gold { background: var(--coin); color: #3A2800; box-shadow: 0 5px 0 var(--coind); flex: 1; }
+.btn.big { width: 100%; }
+.ghost { border: 2px solid var(--line); background: var(--surface); border-radius: 12px; padding: 6px 12px; font-weight: 700; font-size: .95rem; box-shadow: 0 3px 0 var(--edge); }
+.ghost.on { border-color: var(--c); background: var(--cs); color: var(--c); }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row .btn { flex: 1 1 200px; }
+.note { color: var(--muted); font-size: .9rem; }
+
+/* ---------- Moedas ---------- */
+.coins { display: inline-flex; align-items: center; gap: 5px; font-family: var(--display); font-weight: 800; font-size: 1.05rem; padding: 2px 10px 2px 4px; border-radius: 99px; background: var(--surface); border: 2px solid var(--coin); }
+.coins svg { width: 24px; height: 24px; }
+.coins.bump { animation: bump .45s; }
+@keyframes bump { 40% { transform: scale(1.3); } }
+.fly { position: fixed; z-index: 60; pointer-events: none; font-family: var(--display); font-weight: 800; font-size: 1.4rem; color: var(--coind); display: flex; align-items: center; gap: 4px; text-shadow: 0 2px 0 #FFFFFF; animation: flyup 1.1s ease-out forwards; }
+.fly svg { width: 28px; height: 28px; }
+@keyframes flyup { 0% { transform: translate(-50%, 0) scale(.6); opacity: 0; } 20% { transform: translate(-50%, -14px) scale(1.15); opacity: 1; } 100% { transform: translate(-50%, -90px) scale(1); opacity: 0; } }
+
+/* ---------- Personagem ---------- */
+.av { display: block; overflow: visible; }
+.av.idle { animation: idle 2.4s ease-in-out infinite; transform-origin: 50% 100%; }
+@keyframes idle { 50% { transform: translateY(-4px) scaleY(1.02); } }
+.av.jump { animation: jump .7s cubic-bezier(.3,1.6,.5,1); transform-origin: 50% 100%; }
+@keyframes jump { 0% { transform: scale(1.1, .85); } 35% { transform: translateY(-34%) scale(.95, 1.08) rotate(-6deg); } 70% { transform: translateY(0) scale(1.08, .9); } 100% { transform: none; } }
+.av.dance { animation: dance 1s ease-in-out infinite; transform-origin: 50% 100%; }
+@keyframes dance { 25% { transform: rotate(-8deg) translateY(-8px); } 50% { transform: none; } 75% { transform: rotate(8deg) translateY(-8px); } }
+.av.wobble { animation: wobble .6s; transform-origin: 50% 100%; }
+@keyframes wobble { 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+.av .arm-r { transform-origin: 81px 64px; }
+.av.idle .arm-r, .av.wave .arm-r { animation: wave 2.4s ease-in-out infinite; }
+@keyframes wave { 0%, 60%, 100% { transform: none; } 70% { transform: rotate(-140deg); } 80% { transform: rotate(-110deg); } 90% { transform: rotate(-140deg); } }
+.av .blink { animation: blink 4s infinite; transform-origin: 50% 38px; }
+@keyframes blink { 0%, 94%, 100% { transform: none; } 97% { transform: scaleY(.1); } }
+.av .wing { animation: flap 1.4s ease-in-out infinite; }
+.av .wing.l { transform-origin: 36px 70px; } .av .wing.r { transform-origin: 64px 70px; }
+@keyframes flap { 50% { transform: scaleX(.8); } }
+.av .fxs { animation: twinkle 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.av .heart { animation: floaty 2.6s ease-in-out infinite; transform-box: fill-box; }
+@keyframes floaty { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-30px); opacity: 0; } }
+.av .aura { animation: aura 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes aura { 50% { opacity: .35; transform: scale(1.06); } }
+.av .pet { animation: petbob 1.2s ease-in-out infinite; }
+@keyframes petbob { 50% { transform: translateY(-3px); } }
+.av .jet { animation: jet .25s linear infinite alternate; transform-box: fill-box; transform-origin: top; }
+@keyframes jet { to { transform: scaleY(1.35); } }
+.buddy { width: 34px; height: 46px; flex: none; }
+
+/* ---------- Início: perfil e mapa de ilhas ---------- */
+.home { padding-block: 18px 40px; display: flex; flex-direction: column; gap: 20px; }
+.hero { display: grid; grid-template-columns: 110px 1fr; gap: 14px; align-items: center; background: var(--surface); border: 2px solid var(--line); border-radius: 24px; padding: 14px; box-shadow: 0 6px 0 var(--edge); }
+.hero .av { width: 110px; height: 150px; }
+.hero h1 { font-size: 1.7rem; }
+.hero p { margin: 2px 0 8px; color: var(--muted); font-size: .98rem; }
+.hero .row { gap: 8px; }
+.hero .row .btn { flex: 1 1 120px; min-height: 46px; font-size: 1rem; padding: 8px 10px; }
+.map { position: relative; display: flex; flex-direction: column; gap: 0; padding: 6px 0 10px; }
+.isl-row { display: flex; flex-direction: column; align-items: flex-start; position: relative; }
+.isl-row.r { align-items: flex-end; }
+.bridge { width: 46%; height: 34px; margin: -6px 0 -2px 25%; background: radial-gradient(circle, rgba(255,255,255,.95) 4px, transparent 5px) 0 50% / 22px 34px repeat-x; transform: rotate(-12deg); }
+.bridge.l { transform: rotate(12deg); }
+.isl { border: 0; background: none; padding: 0; width: min(78%, 330px); display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; }
+.isl-art { position: relative; width: 100%; aspect-ratio: 200 / 150; display: block; animation: bob 4.5s ease-in-out infinite; }
+.isl-row:nth-child(2n) .isl-art { animation-delay: -1.7s; }
+.isl-row:nth-child(3n) .isl-art { animation-delay: -3s; }
+@keyframes bob { 50% { transform: translateY(-9px); } }
+.isl-art > svg { width: 100%; height: 100%; display: block; }
+.isl.here .isl-art > svg { filter: drop-shadow(0 0 14px var(--c)); animation: glow 1.8s ease-in-out infinite; }
+@keyframes glow { 50% { filter: drop-shadow(0 0 4px var(--c)); } }
+.isl-ic { position: absolute; left: 50%; top: 4%; transform: translateX(-50%); width: 56px; height: 56px; border-radius: 18px; background: var(--c); color: #FFFFFF; display: grid; place-items: center; box-shadow: 0 4px 0 var(--cd); }
+.isl-ic svg { width: 32px; height: 32px; }
+.isl-av { position: absolute; left: 63%; top: 2%; width: 26%; }
+.isl-av .av { width: 100%; height: auto; }
+.isl-av.hop { animation: hop .7s ease-out; }
+@keyframes hop { 0% { transform: translateY(-120px) scale(.6); opacity: 0; } 60% { transform: translateY(8px) scale(1.05); opacity: 1; } 100% { transform: none; } }
+.isl-t { display: flex; flex-direction: column; align-items: center; gap: 2px; margin-top: -6px; background: var(--surface); border: 2px solid var(--line); border-radius: 18px; padding: 8px 16px; box-shadow: 0 4px 0 var(--edge); }
+.isl-t .k { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c); font-weight: 800; }
+.isl-t b { font-family: var(--display); font-size: 1.25rem; line-height: 1.1; }
+.isl:hover .isl-t { border-color: var(--c); }
+.flag { position: absolute; right: 18%; top: 14%; width: 16%; }
+.obbybtn { margin: 8px 0 0; }
+.isl-row.r .obbybtn { margin-right: 6%; } .isl-row.l .obbybtn { margin-left: 6%; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: center; font-size: .88rem; }
+.pill { padding: 1px 10px; border-radius: 99px; background: var(--cs); color: var(--c); font-weight: 700; }
+.pill.done { background: var(--oks); color: var(--ok); }
+.starsmall { display: inline-flex; gap: 4px; align-items: center; color: var(--muted); }
+.starsmall svg { width: 18px; height: 18px; color: var(--sun); fill: var(--sun); }
+.panel { background: var(--surface); border: 2px solid var(--line); border-radius: 20px; padding: 16px; box-shadow: 0 5px 0 var(--edge); }
+.panel h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.toggle { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); }
+.toggle:first-of-type { border-top: 0; }
+.sw { width: 58px; height: 34px; border-radius: 99px; border: 0; background: var(--line); position: relative; flex: none; }
+.sw::after { content: ""; position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%; background: var(--surface); transition: left .2s; }
+.sw[aria-checked="true"] { background: var(--ok); }
+.sw[aria-checked="true"]::after { left: 28px; }
+details.parents summary { cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+.misslist { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: .95rem; }
+.misslist small { color: var(--muted); display: block; }
+.ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+
+/* ---------- Criar personagem e loja ---------- */
+.studio { display: flex; flex-direction: column; gap: 14px; }
+.preview { display: grid; place-items: center; background: radial-gradient(circle at 50% 70%, var(--cs), transparent 70%); border-radius: 20px; padding: 6px 0; }
+.preview .av { width: 150px; height: 205px; }
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 8px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; border: 2px solid var(--line); background: var(--surface); border-radius: 14px; padding: 6px 12px; font-weight: 700; font-size: .95rem; box-shadow: 0 3px 0 var(--edge); }
+.tab.on { background: var(--c); border-color: var(--c); color: #FFFFFF; box-shadow: 0 3px 0 var(--cd); }
+.choices { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 10px; }
+.choice { border: 3px solid var(--line); background: var(--surface); border-radius: 16px; padding: 6px 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: .82rem; font-weight: 700; line-height: 1.2; position: relative; }
+.choice .av { width: 62px; height: 84px; }
+.choice.on { border-color: var(--c); background: var(--cs); }
+.choice .price { display: inline-flex; align-items: center; gap: 2px; color: var(--coind); font-family: var(--display); }
+.choice .price svg { width: 16px; height: 16px; }
+.choice.lock .av { opacity: .55; }
+.sw8 { width: 100%; aspect-ratio: 1; border-radius: 12px; border: 2px solid rgba(0,0,0,.12); }
+.buybar { display: flex; gap: 10px; align-items: center; background: var(--suns); border-radius: 16px; padding: 10px 12px; }
+.buybar p { margin: 0; flex: 1; font-weight: 700; }
+.namebox { display: flex; gap: 8px; flex-wrap: wrap; }
+.namebox input { font: inherit; padding: 10px 14px; border-radius: 12px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); min-width: 0; flex: 1 1 180px; }
+
+/* ---------- Medalhas ---------- */
+.medals { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.medal { background: var(--surface); border: 2px solid var(--line); border-radius: 18px; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; box-shadow: 0 4px 0 var(--edge); }
+.medal svg { width: 70px; height: 80px; }
+.medal.got svg { animation: spin3d 4s ease-in-out infinite; }
+@keyframes spin3d { 0%, 70%, 100% { transform: none; } 85% { transform: scaleX(-1); } }
+.medal.no svg { filter: grayscale(1); opacity: .35; }
+.medal b { font-family: var(--display); font-size: 1rem; line-height: 1.15; }
+.medal small { color: var(--muted); font-size: .8rem; line-height: 1.3; }
+.toast { position: fixed; left: 50%; top: 14px; z-index: 70; transform: translateX(-50%); width: min(92vw, 420px); display: flex; gap: 12px; align-items: center; background: var(--surface); border: 3px solid var(--coin); border-radius: 20px; padding: 10px 14px; box-shadow: 0 8px 24px rgba(0,0,0,.25); animation: toast 3.4s ease-in-out forwards; overflow: hidden; }
+.toast svg { width: 52px; height: 60px; flex: none; }
+.toast b { font-family: var(--display); font-size: 1.15rem; display: block; line-height: 1.15; }
+.toast::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,230,120,.55) 45%, transparent 60%); background-size: 250% 100%; animation: shine 1.4s ease-in-out 2; }
+@keyframes toast { 0% { transform: translate(-50%, -140%); } 10%, 88% { transform: translate(-50%, 0); } 100% { transform: translate(-50%, -140%); } }
+
+/* ---------- Topo e rodapé ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.topin { display: flex; align-items: center; gap: 8px; padding-block: 8px; flex-wrap: wrap; }
+.ttl { font-family: var(--display); font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar { width: 100%; height: 12px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--c), var(--sun)); border-radius: 99px; transition: width .5s cubic-bezier(.3,1.4,.5,1); position: relative; }
+.bar > i::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, rgba(255,255,255,.25) 0 8px, transparent 8px 16px); animation: barmove 1s linear infinite; }
+@keyframes barmove { to { background-position: 22px 0; } }
+.stage { flex: 1; padding-block: 22px 120px; }
+.foot { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.footin { display: flex; gap: 10px; padding-block: 12px; }
+
+/* ---------- Cartões e telas ---------- */
+.card { background: var(--surface); border: 2px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 6px 0 var(--edge); animation: popin .45s cubic-bezier(.3,1.5,.5,1); }
+.card.back { animation: popback .45s cubic-bezier(.3,1.5,.5,1); }
+@keyframes popin { from { transform: translateX(40px) scale(.94); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes popback { from { transform: translateX(-40px) scale(.94); opacity: 0; } to { transform: none; opacity: 1; } }
+.cardhead { display: flex; gap: 14px; align-items: center; }
+.bigic { width: 72px; height: 72px; flex: none; border-radius: 20px; background: var(--c); color: #FFFFFF; display: grid; place-items: center; box-shadow: 0 4px 0 var(--cd); animation: icpop .6s cubic-bezier(.3,1.8,.5,1) .1s both; }
+@keyframes icpop { from { transform: scale(.3) rotate(-25deg); } to { transform: none; } }
+.bigic svg { width: 42px; height: 42px; }
+.eyebrow { margin: 0; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c); font-weight: 800; }
+.card h2 { font-size: 1.75rem; }
+.card p { margin: 0; }
+.txt { display: flex; flex-direction: column; gap: 10px; font-size: 1.1rem; }
+.txt strong { color: var(--c); }
+.dica { display: flex; gap: 12px; align-items: flex-start; background: var(--suns); border-radius: 16px; padding: 12px 14px; }
+.dica svg { width: 28px; height: 28px; flex: none; color: var(--sun); }
+.dica b { font-family: var(--display); }
+
+.opts { display: grid; gap: 10px; }
+.opt { text-align: left; padding: 14px 16px; border-radius: 16px; border: 2px solid var(--line); background: var(--surface); font-size: 1.05rem; min-height: 58px; display: flex; gap: 12px; align-items: center; box-shadow: 0 4px 0 var(--edge); transition: transform .08s; animation: popin .4s cubic-bezier(.3,1.5,.5,1) both; }
+.opt:nth-child(2) { animation-delay: .07s; } .opt:nth-child(3) { animation-delay: .14s; }
+.opt:active:not([disabled]) { transform: translateY(3px); }
+.opt .l { width: 34px; height: 34px; flex: none; border-radius: 10px; background: var(--c); color: #FFFFFF; display: grid; place-items: center; font-weight: 800; font-family: var(--display); }
+.opt:hover:not([disabled]) { border-color: var(--c); }
+.opt[disabled] { cursor: default; }
+.opt.right { border-color: var(--ok); background: var(--oks); animation: rightpop .5s cubic-bezier(.3,1.8,.5,1); }
+@keyframes rightpop { 40% { transform: scale(1.05); } }
+.opt.right .l { background: var(--ok); }
+.opt.miss { border-color: var(--almost); background: var(--almosts); }
+.opt.fade { opacity: .55; }
+.fb { border-radius: 16px; padding: 12px 14px; font-size: 1.02rem; display: flex; flex-direction: column; gap: 4px; position: relative; }
+.fb.ok { background: var(--oks); }
+.fb.ok.withav { padding-left: 76px; min-height: 86px; }
+.fb .fbav { position: absolute; left: 10px; bottom: 6px; width: 54px; }
+.fb .fbav .av { width: 100%; height: auto; }
+.fb.almost { background: var(--almosts); }
+.fb b { font-family: var(--display); font-size: 1.2rem; }
+
+.line { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 4px solid var(--c); display: grid; gap: 8px; min-height: 20px; }
+.line li { display: flex; gap: 12px; align-items: baseline; background: var(--cs); border-radius: 12px; padding: 8px 12px; position: relative; animation: popin .4s cubic-bezier(.3,1.5,.5,1); }
+.line li::before { content: ""; position: absolute; left: -29px; top: 14px; width: 14px; height: 14px; border-radius: 50%; background: var(--c); border: 3px solid var(--surface); }
+.yr { font-family: var(--display); font-weight: 800; color: var(--c); min-width: 3.2em; font-variant-numeric: tabular-nums; }
+.pool { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { padding: 10px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); font-size: 1rem; text-align: left; min-height: 50px; box-shadow: 0 3px 0 var(--edge); }
+.chip.sel { border-color: var(--c); background: var(--cs); font-weight: 700; transform: translateY(-2px); }
+.chip.hint { border-color: var(--sun); border-style: dashed; animation: glowchip 1s ease-in-out infinite; }
+@keyframes glowchip { 50% { box-shadow: 0 0 0 5px var(--suns), 0 3px 0 var(--edge); } }
+.chip.ok { border-color: var(--ok); background: var(--oks); cursor: default; }
+.defs { display: grid; gap: 10px; }
+.shake { animation: shake .35s; }
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.sortitem { font-family: var(--display); font-size: 1.35rem; font-weight: 700; padding: 16px; border-radius: 16px; background: var(--cs); text-align: center; animation: popin .4s cubic-bezier(.3,1.5,.5,1); }
+.bins { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.bin { padding: 16px 10px; border-radius: 16px; border: 2px solid var(--c); background: var(--surface); font-weight: 700; font-size: 1.05rem; min-height: 64px; box-shadow: 0 4px 0 var(--cd); }
+.count { color: var(--muted); font-size: .95rem; }
+.center { text-align: center; align-items: center; }
+.bigscore { font-family: var(--display); font-size: 3rem; font-weight: 800; color: var(--c); line-height: 1; }
+.endav { width: 150px; height: 205px; margin: 0 auto; }
+
+/* ---------- Pintar ---------- */
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.gitem { border: 2px solid var(--line); background: var(--surface); border-radius: 18px; padding: 10px; text-align: left; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 4px 0 var(--edge); }
+.gitem svg { width: 100%; height: auto; border-radius: 10px; background: #FFFFFF; }
+.gitem.lock { opacity: .55; cursor: default; }
+.gitem b { font-family: var(--display); font-size: 1rem; }
+.gitem small { color: var(--muted); font-size: .82rem; line-height: 1.3; }
+.paint { width: 100%; max-width: 560px; margin: 0 auto; display: block; border-radius: 16px; border: 2px solid var(--line); background: #FFFFFF; touch-action: manipulation; }
+.paint [data-r] { cursor: pointer; stroke: #2A2A2A; stroke-width: 2.5; stroke-linejoin: round; transition: fill .25s; }
+.colors { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.col { width: 46px; height: 46px; border-radius: 50%; border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--line); }
+.col.sel { box-shadow: 0 0 0 4px var(--ink); transform: scale(1.1); }
+/* ---------- Resposta escrita ---------- */
+.wbox { width: 100%; min-height: 130px; font: inherit; font-size: 1.05rem; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); resize: vertical; }
+.ideas { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.ideas li { display: flex; gap: 10px; align-items: center; padding: 8px 12px; border-radius: 12px; background: var(--almosts); }
+.ideas li.got { background: var(--oks); }
+.ideas li span { font-weight: 700; width: 1.4em; text-align: center; }
+/* ---------- Festa do acerto ---------- */
+.confete { position: fixed; inset: 0; pointer-events: none; z-index: 50; overflow: hidden; }
+.confete i { position: absolute; top: -20px; width: 11px; height: 15px; border-radius: 3px; animation: conf 1.9s cubic-bezier(.2,.6,.4,1) forwards; }
+.confete i.o { border-radius: 50%; width: 12px; height: 12px; }
+.confete i.s { width: 18px; height: 18px; border-radius: 0; clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+@keyframes conf { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 100% { transform: translate(var(--dx), 105vh) rotate(var(--rt)); opacity: .9; } }
+.burst { position: absolute; width: 0; height: 0; pointer-events: none; z-index: 4; }
+.burst i { position: absolute; left: -8px; top: -8px; width: 16px; height: 16px; background: var(--sun); clip-path: polygon(50% 0, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); animation: burst .8s ease-out forwards; }
+@keyframes burst { 0% { transform: translate(0, 0) scale(.4); opacity: 1; } 100% { transform: translate(var(--bx), var(--by)) scale(1.1) rotate(160deg); opacity: 0; } }
+.vplayer { width: 100%; border-radius: 16px; background: #000000; display: block; }
+/* ---------- Cenas desenhadas ---------- */
+.scene { position: relative; border-radius: 16px; overflow: hidden; line-height: 0; box-shadow: 0 4px 0 var(--edge); }
+.scene img, .scene video.clip { width: 100%; height: auto; display: block; }
+.scene.kb img { animation: kenburns 16s ease-in-out infinite alternate; transform-origin: 30% 40%; }
+@keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.14) translate(-2%, -1%); } }
+.scene.reveal img { animation: reveal .8s ease-out; }
+@keyframes reveal { from { filter: saturate(.2) brightness(1.15); transform: scale(1.04); } to { filter: none; transform: none; } }
+.glints { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.glints i { position: absolute; width: 18px; height: 18px; background: #FFFFFF; clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); opacity: 0; animation: glint 3.2s ease-in-out infinite; filter: drop-shadow(0 0 4px #FFFFFF); }
+@keyframes glint { 0%, 100% { opacity: 0; transform: scale(.3); } 40% { opacity: .95; transform: scale(1.1) rotate(45deg); } 60% { opacity: 0; } }
+.clio-fly { position: absolute; right: 8px; bottom: 8px; width: 64px; height: 64px; z-index: 2; animation: clio 3s ease-in-out infinite; pointer-events: none; }
+.clio-fly .owl { width: 64px; height: 64px; }
+@keyframes clio { 0%, 100% { transform: translate(0, 0) rotate(-4deg); } 50% { transform: translate(-10px, -12px) rotate(5deg); } }
+.hot { position: absolute; border: 0; background: transparent; border-radius: 14px; padding: 0; z-index: 2; }
+.hot::after { content: ""; position: absolute; left: 50%; top: 50%; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #FFF6C8, var(--sun) 60%); border: 3px solid #FFFFFF; box-shadow: 0 0 12px 3px rgba(255,214,90,.85), 0 2px 6px rgba(0,0,0,.3); animation: pulse 1.4s infinite; }
+.hot::before { content: ""; position: absolute; left: 50%; top: 50%; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; border: 3px solid rgba(255,255,255,.9); animation: ripple 1.8s ease-out infinite; }
+.hot.seen::after { background: radial-gradient(circle at 35% 35%, #CFF7DF, var(--ok) 60%); box-shadow: 0 2px 6px rgba(0,0,0,.3); animation: none; }
+.hot.seen::before { display: none; }
+.hot.on { outline: 4px solid var(--sun); outline-offset: -4px; background: rgba(255,255,255,.18); }
+@keyframes pulse { 50% { transform: scale(1.28); } }
+@keyframes ripple { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(2.6); opacity: 0; } }
+.chal .hot::before { display: none; }
+.chal .hot::after { background: #FFFFFF; border-color: var(--c); animation: none; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+.chal .hot.pick::after { background: var(--c); border-color: #FFFFFF; }
+.chal .hot.right::after { background: var(--ok); border-color: #FFFFFF; }
+.chal .hot.right { outline: 4px solid var(--ok); outline-offset: -4px; }
+.chal .hot.wrong::after { background: #E07B22; border-color: #FFFFFF; }
+.chal .hot.wrong { outline: 4px solid #E07B22; outline-offset: -4px; }
+.chal .hot.missed::after { background: var(--sun); animation: pulse 1s infinite; }
+.chal .hot.missed { outline: 4px dashed var(--sun); outline-offset: -4px; }
+.slabel { min-height: 60px; border-radius: 16px; background: var(--suns); padding: 12px 14px; font-size: 1.08rem; }
+.slabel b { font-family: var(--display); }
+.slabel.pop { animation: rightpop .4s; }
+.school { border-left: 5px solid var(--c); background: var(--cs); border-radius: 0 16px 16px 0; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; font-size: 1.12rem; }
+.school strong { color: var(--c); }
+.school .tag { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.q { font-family: var(--display); font-weight: 700; font-size: 1.2rem; }
+/* ---------- Corrida de obstáculos ---------- */
+.obby { position: relative; height: 150px; border-radius: 18px; overflow: hidden; background: linear-gradient(180deg, var(--sky1), var(--sky2)); box-shadow: inset 0 -30px 0 rgba(0,0,0,.05); }
+.track { position: absolute; left: 0; right: 0; bottom: 18px; height: 40px; display: flex; }
+.plat { flex: 1; position: relative; }
+.plat > span { position: absolute; left: 12%; right: 12%; bottom: 0; height: 22px; border-radius: 6px; background: var(--c); box-shadow: 0 6px 0 var(--cd); transition: transform .5s cubic-bezier(.3,1.6,.5,1), opacity .5s; }
+.plat.far > span { opacity: .18; transform: translateY(26px); }
+.plat.next > span { opacity: .55; background: repeating-linear-gradient(45deg, var(--c) 0 6px, transparent 6px 12px); box-shadow: none; animation: pulse 1.2s infinite; }
+.plat.goal > span { background: var(--coin); box-shadow: 0 6px 0 var(--coind); }
+.goalflag { position: absolute; right: 2%; bottom: 40px; width: 34px; animation: bob 2s ease-in-out infinite; }
+.runner { position: absolute; bottom: 40px; width: 46px; transform: translateX(-50%); transition: left .55s cubic-bezier(.4,1.4,.6,1); }
+.runner .av { width: 100%; height: auto; }
+.lava { position: absolute; left: 0; right: 0; bottom: 0; height: 18px; background: repeating-linear-gradient(90deg, #FF8A3D 0 18px, #FFB13D 18px 36px); animation: barmove .8s linear infinite; opacity: .85; }
+@media (max-width: 560px) { .hot::after, .hot::before { width: 22px; height: 22px; margin: -11px 0 0 -11px; } }
+html.calm *, html.calm *::before, html.calm *::after { animation: none !important; transition: none !important; }
+@media (max-width: 480px) { .ttl { order: 9; flex-basis: 100%; font-size: .98rem; } body { font-size: 18px; } .card { padding: 18px; } .card h2 { font-size: 1.5rem; } .bigic { width: 60px; height: 60px; } .hero { grid-template-columns: 88px 1fr; } .hero .av { width: 88px; height: 120px; } .hero h1 { font-size: 1.4rem; } }
+</style>
+
+<div id="app"></div>
+
+<script>
+(function () {
+"use strict";
+
+/* ---------- Ícones ---------- */
+const IC = {
+  vote: '<rect x="4" y="11" width="16" height="9" rx="1.5"/><path d="M8 11V5h8v6"/><path d="M10 8h4"/><path d="M7 15h10"/>',
+  crown: '<path d="M3 17l2-10 5 5 2-7 2 7 5-5 2 10z"/><path d="M5 20h14"/>',
+  people: '<circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14 14.3c.6-.2 1.3-.3 2-.3 3.3 0 6 2.7 6 6"/>',
+  temple: '<path d="M3 9l9-5 9 5z"/><path d="M5 9v9M9 9v9M15 9v9M19 9v9"/><path d="M3 20h18"/>',
+  tower: '<path d="M5 21V7h3V4h2v3h4V4h2v3h3v14z"/><path d="M10 21v-5h4v5"/>',
+  scroll: '<path d="M7 3h11a2 2 0 0 1 2 2v2h-4"/><path d="M16 5v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2h10"/><path d="M8 8h5M8 12h5"/>',
+  ship: '<path d="M3 16l2 4h14l2-4z"/><path d="M12 3v13"/><path d="M12 4l6 9h-6"/>',
+  chain: '<path d="M9 7H7a5 5 0 0 0 0 10h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><path d="M12 4v3M12 17v3"/>',
+  house: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  flag: '<path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/>',
+  scale: '<path d="M12 4v16"/><path d="M7 20h10"/><path d="M4 8h16"/><path d="M6 8l-3 6a3 3 0 0 0 6 0z"/><path d="M18 8l-3 6a3 3 0 0 0 6 0z"/>',
+  book: '<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/>',
+  access: '<circle cx="12" cy="4.5" r="1.8"/><path d="M12 7v6h5l2 5"/><path d="M8.5 11a5 5 0 1 0 6.5 6"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+  star: '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
+  heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  idea: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+  puzzle: '<path d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4z"/>',
+  cross: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 7v10M7 12h10"/>',
+  brush: '<path d="M14 4l6 6-8 8-6-6z"/><path d="M6 12l-2 6 6-2"/>',
+  pencil: '<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',
+  play: '<path d="M7 4l13 8-13 8z"/>',
+  shirt: '<path d="M8 3l-5 4 3 4 2-1v11h8V10l2 1 3-4-5-4c0 2-1.5 3-4 3S8 5 8 3z"/>',
+  medal: '<circle cx="12" cy="15" r="6"/><path d="M8 3l4 6 4-6"/><path d="M12 12.5l.9 1.8 2 .3-1.4 1.4.3 2-1.8-.9-1.8.9.3-2-1.4-1.4 2-.3z"/>',
+  run: '<circle cx="14" cy="4" r="2"/><path d="M6 21l3-6 3 2v4"/><path d="M8 11l3-4 4 2 3 3"/><path d="M11 7l1 6"/>'
+};
+function icon(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (IC[n] || IC.star) + '</svg>'; }
+const COIN = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="#C98F00"/><circle cx="12" cy="11" r="9.5" fill="#F5B800"/><circle cx="12" cy="11" r="6.8" fill="none" stroke="#FFE07A" stroke-width="1.6"/><path d="M12 6.6l1.4 2.9 3.1.4-2.3 2.2.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.2 3.1-.4z" fill="#FFF3B8"/></svg>';
+const OWL = '<svg class="owl" viewBox="0 0 100 100" aria-hidden="true"><path d="M20 32 L28 10 L42 25 Q50 21 58 25 L72 10 L80 32 Q89 47 84 67 Q78 93 50 95 Q22 93 16 67 Q11 47 20 32Z" fill="var(--owl)"/><ellipse cx="50" cy="72" rx="20" ry="18" fill="var(--owlb)"/><path d="M38 66q3 3 6 0M47 72q3 3 6 0M56 66q3 3 6 0" stroke="var(--owl)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="37" cy="45" r="12.5" fill="#FFFFFF"/><circle cx="63" cy="45" r="12.5" fill="#FFFFFF"/><circle cx="38" cy="46" r="6" fill="#1C2A44"/><circle cx="62" cy="46" r="6" fill="#1C2A44"/><circle cx="40" cy="44" r="2" fill="#FFFFFF"/><circle cx="64" cy="44" r="2" fill="#FFFFFF"/><path d="M45.5 55 L50 62 L54.5 55Z" fill="var(--sun)"/></svg>';
+const FLAG = '<svg class="flag" viewBox="0 0 30 50" aria-hidden="true"><rect x="3" y="2" width="3" height="46" rx="1.5" fill="#6B4A2E"/><path d="M6 4h20l-5 7 5 7H6z" fill="#F5B800"/><path d="M12 8l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.2-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z" fill="#FFFFFF"/></svg>';
+
+/* ---------- Ilhas do mapa ---------- */
+function islandSvg(castle) {
+  const base = '<ellipse cx="100" cy="144" rx="52" ry="5" fill="rgba(0,0,0,.12)"/>' +
+    '<path d="M28 72 L172 72 L156 100 L128 124 L100 134 L72 124 L44 100 Z" fill="#A9774D"/>' +
+    '<path d="M44 100 L72 124 L100 134 L100 110 L60 96Z" fill="#8C6040"/>' +
+    '<path d="M60 92h18v10H60zM112 104h16v9h-16zM92 116h12v8H92z" fill="#7A5236"/>' +
+    '<ellipse cx="100" cy="70" rx="76" ry="20" fill="var(--cd)"/>' +
+    '<ellipse cx="100" cy="66" rx="74" ry="18" fill="var(--c)"/>' +
+    '<ellipse cx="86" cy="60" rx="40" ry="8" fill="rgba(255,255,255,.28)"/>';
+  if (castle) {
+    return '<svg viewBox="0 0 200 150" aria-hidden="true">' + base +
+      '<rect x="62" y="22" width="76" height="46" fill="#F3E3C0" stroke="#B89A62" stroke-width="2"/>' +
+      '<path d="M62 22v-8h10v8h9v-8h10v8h18v-8h10v8h9v-8h10v8" fill="#F3E3C0" stroke="#B89A62" stroke-width="2"/>' +
+      '<rect x="48" y="12" width="20" height="56" fill="#EAD5A8" stroke="#B89A62" stroke-width="2"/><path d="M44 12 L58 -6 L72 12Z" fill="#8048CC"/>' +
+      '<rect x="132" y="12" width="20" height="56" fill="#EAD5A8" stroke="#B89A62" stroke-width="2"/><path d="M128 12 L142 -6 L156 12Z" fill="#2D6BD3"/>' +
+      '<path d="M88 68v-18a12 12 0 0 1 24 0v18z" fill="#6B4A2E"/><circle cx="100" cy="36" r="8" fill="#F5B800"/></svg>';
+  }
+  return '<svg viewBox="0 0 200 150" aria-hidden="true">' + base +
+    '<rect x="36" y="44" width="16" height="20" fill="#2F8A3C"/><rect x="40" y="62" width="8" height="8" fill="#7A5236"/>' +
+    '<rect x="150" y="40" width="18" height="22" fill="#36A046"/><rect x="155" y="60" width="8" height="8" fill="#7A5236"/>' +
+    '<rect x="128" y="58" width="10" height="10" fill="#FFFFFF" opacity=".75"/><rect x="62" y="60" width="8" height="8" fill="#FFE07A"/></svg>';
+}
+
+/* ---------- Personagem de blocos (visual próprio, sem marca de nenhum jogo) ---------- */
+const SKINS = ["#FFE0C7", "#F6C9A0", "#E5A877", "#C98A5A", "#9C643B", "#6B4227"];
+const HAIRC = ["#2B1B12", "#6B3E26", "#B5651D", "#E8C15A", "#E25822", "#1C1C1C", "#9B59D0", "#F06AB0", "#3D8BEB", "#3CC4A0"];
+const CLOTH = ["#F06AB0", "#E53935", "#FB8C00", "#FDD835", "#7CB342", "#26A69A", "#29B6F6", "#3D5AFE", "#8E24AA", "#FFFFFF", "#37474F", "#8D6E63"];
+const HAIRS = [["longo", "Longo"], ["rabo", "Rabo de cavalo"], ["coque", "Coque"], ["trancas", "Tranças"], ["cacheado", "Cacheado"], ["curto", "Curto"]];
+const SHOP = {
+  acc: [["coroa", "Coroa", 120], ["laco", "Laço", 40], ["tiara", "Tiara de estrela", 70], ["gatinha", "Orelhas de gato", 60], ["bone", "Boné", 40], ["fones", "Fones", 80], ["flores", "Coroa de flores", 90], ["cartola", "Cartola", 100]],
+  face: [["oculos", "Óculos", 30], ["estrela", "Óculos de estrela", 60], ["mascara", "Máscara de heroína", 70], ["coracoes", "Bochechas de coração", 40]],
+  back: [["fada", "Asas de fada", 120], ["anjo", "Asas brancas", 120], ["capa", "Capa de heroína", 80], ["jato", "Mochila a jato", 150], ["mochila", "Mochila", 40]],
+  pet: [["gato", "Gatinho", 100], ["cachorro", "Cachorrinho", 100], ["coruja", "Mini Clio", 120], ["unicornio", "Unicórnio", 150], ["peixe", "Peixinho", 70]],
+  fx: [["brilho", "Brilhos", 60], ["coracoes", "Corações", 80], ["aura", "Aura dourada", 120], ["arco", "Arco-íris", 140]]
+};
+const CATS = [
+  { k: "skin", t: "Pele", col: SKINS }, { k: "hair", t: "Cabelo", list: HAIRS }, { k: "hairc", t: "Cor do cabelo", col: HAIRC },
+  { k: "shirt", t: "Blusa", col: CLOTH }, { k: "pants", t: "Calça", col: CLOTH }, { k: "shoes", t: "Tênis", col: CLOTH },
+  { k: "acc", t: "Na cabeça", shop: true }, { k: "face", t: "Rosto", shop: true }, { k: "back", t: "Costas", shop: true },
+  { k: "pet", t: "Bichinho", shop: true }, { k: "fx", t: "Brilho", shop: true }
+];
+function shade(hex, f) { const n = parseInt(hex.slice(1), 16); const ch = s => Math.max(0, Math.min(255, Math.round(((n >> s) & 255) * f))); return "#" + [16, 8, 0].map(s => ch(s).toString(16).padStart(2, "0")).join(""); }
+function avSvg(a, cls) {
+  a = Object.assign({}, AVDEF, a || {});
+  const sk = a.skin, hc = a.hairc, sh = a.shirt, pa = a.pants, so = a.shoes, skd = shade(sk, .85), hcd = shade(hc, .8);
+  let back = "", hairBack = "", hairFront = "", acc = "", face = "", pet = "", fx = "", fxBack = "";
+  // Efeitos atrás
+  if (a.fx === "aura") fxBack = '<ellipse class="aura" cx="50" cy="80" rx="52" ry="68" fill="#FFE07A" opacity=".55"/>';
+  if (a.fx === "arco") fxBack = '<g opacity=".85"><path d="M-6 92a56 56 0 0 1 112 0" fill="none" stroke="#FF5A5A" stroke-width="7"/><path d="M1 92a49 49 0 0 1 98 0" fill="none" stroke="#FFB13D" stroke-width="7"/><path d="M8 92a42 42 0 0 1 84 0" fill="none" stroke="#FFE45A" stroke-width="7"/><path d="M15 92a35 35 0 0 1 70 0" fill="none" stroke="#5AD07A" stroke-width="7"/><path d="M22 92a28 28 0 0 1 56 0" fill="none" stroke="#5AA8FF" stroke-width="7"/></g>';
+  // Costas
+  if (a.back === "fada") back = '<path class="wing l" d="M36 66 C8 18 -12 46 0 72 C-10 92 8 112 36 86Z" fill="#B9F0FF" stroke="#7BD3F0" stroke-width="2" opacity=".92"/><path class="wing r" d="M64 66 C92 18 112 46 100 72 C110 92 92 112 64 86Z" fill="#FFD0F0" stroke="#F09AD6" stroke-width="2" opacity=".92"/><circle cx="12" cy="52" r="3" fill="#FFFFFF"/><circle cx="88" cy="52" r="3" fill="#FFFFFF"/>';
+  if (a.back === "anjo") back = '<path class="wing l" d="M36 66 C10 30 -10 40 -4 62 C-10 70 -4 80 2 82 C-4 92 6 100 14 96 C14 104 26 104 36 86Z" fill="#FFFFFF" stroke="#C9D6E8" stroke-width="2"/><path class="wing r" d="M64 66 C90 30 110 40 104 62 C110 70 104 80 98 82 C104 92 94 100 86 96 C86 104 74 104 64 86Z" fill="#FFFFFF" stroke="#C9D6E8" stroke-width="2"/>';
+  if (a.back === "capa") back = '<path d="M28 60 L72 60 L84 128 L16 128Z" fill="#E53935"/><path d="M28 60 L72 60 L76 70 L24 70Z" fill="#B71C1C"/>';
+  if (a.back === "jato") back = '<rect x="30" y="62" width="14" height="34" rx="5" fill="#90A4AE"/><rect x="56" y="62" width="14" height="34" rx="5" fill="#90A4AE"/><path class="jet" d="M32 96h10l-5 16z" fill="#FF8A3D"/><path class="jet" d="M58 96h10l-5 16z" fill="#FF8A3D"/>';
+  if (a.back === "mochila") back = '<rect x="22" y="64" width="56" height="34" rx="6" fill="#FFB13D"/>';
+  // Cabelo atrás da cabeça
+  if (a.hair === "longo") hairBack = '<rect x="26" y="16" width="48" height="58" rx="6" fill="' + hc + '"/>';
+  if (a.hair === "rabo") hairBack = '<rect x="68" y="24" width="14" height="40" rx="7" fill="' + hc + '"/><rect x="66" y="24" width="10" height="7" rx="2" fill="#F06AB0"/>';
+  if (a.hair === "trancas") hairBack = '<rect x="20" y="28" width="10" height="44" rx="5" fill="' + hc + '"/><rect x="70" y="28" width="10" height="44" rx="5" fill="' + hc + '"/><path d="M20 40h10M20 50h10M20 60h10M70 40h10M70 50h10M70 60h10" stroke="' + hcd + '" stroke-width="2"/><rect x="19" y="68" width="12" height="6" rx="2" fill="#F06AB0"/><rect x="69" y="68" width="12" height="6" rx="2" fill="#F06AB0"/>';
+  if (a.hair === "cacheado") hairBack = '<g fill="' + hc + '"><circle cx="28" cy="26" r="9"/><circle cx="72" cy="26" r="9"/><circle cx="26" cy="42" r="9"/><circle cx="74" cy="42" r="9"/><circle cx="27" cy="56" r="8"/><circle cx="73" cy="56" r="8"/></g>';
+  // Cabelo na frente
+  const fringe = '<rect x="28" y="14" width="44" height="13" rx="4" fill="' + hc + '"/><rect x="28" y="14" width="7" height="24" rx="3" fill="' + hc + '"/><rect x="65" y="14" width="7" height="24" rx="3" fill="' + hc + '"/>';
+  if (a.hair === "coque") hairFront = '<circle cx="50" cy="10" r="10" fill="' + hc + '"/>' + fringe;
+  else if (a.hair === "cacheado") hairFront = '<g fill="' + hc + '"><circle cx="36" cy="16" r="9"/><circle cx="50" cy="12" r="10"/><circle cx="64" cy="16" r="9"/></g><rect x="28" y="16" width="44" height="9" rx="4" fill="' + hc + '"/>';
+  else if (a.hair === "curto") hairFront = '<rect x="28" y="12" width="44" height="12" rx="4" fill="' + hc + '"/><rect x="28" y="12" width="6" height="18" rx="3" fill="' + hc + '"/><rect x="66" y="12" width="6" height="18" rx="3" fill="' + hc + '"/>';
+  else hairFront = fringe;
+  // Na cabeça
+  if (a.acc === "coroa") acc = '<path d="M33 14 L33 0 L41 8 L50 -4 L59 8 L67 0 L67 14Z" fill="#F5B800" stroke="#C98F00" stroke-width="2"/><circle cx="50" cy="9" r="3" fill="#E53935"/><circle cx="39" cy="10" r="2" fill="#29B6F6"/><circle cx="61" cy="10" r="2" fill="#29B6F6"/>';
+  if (a.acc === "laco") acc = '<path d="M60 12 L72 4 L72 20Z M60 12 L48 4 L48 20Z" fill="#F06AB0" stroke="#C2185B" stroke-width="1.5"/><circle cx="60" cy="12" r="4" fill="#C2185B"/>';
+  if (a.acc === "tiara") acc = '<path d="M30 18 Q50 6 70 18" fill="none" stroke="#C0C7D6" stroke-width="4"/><path d="M50 -2l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z" fill="#FFE07A" stroke="#F5B800" stroke-width="1.5"/>';
+  if (a.acc === "gatinha") acc = '<path d="M30 18 L32 0 L44 12Z" fill="' + hc + '"/><path d="M70 18 L68 0 L56 12Z" fill="' + hc + '"/><path d="M33 13 L34 5 L40 11Z M67 13 L66 5 L60 11Z" fill="#F7A8CF"/>';
+  if (a.acc === "bone") acc = '<rect x="27" y="6" width="46" height="14" rx="7" fill="#3D5AFE"/><rect x="50" y="15" width="32" height="6" rx="3" fill="#1A2FB8"/><circle cx="50" cy="7" r="2.5" fill="#FFFFFF"/>';
+  if (a.acc === "fones") acc = '<path d="M26 34 Q26 4 50 4 Q74 4 74 34" fill="none" stroke="#37474F" stroke-width="5"/><rect x="20" y="28" width="12" height="18" rx="5" fill="#F06AB0"/><rect x="68" y="28" width="12" height="18" rx="5" fill="#F06AB0"/>';
+  if (a.acc === "flores") acc = '<g><circle cx="34" cy="14" r="5" fill="#FF7AB8"/><circle cx="44" cy="10" r="5" fill="#FFE45A"/><circle cx="56" cy="10" r="5" fill="#9B59D0"/><circle cx="66" cy="14" r="5" fill="#5AD07A"/><circle cx="34" cy="14" r="2" fill="#FFFFFF"/><circle cx="44" cy="10" r="2" fill="#FFFFFF"/><circle cx="56" cy="10" r="2" fill="#FFFFFF"/><circle cx="66" cy="14" r="2" fill="#FFFFFF"/></g>';
+  if (a.acc === "cartola") acc = '<rect x="24" y="12" width="52" height="6" rx="3" fill="#212121"/><rect x="34" y="-14" width="32" height="28" rx="3" fill="#212121"/><rect x="34" y="6" width="32" height="5" fill="#9B59D0"/>';
+  // Rosto
+  if (a.face === "oculos") face = '<circle cx="41" cy="38" r="7" fill="rgba(255,255,255,.3)" stroke="#37474F" stroke-width="2.5"/><circle cx="59" cy="38" r="7" fill="rgba(255,255,255,.3)" stroke="#37474F" stroke-width="2.5"/><path d="M48 38h4" stroke="#37474F" stroke-width="2.5"/>';
+  if (a.face === "estrela") face = '<path d="M41 29l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z M59 29l2.6 5.4 5.9.8-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z" fill="#F06AB0" stroke="#C2185B" stroke-width="1.5"/>';
+  if (a.face === "mascara") face = '<path d="M30 33 Q50 28 70 33 L70 42 Q50 46 30 42Z" fill="#8E24AA"/><ellipse cx="41" cy="37.5" rx="4" ry="3" fill="#FFFFFF"/><ellipse cx="59" cy="37.5" rx="4" ry="3" fill="#FFFFFF"/><circle cx="41" cy="37.5" r="1.8" fill="#1C2A44"/><circle cx="59" cy="37.5" r="1.8" fill="#1C2A44"/>';
+  if (a.face === "coracoes") face = '<path d="M35 46c-2-3 2-5 3-2 1-3 5-1 3 2l-3 3z M59 46c-2-3 2-5 3-2 1-3 5-1 3 2l-3 3z" fill="#FF4F8B"/>';
+  // Bichinho
+  if (a.pet === "gato") pet = '<g class="pet"><rect x="88" y="116" width="22" height="16" rx="3" fill="#FB8C00"/><rect x="92" y="102" width="18" height="16" rx="3" fill="#FB8C00"/><path d="M92 103l2-7 4 6zM110 103l-2-7-4 6z" fill="#FB8C00"/><circle cx="97" cy="109" r="1.6" fill="#1C2A44"/><circle cx="105" cy="109" r="1.6" fill="#1C2A44"/><path d="M110 120 q10 -2 6 -12" stroke="#FB8C00" stroke-width="4" fill="none" stroke-linecap="round"/></g>';
+  if (a.pet === "cachorro") pet = '<g class="pet"><rect x="88" y="116" width="24" height="16" rx="3" fill="#C49A6C"/><rect x="92" y="100" width="20" height="18" rx="4" fill="#C49A6C"/><rect x="88" y="100" width="6" height="12" rx="3" fill="#7A5236"/><rect x="110" y="100" width="6" height="12" rx="3" fill="#7A5236"/><circle cx="98" cy="108" r="1.6" fill="#1C2A44"/><circle cx="106" cy="108" r="1.6" fill="#1C2A44"/><circle cx="102" cy="113" r="2" fill="#1C2A44"/></g>';
+  if (a.pet === "coruja") pet = '<g class="pet"><g transform="translate(86 100) scale(.32)">' + OWL.replace('<svg class="owl" viewBox="0 0 100 100" aria-hidden="true">', '').replace('</svg>', '') + '</g></g>';
+  if (a.pet === "unicornio") pet = '<g class="pet"><rect x="86" y="114" width="26" height="16" rx="4" fill="#FFFFFF" stroke="#E0D6F0" stroke-width="1.5"/><rect x="104" y="100" width="16" height="18" rx="4" fill="#FFFFFF" stroke="#E0D6F0" stroke-width="1.5"/><path d="M112 100 L116 86 L118 101Z" fill="#FFD54F"/><rect x="100" y="100" width="6" height="16" rx="2" fill="#F06AB0"/><circle cx="114" cy="107" r="1.6" fill="#1C2A44"/><rect x="88" y="128" width="5" height="6" fill="#E0D6F0"/><rect x="105" y="128" width="5" height="6" fill="#E0D6F0"/></g>';
+  if (a.pet === "peixe") pet = '<g class="pet"><rect x="86" y="104" width="30" height="28" rx="6" fill="rgba(120,200,255,.35)" stroke="#7BC4F0" stroke-width="2"/><path d="M94 118 q8 -8 14 0 q-6 8 -14 0z M108 118 l6 -5 v10z" fill="#FB8C00"/><circle cx="98" cy="117" r="1.3" fill="#1C2A44"/></g>';
+  // Efeitos na frente
+  if (a.fx === "brilho") fx = '<path class="fxs" d="M8 30l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#FFE45A"/><path class="fxs" style="animation-delay:.6s" d="M92 20l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#FFFFFF"/><path class="fxs" style="animation-delay:1.1s" d="M90 70l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z" fill="#FFE45A"/><path class="fxs" style="animation-delay:.3s" d="M10 88l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z" fill="#FFFFFF"/>';
+  if (a.fx === "coracoes") fx = '<path class="heart" d="M12 40c-3-4 3-7 4-3 1-4 7-1 4 3l-4 4z" fill="#FF4F8B"/><path class="heart" style="animation-delay:1.2s" d="M84 30c-3-4 3-7 4-3 1-4 7-1 4 3l-4 4z" fill="#FF7AB8"/><path class="heart" style="animation-delay:.6s" d="M86 76c-3-4 3-7 4-3 1-4 7-1 4 3l-4 4z" fill="#FF4F8B"/>';
+  return '<svg class="av ' + (cls || "") + '" viewBox="-8 -18 132 158" aria-hidden="true">' + fxBack + back + hairBack +
+    '<rect x="30" y="100" width="18" height="30" rx="3" fill="' + pa + '"/><rect x="52" y="100" width="18" height="30" rx="3" fill="' + pa + '"/>' +
+    '<rect x="28" y="126" width="21" height="9" rx="3" fill="' + so + '"/><rect x="51" y="126" width="21" height="9" rx="3" fill="' + so + '"/>' +
+    '<rect x="28" y="130" width="21" height="5" rx="2" fill="#FFFFFF" opacity=".7"/><rect x="51" y="130" width="21" height="5" rx="2" fill="#FFFFFF" opacity=".7"/>' +
+    '<rect x="13" y="61" width="14" height="38" rx="5" fill="' + sh + '"/><rect x="13" y="88" width="14" height="12" rx="5" fill="' + sk + '"/>' +
+    '<g class="arm-r"><rect x="73" y="61" width="14" height="38" rx="5" fill="' + sh + '"/><rect x="73" y="88" width="14" height="12" rx="5" fill="' + sk + '"/></g>' +
+    '<rect x="26" y="58" width="48" height="45" rx="6" fill="' + sh + '"/><rect x="26" y="96" width="48" height="7" fill="' + shade(sh, .82) + '"/>' +
+    '<path d="M42 58 L50 66 L58 58" fill="none" stroke="' + shade(sh, .78) + '" stroke-width="3"/>' +
+    '<rect x="44" y="52" width="12" height="8" fill="' + skd + '"/>' +
+    '<rect x="30" y="18" width="40" height="38" rx="7" fill="' + sk + '"/>' +
+    '<g class="blink"><rect x="38" y="33" width="6" height="9" rx="3" fill="#1C2A44"/><rect x="56" y="33" width="6" height="9" rx="3" fill="#1C2A44"/><circle cx="42.5" cy="35" r="1.4" fill="#FFFFFF"/><circle cx="60.5" cy="35" r="1.4" fill="#FFFFFF"/></g>' +
+    '<circle cx="35" cy="46" r="3.5" fill="#FF8FA8" opacity=".55"/><circle cx="65" cy="46" r="3.5" fill="#FF8FA8" opacity=".55"/>' +
+    '<path d="M43 47 Q50 53 57 47" fill="none" stroke="#7A2E3A" stroke-width="2.6" stroke-linecap="round"/>' +
+    hairFront + face + acc + pet + fx + '</svg>';
+}
+
+/* ---------- Conteúdo (fiel ao material da escola) ---------- */
+/*DATA-START*/
+const SC = d => [
+  { t: "read", key: d.id + "-txt", img: d.img, eb: d.eb, title: d.title, school: d.school },
+  { t: "scene", id: d.id, key: "inst-scene", img: d.img, eb: d.eb, title: d.title, spots: d.spots, chal: d.chal }
+];
+// Dados da prova: META (título e matéria), W (mundos e telas) e PICS (quadros para pintar).
+// Material: Maple Bear, Y5, Português 3T (U4 e U5): plural dos compostos, artigo, masculino e feminino.
+// O motor monta o jogo com: node ~/.claude/skills/nenetica-liloca-2/scripts/montar-jogo.js <pasta-da-prova>
+const META = { titulo: "Missão Português 3T", materia: "Português" };
+
+const W = [
+{ id: "plu", n: 1, cls: "w-1", ic: "puzzle", title: "Plural das palavras compostas", sub: "Com hífen, sem hífen: quem vai para o plural?", steps: [
+  ...SC({ id: "p-sem", img: "cenas/p-sem.jpg", eb: "Sem hífen", title: "Pontapé, mandachuva e girassol",
+    school: ["**Substantivos compostos não ligados por hífen** fazem o plural como os substantivos simples.", "Exemplos: pontapé / **pontapés**, mandachuva / **mandachuvas**, girassol / **girassóis**."],
+    spots: [
+      { x: 0, y: 28, w: 25, h: 55, t: "Pontapé", d: "Chutar a bola é dar um pontapé. Não tem hífen. Plural: pontapés." },
+      { x: 42, y: 20, w: 26, h: 60, t: "Mandachuva", d: "É quem manda no grupo. Não tem hífen. Plural: mandachuvas." },
+      { x: 72, y: 2, w: 25, h: 55, t: "Girassol", d: "Não tem hífen. Plural: girassóis." },
+      { x: 83, y: 58, w: 15, h: 22, t: "Clio", d: "Sem hífen? Faz o plural como palavra simples!" } ],
+    chal: [ { q: "Toque no mandachuva, quem manda no grupo.", ok: [1] }, { q: "Toque em TODAS as palavras que viram pontapés e girassóis.", ok: [0, 2] } ] }),
+  { t: "quiz", id: "pl1", q: "Qual é o plural de girassol?", o: ["Girassóis", "Girassols", "Girasóis"], a: 0, ex: "Girassol não tem hífen: faz o plural como palavra simples." },
+  { t: "quiz", id: "pl2", q: "Qual é o plural de mandachuva?", o: ["Mandachuvas", "Mandaschuvas", "Mandaschuva"], a: 0, ex: "Sem hífen: só acrescenta o -s no fim." },
+  ...SC({ id: "p-jar", img: "cenas/p-jardim.jpg", eb: "Com hífen ou sem hífen?", title: "Um jardim de palavras compostas",
+    school: ["**Substantivos compostos ligados por hífen**: podem ir para o plural **os dois elementos, apenas um ou nenhum**.", "**Os dois elementos vão para o plural** se representados por **substantivo e substantivo** (couve-flor / **couves-flores**) ou **substantivo e adjetivo** (amor-perfeito / **amores-perfeitos**)."],
+    spots: [
+      { x: 0, y: 44, w: 35, h: 38, t: "Couve-flor", d: "Tem hífen. Os dois elementos vão para o plural: couves-flores. Substantivo e substantivo." },
+      { x: 37, y: 48, w: 28, h: 36, t: "Amor-perfeito", d: "Esta flor tem hífen. Os dois vão para o plural: amores-perfeitos. Substantivo e adjetivo." },
+      { x: 64, y: 2, w: 28, h: 60, t: "Girassol", d: "Não tem hífen. Faz o plural como palavra simples: girassóis." },
+      { x: 77, y: 64, w: 23, h: 33, t: "Pontapé", d: "Chutar a bola é dar um pontapé. Não tem hífen: pontapés." },
+      { x: 5, y: 10, w: 14, h: 21, t: "Clio", d: "Palavra composta sem hífen faz o plural como palavra simples." } ],
+    chal: [ { q: "Toque na palavra que vira couves-flores.", ok: [0] }, { q: "Agora toque em TODAS as palavras que NÃO têm hífen.", ok: [2, 3] } ] }),
+  ...SC({ id: "p-dois", img: "cenas/p-dois.jpg", eb: "Os dois vão para o plural", title: "Má-língua, segunda-feira e couve-flor",
+    school: ["Os dois elementos vão para o plural se representados por:", "**substantivo e substantivo**: couve-flor / **couves-flores**", "**substantivo e adjetivo**: amor-perfeito / **amores-perfeitos**", "**adjetivo e substantivo**: má-língua / **más-línguas**", "**numeral e substantivo**: segunda-feira / **segundas-feiras**"],
+    spots: [
+      { x: 2, y: 5, w: 30, h: 55, t: "Má-língua", d: "Quem fala mal dos outros é má-língua. Adjetivo e substantivo. Plural: más-línguas." },
+      { x: 35, y: 5, w: 30, h: 60, t: "Segunda-feira", d: "Dia de ir para a escola! Numeral e substantivo. Plural: segundas-feiras." },
+      { x: 70, y: 20, w: 30, h: 30, t: "Amor-perfeito", d: "Substantivo e adjetivo. Plural: amores-perfeitos." },
+      { x: 72, y: 52, w: 26, h: 28, t: "Couve-flor", d: "Substantivo e substantivo. Plural: couves-flores." },
+      { x: 40, y: 68, w: 20, h: 30, t: "Clio", d: "Nesses quatro casos, os dois elementos vão para o plural!" } ],
+    chal: [ { q: "Toque no desenho que vira segundas-feiras.", ok: [1] }, { q: "Toque na palavra que vira más-línguas.", ok: [0] }, { q: "Toque em TODAS as palavras que levam os dois elementos para o plural.", ok: [0, 1, 2, 3] } ] }),
+  { t: "quiz", id: "pl3", q: "Qual é o plural de couve-flor?", o: ["Couves-flores", "Couve-flores", "Couves-flor"], a: 0, ex: "Substantivo e substantivo: os dois vão para o plural." },
+  { t: "quiz", id: "pl4", q: "Qual é o plural de segunda-feira?", o: ["Segundas-feiras", "Segunda-feiras", "Segundas-feira"], a: 0, ex: "Numeral e substantivo: os dois vão para o plural." },
+  { t: "quiz", id: "pl5", q: "Qual é o plural de má-língua?", o: ["Más-línguas", "Má-línguas", "Más-língua"], a: 0, ex: "Adjetivo e substantivo: os dois vão para o plural." },
+  { t: "quiz", id: "pl5b", q: "Qual é o plural de amor-perfeito?", o: ["Amores-perfeitos", "Amor-perfeitos", "Amores-perfeito"], a: 0, ex: "Substantivo e adjetivo: os dois vão para o plural." },
+  ...SC({ id: "p-fin", img: "cenas/p-fin.jpg", eb: "Só o primeiro vai para o plural", title: "Quando o segundo explica o primeiro",
+    school: ["**Apenas o primeiro elemento vai para o plural** se o segundo elemento **indicar finalidade ou limitar a ideia do primeiro**.", "pombo-correio / **pombos**-correio", "banana-maçã / **bananas**-maçã", "café-concerto / **cafés**-concerto", "salário-família / **salários**-família"],
+    spots: [
+      { x: 7, y: 3, w: 37, h: 33, t: "Pombo-correio", d: "Um pombo que leva cartas. Plural: pombos-correio." },
+      { x: 50, y: 2, w: 50, h: 45, t: "Café-concerto", d: "Um café com música ao vivo. Plural: cafés-concerto." },
+      { x: 0, y: 58, w: 45, h: 38, t: "Banana-maçã", d: "Um tipo de banana. Plural: bananas-maçã." },
+      { x: 50, y: 52, w: 50, h: 48, t: "Salário-família", d: "Um dinheiro que ajuda a família. Plural: salários-família." },
+      { x: 42, y: 35, w: 15, h: 25, t: "Clio", d: "O segundo elemento explica o primeiro. Só o primeiro vai para o plural!" } ],
+    chal: [ { q: "Toque no pombo que leva cartas.", ok: [0] }, { q: "Toque no desenho que vira bananas-maçã.", ok: [2] }, { q: "Toque no lugar que vira cafés-concerto.", ok: [1] } ] }),
+  { t: "quiz", id: "pl6", q: "Qual é o plural de pombo-correio?", o: ["Pombos-correio", "Pombos-correios", "Pombo-correios"], a: 0, ex: "Correio diz para que serve o pombo. Só o primeiro vai para o plural." },
+  { t: "quiz", id: "pl7", q: "Qual é o plural de salário-família?", o: ["Salários-família", "Salários-famílias", "Salário-famílias"], a: 0, ex: "Só o primeiro elemento vai para o plural." },
+  ...SC({ id: "p-prep", img: "cenas/p-prep.jpg", eb: "Só o primeiro vai para o plural", title: "Quando tem uma palavrinha no meio",
+    school: ["**Apenas o primeiro elemento vai para o plural** se os elementos forem **ligados por preposição**.", "dragão-do-mar / **dragões**-do-mar", "cobra-d'água / **cobras**-d'água", "banana-da-terra / **bananas**-da-terra", "porquinho-da-índia / **porquinhos**-da-índia"],
+    spots: [
+      { x: 5, y: 5, w: 40, h: 40, t: "Dragão-do-mar", d: "Um peixe do mar que parece um dragão. Plural: dragões-do-mar." },
+      { x: 55, y: 10, w: 45, h: 30, t: "Cobra-d'água", d: "Uma cobra que vive na água. Plural: cobras-d'água." },
+      { x: 10, y: 52, w: 30, h: 35, t: "Banana-da-terra", d: "Uma banana grande. Plural: bananas-da-terra." },
+      { x: 63, y: 57, w: 32, h: 40, t: "Porquinho-da-índia", d: "Plural: porquinhos-da-índia." },
+      { x: 41, y: 33, w: 16, h: 25, t: "Clio", d: "Do, da, de: é a preposição no meio. Só o primeiro vai para o plural!" } ],
+    chal: [ { q: "Toque no porquinho-da-índia.", ok: [3] }, { q: "Toque no animal que vira dragões-do-mar.", ok: [0] }, { q: "Toque em TODOS os animais deste desenho.", ok: [0, 1, 3] } ] }),
+  { t: "quiz", id: "pl8", q: "Qual é o plural de porquinho-da-índia?", o: ["Porquinhos-da-índia", "Porquinhos-das-índias", "Porquinho-das-índias"], a: 0, ex: "Ligados por preposição (da): só o primeiro vai para o plural." },
+  { t: "quiz", id: "pl9", q: "Qual é o plural de dragão-do-mar?", o: ["Dragões-do-mar", "Dragão-dos-mares", "Dragões-dos-mares"], a: 0, ex: "Ligados por preposição (do): só o primeiro vai para o plural." },
+  ...SC({ id: "p-seg", img: "cenas/p-seg.jpg", eb: "Só o segundo vai para o plural", title: "Guarda-chuva, abaixo-assinado e grão-duque",
+    school: ["**Apenas o segundo elemento vai para o plural** se o primeiro elemento for:", "**verbo**: guarda-chuva / guarda-**chuvas**", "**advérbio**: abaixo-assinado / abaixo-**assinados**", "**forma reduzida** (como **bel, grã, grão**): grão-duque / grão-**duques**"],
+    spots: [
+      { x: 0, y: 0, w: 30, h: 100, t: "Guarda-chuva", d: "Guarda é verbo. Plural: guarda-chuvas." },
+      { x: 32, y: 15, w: 35, h: 55, t: "Abaixo-assinado", d: "Um papel que muitas pessoas assinam. Abaixo é advérbio. Plural: abaixo-assinados." },
+      { x: 70, y: 5, w: 30, h: 93, t: "Grão-duque", d: "Grão é forma reduzida. Plural: grão-duques." },
+      { x: 42, y: 68, w: 18, h: 30, t: "Clio", d: "Verbo, advérbio ou forma reduzida na frente? Só o segundo vai para o plural!" } ],
+    chal: [ { q: "Toque no desenho que vira guarda-chuvas.", ok: [0] }, { q: "Toque no grão-duque.", ok: [2] }, { q: "Toque no papel que muitas pessoas assinam.", ok: [1] } ] }),
+  { t: "quiz", id: "pl10", q: "Qual é o plural de guarda-chuva?", o: ["Guarda-chuvas", "Guardas-chuvas", "Guardas-chuva"], a: 0, ex: "Guarda é verbo: só o segundo vai para o plural." },
+  { t: "quiz", id: "pl11", q: "Qual é o plural de abaixo-assinado?", o: ["Abaixo-assinados", "Abaixos-assinados", "Abaixos-assinado"], a: 0, ex: "Abaixo é advérbio: só o segundo vai para o plural." },
+  { t: "quiz", id: "pl12", q: "Qual é o plural de grão-duque?", o: ["Grão-duques", "Grãos-duques", "Grãos-duque"], a: 0, ex: "Grão é forma reduzida: só o segundo vai para o plural." },
+  ...SC({ id: "p-rep", img: "cenas/p-rep.jpg", eb: "Só o segundo vai para o plural", title: "Tico-tico e tique-taque",
+    school: ["Apenas o segundo elemento vai para o plural se os elementos forem:", "**palavras repetidas**: tico-tico / tico-**ticos**", "**palavras onomatopaicas**: tique-taque / tique-**taques**"],
+    spots: [
+      { x: 3, y: 28, w: 45, h: 42, t: "Tico-tico", d: "Um passarinho. A palavra se repete. Plural: tico-ticos." },
+      { x: 58, y: 28, w: 32, h: 65, t: "Tique-taque", d: "É o som do relógio. Onomatopeia é a palavra que imita um som. Plural: tique-taques." },
+      { x: 65, y: 2, w: 20, h: 25, t: "Clio", d: "Palavra repetida ou som? Só o segundo vai para o plural!" } ],
+    chal: [ { q: "Toque na palavra que imita um som.", ok: [1] }, { q: "Toque na palavra repetida.", ok: [0] } ] }),
+  { t: "quiz", id: "pl13", q: "Qual é o plural de tico-tico?", o: ["Tico-ticos", "Ticos-ticos", "Ticos-tico"], a: 0, ex: "Palavras repetidas: só o segundo vai para o plural." },
+  { t: "quiz", id: "pl14", q: "Qual é o plural de tique-taque?", o: ["Tique-taques", "Tiques-taques", "Tiques-taque"], a: 0, ex: "Onomatopeia: só o segundo vai para o plural." },
+  { t: "sort", id: "s-pl1", title: "Os dois ou só o primeiro?", bins: ["Os dois vão para o plural", "Só o primeiro vai"], items: [
+    { txt: "couve-flor: couves-flores", b: 0, why: "Substantivo e substantivo: os dois." },
+    { txt: "amor-perfeito: amores-perfeitos", b: 0, why: "Substantivo e adjetivo: os dois." },
+    { txt: "má-língua: más-línguas", b: 0, why: "Adjetivo e substantivo: os dois." },
+    { txt: "segunda-feira: segundas-feiras", b: 0, why: "Numeral e substantivo: os dois." },
+    { txt: "banana-maçã: bananas-maçã", b: 1, why: "O segundo limita a ideia do primeiro: só o primeiro." },
+    { txt: "café-concerto: cafés-concerto", b: 1, why: "O segundo indica finalidade: só o primeiro." },
+    { txt: "cobra-d'água: cobras-d'água", b: 1, why: "Ligados por preposição: só o primeiro." },
+    { txt: "banana-da-terra: bananas-da-terra", b: 1, why: "Ligados por preposição: só o primeiro." } ] },
+  { t: "sort", id: "s-pl2", title: "Só o primeiro ou só o segundo?", bins: ["Só o primeiro vai", "Só o segundo vai"], items: [
+    { txt: "pombo-correio: pombos-correio", b: 0, why: "Correio indica finalidade: só o primeiro." },
+    { txt: "salário-família: salários-família", b: 0, why: "Família limita a ideia: só o primeiro." },
+    { txt: "dragão-do-mar: dragões-do-mar", b: 0, why: "Preposição no meio: só o primeiro." },
+    { txt: "porquinho-da-índia: porquinhos-da-índia", b: 0, why: "Preposição no meio: só o primeiro." },
+    { txt: "guarda-chuva: guarda-chuvas", b: 1, why: "Guarda é verbo: só o segundo." },
+    { txt: "abaixo-assinado: abaixo-assinados", b: 1, why: "Abaixo é advérbio: só o segundo." },
+    { txt: "grão-duque: grão-duques", b: 1, why: "Grão é forma reduzida: só o segundo." },
+    { txt: "tico-tico: tico-ticos", b: 1, why: "Palavra repetida: só o segundo." },
+    { txt: "tique-taque: tique-taques", b: 1, why: "Onomatopeia: só o segundo." } ] },
+  { t: "match", id: "m-pl", title: "Ligue a palavra ao plural", pairs: [
+    ["pontapé", "pontapés"],
+    ["girassol", "girassóis"],
+    ["amor-perfeito", "amores-perfeitos"],
+    ["cobra-d'água", "cobras-d'água"],
+    ["tico-tico", "tico-ticos"],
+    ["grão-duque", "grão-duques"] ] },
+  { t: "write", id: "w-pl1", q: "Escreva o plural de: guarda-chuva, couve-flor e pombo-correio.", model: "Guarda-chuvas, couves-flores e pombos-correio.", ideas: [
+    { l: "guarda-chuvas", w: ["guarda-chuvas", "guarda chuvas"] },
+    { l: "couves-flores", w: ["couves-flores", "couves flores"] },
+    { l: "pombos-correio", w: ["pombos-correio", "pombos correio"] } ] },
+  { t: "write", id: "w-pl2", q: "Quando só o segundo elemento vai para o plural? Dê um exemplo.", model: "Quando o primeiro elemento é verbo, advérbio ou forma reduzida, ou quando as palavras são repetidas ou onomatopaicas. Exemplo: guarda-chuva, guarda-chuvas.", ideas: [
+    { l: "Primeiro elemento é verbo", w: ["verbo"] },
+    { l: "Advérbio ou forma reduzida", w: ["adverbio", "reduzid"] },
+    { l: "Palavras repetidas ou onomatopaicas", w: ["repet", "onomat", "som"] },
+    { l: "Um exemplo", w: ["guarda-chuvas", "guarda chuvas", "abaixo-assinados", "abaixo assinados", "grao-duques", "grao duques", "tico-ticos", "tico ticos", "tique-taques", "tique taques"] } ] },
+  { t: "summary", title: "Resumo do Mundo 1", points: ["**Sem hífen:** plural como palavra simples: pontapés, mandachuvas, girassóis.", "**Os dois vão para o plural:** substantivo e substantivo (couves-flores), substantivo e adjetivo (amores-perfeitos), adjetivo e substantivo (más-línguas), numeral e substantivo (segundas-feiras).", "**Só o primeiro:** quando o segundo indica finalidade ou limita o primeiro (pombos-correio, bananas-maçã, cafés-concerto, salários-família).", "**Só o primeiro:** quando há preposição no meio (dragões-do-mar, cobras-d'água, bananas-da-terra, porquinhos-da-índia).", "**Só o segundo:** primeiro elemento verbo (guarda-chuvas), advérbio (abaixo-assinados) ou forma reduzida (grão-duques).", "**Só o segundo:** palavras repetidas (tico-ticos) e onomatopaicas (tique-taques)."] }
+]},
+
+{ id: "art", n: 2, cls: "w-2", ic: "book", title: "Artigo", sub: "O, a, os, as. Um, uma, uns, umas.", steps: [
+  ...SC({ id: "a-rio", img: "cenas/a-rio.jpg", eb: "O que é artigo", title: "Um rio ou o rio?",
+    school: ["Na imensa floresta há **um** rio.", "**O** rio corta a grande floresta tropical.", "As palavras destacadas acima são **artigos**. O artigo refere-se ao substantivo, indicando tratar-se de um ser **específico** ou **genérico** de sua espécie.", "Em **um rio**, o substantivo representa **um ser qualquer** da espécie, não específico. Em **o rio**, o substantivo representa **um ser conhecido, já mencionado**, portanto específico."],
+    spots: [
+      { x: 60, y: 49, w: 24, h: 12, t: "O rio", d: "Em um rio, é um rio qualquer. Em o rio, é o rio que já conhecemos." },
+      { x: 40, y: 72, w: 58, h: 26, t: "A floresta", d: "Floresta é substantivo. A é o artigo que vem antes dele." },
+      { x: 42, y: 48, w: 14, h: 10, t: "A canoa", d: "A canoa navega pelo rio." },
+      { x: 83, y: 18, w: 15, h: 40, t: "A cachoeira", d: "Artigo a: a cachoeira." },
+      { x: 2, y: 5, w: 18, h: 30, t: "As araras", d: "O artigo também vai para o plural: as araras." },
+      { x: 3, y: 56, w: 17, h: 27, t: "Clio", d: "Artigo é a palavrinha que vem antes do substantivo!" } ],
+    chal: [ { q: "Toque no rio.", ok: [0] }, { q: "Toque no desenho que tem o artigo no plural.", ok: [4] } ] }),
+  { t: "quiz", id: "ar1", q: "Em \"Na imensa floresta há um rio\", a palavra um é...", o: ["Um artigo", "Um verbo", "Um adjetivo"], a: 0, ex: "Um é artigo: vem antes do substantivo rio." },
+  { t: "quiz", id: "ar2", q: "Em \"um rio\", o rio é...", o: ["Um rio qualquer, não específico", "Um rio conhecido, já mencionado", "Um rio que não existe"], a: 0, ex: "Um: um ser qualquer da espécie." },
+  { t: "quiz", id: "ar3", q: "Em \"o rio\", o rio é...", o: ["Um rio conhecido, já mencionado: específico", "Um rio qualquer", "Um rio que ninguém conhece"], a: 0, ex: "O: um ser conhecido, específico." },
+  ...SC({ id: "a-trem", img: "cenas/a-trem.jpg", eb: "O artigo vem antes", title: "A palavrinha da frente",
+    school: ["**Artigo** é a palavra variável que **se antepõe ao substantivo**, definindo-o ou indefinindo-o.", "Os artigos **um** e **o** estão indicando respectivamente que, no primeiro caso, trata-se de um rio qualquer e, no segundo, de um rio específico."],
+    spots: [
+      { x: 63, y: 28, w: 35, h: 50, t: "Vai na frente", d: "Como o artigo: ele vem antes do substantivo." },
+      { x: 4, y: 45, w: 48, h: 37, t: "Vem atrás", d: "Como o substantivo: o trem, um vagão." },
+      { x: 35, y: 17, w: 15, h: 28, t: "Clio", d: "Antepor quer dizer colocar antes!" } ],
+    chal: [ { q: "O artigo vem antes do substantivo. Toque no que vai na frente.", ok: [0] }, { q: "Toque no que vem atrás, como o substantivo.", ok: [1] } ] }),
+  { t: "quiz", id: "ar4", q: "Onde fica o artigo?", o: ["Antes do substantivo", "Depois do substantivo", "No fim da frase"], a: 0, ex: "O artigo se antepõe ao substantivo: vem antes." },
+  ...SC({ id: "a-def", img: "cenas/a-def.jpg", eb: "Artigos definidos", title: "O professor de História foi ao teatro",
+    school: ["**Definidos** indicam que se trata de **um ser específico** da espécie: um ser **conhecido do falante e do ouvinte**.", "São definidos os artigos: **o, a, os, as**.", "Exemplo: **O** professor de História foi ao teatro. (Trata-se de um professor conhecido ou único naquela situação.)"],
+    spots: [
+      { x: 40, y: 33, w: 35, h: 55, t: "O professor", d: "Os alunos conhecem este professor. Por isso: o professor." },
+      { x: 0, y: 38, w: 37, h: 55, t: "Os alunos", d: "Eles conhecem o professor e acenam para ele." },
+      { x: 15, y: 0, w: 55, h: 33, t: "O palco", d: "Os atores fazem a peça no palco do teatro." },
+      { x: 84, y: 26, w: 14, h: 20, t: "Clio", d: "O, a, os, as: artigos definidos. É alguém conhecido!" } ],
+    chal: [ { q: "Toque no professor que os alunos conhecem.", ok: [0] }, { q: "Toque em quem conhece o professor.", ok: [1] } ] }),
+  { t: "quiz", id: "ar5", q: "Quais são os artigos definidos?", o: ["o, a, os, as", "um, uma, uns, umas", "o, um, a, uma"], a: 0, ex: "Definidos: o, a, os, as." },
+  { t: "quiz", id: "ar6", q: "\"O professor de História foi ao teatro.\" Que professor é esse?", o: ["Um professor conhecido ou único naquela situação", "Um professor qualquer", "Nenhum professor"], a: 0, ex: "O é artigo definido: ser específico, conhecido." },
+  ...SC({ id: "a-ind", img: "cenas/a-ind.jpg", eb: "Artigos indefinidos", title: "Um professor qualquer",
+    school: ["**Indefinidos** indicam que se trata de **um ser qualquer** da espécie: um ser não conhecido do falante nem do ouvinte, ou conhecido apenas do falante.", "São indefinidos os artigos: **um, uma, uns, umas**.", "**Um** professor de História foi ao teatro. (Trata-se de um professor qualquer entre outros existentes naquela situação.)", "Ontem encontrei **um** amigo de infância. (Trata-se de um amigo conhecido apenas do falante.)"],
+    spots: [
+      { x: 13, y: 22, w: 22, h: 28, t: "Um professor", d: "Um professor qualquer, entre muitas pessoas no teatro." },
+      { x: 0, y: 55, w: 42, h: 45, t: "A plateia", d: "Muitas pessoas. Qualquer uma poderia ser um professor." },
+      { x: 52, y: 15, w: 45, h: 80, t: "Um amigo de infância", d: "Só a menina conhece esse amigo. Por isso: um amigo de infância." },
+      { x: 42, y: 73, w: 15, h: 26, t: "Clio", d: "Um, uma, uns, umas: artigos indefinidos!" } ],
+    chal: [ { q: "Toque no professor qualquer, entre muitos.", ok: [0] }, { q: "Toque no amigo que só a menina conhece.", ok: [2] } ] }),
+  { t: "quiz", id: "ar7", q: "Quais são os artigos indefinidos?", o: ["um, uma, uns, umas", "o, a, os, as", "um, o, uma, a"], a: 0, ex: "Indefinidos: um, uma, uns, umas." },
+  { t: "quiz", id: "ar8", q: "\"Ontem encontrei um amigo de infância.\" O amigo é conhecido de quem?", o: ["Só de quem está falando", "De todo mundo", "De ninguém"], a: 0, ex: "Um amigo conhecido apenas do falante." },
+  ...SC({ id: "a-flex", img: "cenas/a-flex.jpg", eb: "Flexão dos artigos", title: "O menino, a menina, os meninos, as meninas",
+    school: ["O artigo é uma classe gramatical **variável**. Possui formas distintas em **gênero** e **número** para concordar com o substantivo a que se refere.", "**o** menino (masculino singular) · **a** menina (feminino singular)", "**os** meninos (masculino plural) · **as** meninas (feminino plural)"],
+    spots: [
+      { x: 10, y: 2, w: 30, h: 48, t: "O menino", d: "Masculino singular: o menino." },
+      { x: 60, y: 2, w: 32, h: 48, t: "A menina", d: "Feminino singular: a menina." },
+      { x: 0, y: 55, w: 48, h: 45, t: "Os meninos", d: "Masculino plural: os meninos." },
+      { x: 52, y: 55, w: 48, h: 45, t: "As meninas", d: "Feminino plural: as meninas." },
+      { x: 42, y: 31, w: 15, h: 26, t: "Clio", d: "O artigo muda em gênero e número para combinar com o substantivo!" } ],
+    chal: [ { q: "Toque em: as meninas.", ok: [3] }, { q: "Toque em: o menino.", ok: [0] }, { q: "Toque em TODOS que levam o artigo no plural.", ok: [2, 3] } ] }),
+  ...SC({ id: "a-um", img: "cenas/a-um.jpg", eb: "Flexão dos artigos", title: "Um menino, uma menina, uns meninos, umas meninas",
+    school: ["**um** menino (masculino singular) · **uma** menina (feminino singular)", "**uns** meninos (masculino plural) · **umas** meninas (feminino plural)"],
+    spots: [
+      { x: 5, y: 5, w: 28, h: 40, t: "Um menino", d: "Masculino singular: um menino." },
+      { x: 60, y: 5, w: 30, h: 40, t: "Uma menina", d: "Feminino singular: uma menina." },
+      { x: 0, y: 55, w: 48, h: 45, t: "Uns meninos", d: "Masculino plural: uns meninos." },
+      { x: 52, y: 55, w: 48, h: 45, t: "Umas meninas", d: "Feminino plural: umas meninas." },
+      { x: 42, y: 24, w: 14, h: 20, t: "Clio", d: "Um, uma, uns, umas: o indefinido também muda!" } ],
+    chal: [ { q: "Toque em: uns meninos.", ok: [2] }, { q: "Toque em: uma menina.", ok: [1] }, { q: "Toque em TODOS que levam o artigo no feminino.", ok: [1, 3] } ] }),
+  { t: "quiz", id: "ar9", q: "Complete com o artigo definido: ___ meninas.", o: ["as", "os", "umas"], a: 0, ex: "Feminino plural definido: as meninas." },
+  { t: "quiz", id: "ar10", q: "Complete com o artigo indefinido: ___ meninos.", o: ["uns", "umas", "os"], a: 0, ex: "Masculino plural indefinido: uns meninos." },
+  { t: "quiz", id: "ar11", q: "O artigo muda para concordar com o substantivo em...", o: ["Gênero e número", "Cor e tamanho", "Só no tamanho"], a: 0, ex: "Gênero (masculino, feminino) e número (singular, plural)." },
+  ...SC({ id: "a-subst", img: "cenas/a-subst.jpg", eb: "Observação", title: "O artigo transforma palavras em substantivos",
+    school: ["Outras classes de palavras são **substantivadas** quando precedidas de artigo.", "Com **o** raiar do sol, o grupo retomou a trilha que levava à montanha. (verbo substantivado)", "**Os** jovens adoram **o** novo! (adjetivos substantivados)"],
+    spots: [
+      { x: 23, y: 5, w: 18, h: 18, t: "O raiar do sol", d: "Raiar é verbo. Com o artigo o, vira substantivo: o raiar do sol." },
+      { x: 0, y: 25, w: 45, h: 55, t: "O grupo", d: "O grupo retomou a trilha que levava à montanha." },
+      { x: 50, y: 5, w: 50, h: 50, t: "Os jovens", d: "Jovem é adjetivo. Com os, vira substantivo: os jovens." },
+      { x: 60, y: 58, w: 25, h: 35, t: "O novo", d: "Novo é adjetivo. Com o, vira substantivo: os jovens adoram o novo!" },
+      { x: 40, y: 65, w: 18, h: 32, t: "Clio", d: "Com o artigo na frente, a palavra vira substantivo!" } ],
+    chal: [ { q: "Toque no verbo que virou substantivo: o raiar.", ok: [0] }, { q: "Toque em TODOS os adjetivos que viraram substantivo.", ok: [2, 3] } ] }),
+  { t: "quiz", id: "ar12", q: "Em \"Os jovens adoram o novo!\", a palavra novo virou substantivo por quê?", o: ["Porque veio depois do artigo o", "Porque está no fim da frase", "Porque é uma palavra curta"], a: 0, ex: "Precedida de artigo, a palavra é substantivada." },
+  { t: "sort", id: "s-ar", title: "Definido ou indefinido?", bins: ["Definido", "Indefinido"], items: [
+    { txt: "o", b: 0, why: "Definidos: o, a, os, as." },
+    { txt: "a", b: 0, why: "Definidos: o, a, os, as." },
+    { txt: "os", b: 0, why: "Definidos: o, a, os, as." },
+    { txt: "as", b: 0, why: "Definidos: o, a, os, as." },
+    { txt: "um", b: 1, why: "Indefinidos: um, uma, uns, umas." },
+    { txt: "uma", b: 1, why: "Indefinidos: um, uma, uns, umas." },
+    { txt: "uns", b: 1, why: "Indefinidos: um, uma, uns, umas." },
+    { txt: "umas", b: 1, why: "Indefinidos: um, uma, uns, umas." } ] },
+  { t: "match", id: "m-ar", title: "Ligue cada palavra ao que ela quer dizer", pairs: [
+    ["Artigo definido", "Ser específico, conhecido"],
+    ["Artigo indefinido", "Ser qualquer da espécie"],
+    ["um menino", "Masculino singular"],
+    ["umas meninas", "Feminino plural"],
+    ["Substantivada", "Palavra que virou substantivo com o artigo"] ] },
+  { t: "write", id: "w-ar1", q: "Qual é a diferença entre \"um rio\" e \"o rio\"?", model: "Em um rio, o artigo indefinido um mostra que é um rio qualquer. Em o rio, o artigo definido o mostra que é um rio específico, conhecido, já mencionado.", ideas: [
+    { l: "Um rio: um rio qualquer", w: ["qualquer"] },
+    { l: "O rio: um rio específico, conhecido", w: ["especific", "conhecid", "mencionad"] },
+    { l: "Um e o são artigos", w: ["artigo"] } ] },
+  { t: "write", id: "w-ar2", q: "O que é artigo? Dê um exemplo.", model: "Artigo é a palavra variável que vem antes do substantivo, definindo-o ou indefinindo-o. Exemplo: o menino, uma menina.", ideas: [
+    { l: "Vem antes do substantivo", w: ["antes", "antepoe", "frente"] },
+    { l: "Define ou indefine", w: ["defin"] },
+    { l: "Um exemplo", w: ["o menino", "a menina", "os meninos", "as meninas", "um menino", "uma menina", "o rio", "um rio", "o professor", "um professor"] } ] },
+  { t: "summary", title: "Resumo do Mundo 2", points: ["**Artigo** é a palavra variável que vem **antes do substantivo**, definindo-o ou indefinindo-o.", "**Definidos: o, a, os, as.** Ser específico, conhecido do falante e do ouvinte. \"O professor de História foi ao teatro.\"", "**Indefinidos: um, uma, uns, umas.** Ser qualquer da espécie, ou conhecido só do falante. \"Ontem encontrei um amigo de infância.\"", "O artigo muda em **gênero e número**: o menino, a menina, os meninos, as meninas; um menino, uma menina, uns meninos, umas meninas.", "Com artigo na frente, outras palavras viram substantivo: **o raiar** do sol (verbo), **os jovens** adoram **o novo** (adjetivos)."] }
+]},
+
+{ id: "gen", n: 3, cls: "w-3", ic: "people", title: "Masculino e feminino", sub: "Palavras que mudam de forma: os biformes.", steps: [
+  ...SC({ id: "g-gen", img: "cenas/g-gen.jpg", eb: "Flexão de gênero", title: "O sol e a lua",
+    school: ["O gênero é relativo à palavra. Nada tem a ver com os seres biologicamente sexuados. Por isso, **todos os substantivos possuem gênero**, mesmo os que representam seres inanimados.", "Na língua portuguesa, há dois gêneros: o **masculino** e o **feminino**. A maneira mais fácil de identificar o gênero dos substantivos é pela **anteposição do artigo**.", "São **masculinos** os substantivos que admitem o artigo **o**: o ovo, o armário, o sol, o menino.", "São **femininos** os substantivos que admitem o artigo **a**: a janela, a caneta, a lua, a menina."],
+    spots: [
+      { x: 6, y: 2, w: 22, h: 22, t: "O sol", d: "Masculino: aceita o artigo o." },
+      { x: 25, y: 20, w: 22, h: 45, t: "O armário", d: "Masculino: o armário. Objetos também têm gênero!" },
+      { x: 5, y: 28, w: 18, h: 40, t: "O menino", d: "Masculino: o menino." },
+      { x: 3, y: 68, w: 30, h: 25, t: "O ovo", d: "Masculino: o ovo." },
+      { x: 83, y: 1, w: 14, h: 20, t: "A lua", d: "Feminino: aceita o artigo a." },
+      { x: 52, y: 5, w: 30, h: 40, t: "A janela", d: "Feminino: a janela." },
+      { x: 72, y: 40, w: 22, h: 33, t: "A menina", d: "Feminino: a menina." },
+      { x: 67, y: 75, w: 17, h: 12, t: "A caneta", d: "Feminino: a caneta." },
+      { x: 40, y: 60, w: 18, h: 35, t: "Clio", d: "Quer saber o gênero? Coloque o ou a na frente!" } ],
+    chal: [ { q: "Toque em TODAS as palavras masculinas, as que aceitam o artigo o.", ok: [0, 1, 2, 3] }, { q: "Toque em TODAS as palavras femininas, as que aceitam o artigo a.", ok: [4, 5, 6, 7] } ] }),
+  { t: "quiz", id: "ge1", q: "Qual é o jeito mais fácil de saber o gênero de um substantivo?", o: ["Colocar o artigo o ou a antes dele", "Ver se é um animal", "Contar as letras"], a: 0, ex: "Pela anteposição do artigo: o sol, a lua." },
+  { t: "quiz", id: "ge2", q: "A palavra caneta é...", o: ["Feminina: a caneta", "Masculina: o caneta", "Sem gênero, porque não é um ser vivo"], a: 0, ex: "Todos os substantivos têm gênero, mesmo os objetos." },
+  { t: "quiz", id: "ge3", q: "A palavra armário é...", o: ["Masculina: o armário", "Feminina: a armário", "Sem gênero"], a: 0, ex: "Aceita o artigo o: é masculina." },
+  ...SC({ id: "g-bif", img: "cenas/g-bif.jpg", eb: "Substantivos biformes", title: "Menino e menina, cidadão e cidadã",
+    school: ["Há substantivos que possuem uma forma para cada gênero (**biformes**), e outros que possuem uma única forma para ambos os gêneros (**uniformes**).", "São **biformes** os substantivos que possuem **duas formas**: uma que indica o gênero masculino e outra, o gênero feminino.", "menino: para indicar o gênero masculino · menina: para indicar o gênero feminino", "cidadão: para indicar o gênero masculino · cidadã: para indicar o gênero feminino"],
+    spots: [
+      { x: 2, y: 15, w: 24, h: 80, t: "Menino", d: "Forma masculina." },
+      { x: 26, y: 15, w: 15, h: 80, t: "Menina", d: "Forma feminina. Duas formas: é biforme!" },
+      { x: 50, y: 10, w: 22, h: 88, t: "Cidadão", d: "Forma masculina." },
+      { x: 72, y: 15, w: 24, h: 85, t: "Cidadã", d: "Forma feminina." },
+      { x: 41, y: 65, w: 16, h: 33, t: "Clio", d: "Biforme: bi quer dizer dois. Duas formas!" } ],
+    chal: [ { q: "Toque na cidadã.", ok: [3] }, { q: "Toque em TODAS as formas masculinas.", ok: [0, 2] } ] }),
+  { t: "quiz", id: "ge4", q: "O que são substantivos biformes?", o: ["Têm duas formas: uma masculina e uma feminina", "Têm uma forma só para os dois gêneros", "São palavras compostas"], a: 0, ex: "Menino e menina, cidadão e cidadã." },
+  ...SC({ id: "g-oa", img: "cenas/g-oa.jpg", eb: "Formação do feminino", title: "Trocar o -o ou o -e por -a",
+    school: ["O feminino pode ser formado:", "pela substituição da terminação **-o por -a**: menino / menin**a**, gato / gat**a**, pombo / pomb**a**", "pela substituição da terminação **-e por -a**: mestre / mestr**a**, elefante / elefant**a**, parente / parent**a**"],
+    spots: [
+      { x: 3, y: 5, w: 22, h: 40, t: "Gato", d: "Masculino. Troca o -o por -a: gata." },
+      { x: 25, y: 8, w: 18, h: 37, t: "Gata", d: "Feminino de gato." },
+      { x: 53, y: 8, w: 19, h: 37, t: "Pombo", d: "Masculino. Troca o -o por -a: pomba." },
+      { x: 72, y: 8, w: 20, h: 37, t: "Pomba", d: "Feminino de pombo." },
+      { x: 2, y: 55, w: 22, h: 45, t: "Elefante", d: "Masculino. Troca o -e por -a: elefanta." },
+      { x: 24, y: 55, w: 23, h: 45, t: "Elefanta", d: "Feminino de elefante." },
+      { x: 52, y: 55, w: 24, h: 45, t: "Mestre", d: "Masculino. Troca o -e por -a: mestra." },
+      { x: 80, y: 60, w: 20, h: 40, t: "Mestra", d: "Feminino de mestre." },
+      { x: 41, y: 37, w: 17, h: 23, t: "Clio", d: "E parente vira parenta!" } ],
+    chal: [ { q: "Toque na elefanta.", ok: [5] }, { q: "Toque em TODOS os femininos formados trocando -o por -a.", ok: [1, 3] }, { q: "Toque na mestra.", ok: [7] } ] }),
+  { t: "quiz", id: "ge5", q: "Qual é o feminino de elefante?", o: ["Elefanta", "Elefoa", "Elefantisa"], a: 0, ex: "Troca o -e por -a: elefanta." },
+  { t: "quiz", id: "ge6", q: "Qual é o feminino de parente?", o: ["Parenta", "Parentisa", "Parentesa"], a: 0, ex: "Troca o -e por -a: parenta." },
+  ...SC({ id: "g-acr", img: "cenas/g-acr.jpg", eb: "Formação do feminino", title: "Acrescentar -a",
+    school: ["pelo **acréscimo da terminação -a**:", "juiz / juíz**a** · pastor / pastor**a**", "autor / autor**a** · embaixador / embaixador**a** (funcionária chefe de embaixada)"],
+    spots: [
+      { x: 5, y: 3, w: 22, h: 40, t: "Juiz", d: "Masculino. Acrescenta -a: juíza." },
+      { x: 27, y: 3, w: 16, h: 40, t: "Juíza", d: "Feminino de juiz." },
+      { x: 52, y: 3, w: 22, h: 45, t: "Autor", d: "Masculino. Acrescenta -a: autora." },
+      { x: 74, y: 3, w: 24, h: 45, t: "Autora", d: "Feminino de autor." },
+      { x: 0, y: 52, w: 20, h: 45, t: "Pastor", d: "Masculino. Acrescenta -a: pastora." },
+      { x: 22, y: 52, w: 25, h: 45, t: "Pastora", d: "Feminino de pastor." },
+      { x: 52, y: 52, w: 22, h: 48, t: "Embaixador", d: "Masculino. Acrescenta -a: embaixadora." },
+      { x: 76, y: 52, w: 22, h: 48, t: "Embaixadora", d: "A funcionária chefe da embaixada." },
+      { x: 43, y: 35, w: 14, h: 22, t: "Clio", d: "Termina em consoante? Acrescente -a!" } ],
+    chal: [ { q: "Toque na juíza.", ok: [1] }, { q: "Toque em TODOS os femininos deste desenho.", ok: [1, 3, 5, 7] } ] }),
+  { t: "quiz", id: "ge7", q: "Qual é o feminino de juiz?", o: ["Juíza", "Juizesa", "Juizina"], a: 0, ex: "Acrescenta -a: juíza." },
+  { t: "quiz", id: "ge7b", q: "Qual é o feminino de pastor?", o: ["Pastora", "Pastoresa", "Pastorisa"], a: 0, ex: "Acrescenta -a: pastora." },
+  ...SC({ id: "g-ao", img: "cenas/g-ao.jpg", eb: "Formação do feminino", title: "-ão vira -ã ou -oa",
+    school: ["pela mudança da terminação **-ão para -ã, -oa**:", "cidadão / cidad**ã** · irmão / irm**ã**", "patrão / patr**oa** · leão / le**oa**"],
+    spots: [
+      { x: 5, y: 2, w: 20, h: 45, t: "Cidadão", d: "-ão vira -ã: cidadã." },
+      { x: 25, y: 5, w: 18, h: 42, t: "Cidadã", d: "Feminino de cidadão." },
+      { x: 52, y: 8, w: 20, h: 40, t: "Irmão", d: "-ão vira -ã: irmã." },
+      { x: 73, y: 15, w: 20, h: 35, t: "Irmã", d: "Feminino de irmão." },
+      { x: 5, y: 52, w: 22, h: 48, t: "Patrão", d: "-ão vira -oa: patroa." },
+      { x: 27, y: 55, w: 20, h: 45, t: "Patroa", d: "Feminino de patrão." },
+      { x: 52, y: 55, w: 28, h: 45, t: "Leão", d: "-ão vira -oa: leoa." },
+      { x: 80, y: 57, w: 20, h: 43, t: "Leoa", d: "Feminino de leão." },
+      { x: 41, y: 35, w: 15, h: 22, t: "Clio", d: "Cidadã e irmã com -ã. Patroa e leoa com -oa!" } ],
+    chal: [ { q: "Toque na leoa.", ok: [7] }, { q: "Toque em TODOS os femininos que terminam em -ã.", ok: [1, 3] }, { q: "Toque na patroa.", ok: [5] } ] }),
+  { t: "quiz", id: "ge8", q: "Qual é o feminino de patrão?", o: ["Patroa", "Patrã", "Patrona"], a: 0, ex: "-ão vira -oa: patroa." },
+  { t: "quiz", id: "ge9", q: "Qual é o feminino de irmão?", o: ["Irmã", "Irmoa", "Irmona"], a: 0, ex: "-ão vira -ã: irmã." },
+  ...SC({ id: "g-esa", img: "cenas/g-esa.jpg", eb: "Formação do feminino", title: "-esa, -essa, -isa, -ina, -triz",
+    school: ["pelo acréscimo das terminações **-esa, -essa, -isa, -ina, -triz**:", "cônsul / consul**esa** · conde / cond**essa**", "poeta / poet**isa** · maestro / maestr**ina**", "embaixador / embaixa**triz** (esposa do embaixador)"],
+    spots: [
+      { x: 3, y: 3, w: 17, h: 45, t: "Conde", d: "Masculino. Feminino com -essa: condessa." },
+      { x: 20, y: 5, w: 20, h: 45, t: "Condessa", d: "Feminino de conde." },
+      { x: 53, y: 3, w: 22, h: 42, t: "Poeta", d: "Masculino. Feminino com -isa: poetisa." },
+      { x: 75, y: 8, w: 22, h: 40, t: "Poetisa", d: "Feminino de poeta." },
+      { x: 2, y: 52, w: 25, h: 40, t: "Maestro", d: "Masculino. Feminino com -ina: maestrina." },
+      { x: 27, y: 52, w: 22, h: 40, t: "Maestrina", d: "Feminino de maestro." },
+      { x: 55, y: 52, w: 20, h: 48, t: "Embaixador", d: "A esposa do embaixador é a embaixatriz." },
+      { x: 75, y: 55, w: 20, h: 45, t: "Embaixatriz", d: "Esposa do embaixador, com -triz." },
+      { x: 44, y: 34, w: 12, h: 22, t: "Clio", d: "E cônsul vira consulesa, com -esa!" } ],
+    chal: [ { q: "Toque na condessa.", ok: [1] }, { q: "Toque na maestrina.", ok: [5] }, { q: "Toque na esposa do embaixador.", ok: [7] } ] }),
+  { t: "quiz", id: "ge10", q: "Qual é o feminino de conde?", o: ["Condessa", "Condesa", "Condina"], a: 0, ex: "Conde com -essa: condessa." },
+  { t: "quiz", id: "ge11", q: "Qual é o feminino de poeta?", o: ["Poetisa", "Poetessa", "Poetriz"], a: 0, ex: "Poeta com -isa: poetisa." },
+  { t: "quiz", id: "ge12", q: "Qual é o feminino de maestro?", o: ["Maestrina", "Maestresa", "Maestriz"], a: 0, ex: "Maestro com -ina: maestrina." },
+  { t: "quiz", id: "ge13", q: "Embaixatriz é...", o: ["A esposa do embaixador", "A funcionária chefe da embaixada", "A filha do cônsul"], a: 0, ex: "A chefe da embaixada é a embaixadora. A esposa do embaixador é a embaixatriz." },
+  { t: "quiz", id: "ge14", q: "Qual é o feminino de cônsul?", o: ["Consulesa", "Consulessa", "Consulina"], a: 0, ex: "Cônsul com -esa: consulesa." },
+  ...SC({ id: "g-irr", img: "cenas/g-irr.jpg", eb: "Formação do feminino", title: "De maneira irregular",
+    school: ["**de maneira irregular**:", "frade / **freira** · réu / **ré**", "rei / **rainha** · avô / **avó**"],
+    spots: [
+      { x: 3, y: 12, w: 23, h: 37, t: "Frade", d: "Masculino. O feminino é freira." },
+      { x: 26, y: 14, w: 16, h: 35, t: "Freira", d: "Feminino de frade." },
+      { x: 53, y: 5, w: 23, h: 45, t: "Rei", d: "Masculino. O feminino é rainha." },
+      { x: 76, y: 8, w: 22, h: 42, t: "Rainha", d: "Feminino de rei." },
+      { x: 2, y: 58, w: 25, h: 42, t: "Avô", d: "Masculino. O feminino é avó." },
+      { x: 27, y: 60, w: 20, h: 40, t: "Avó", d: "Feminino de avô." },
+      { x: 55, y: 67, w: 14, h: 25, t: "Réu", d: "Quem está sendo julgado. O feminino é ré." },
+      { x: 69, y: 67, w: 14, h: 25, t: "Ré", d: "Feminino de réu." },
+      { x: 43, y: 35, w: 12, h: 22, t: "Clio", d: "Irregular: o feminino não segue a regra!" } ],
+    chal: [ { q: "Toque na freira.", ok: [1] }, { q: "Toque na avó.", ok: [5] }, { q: "Toque em TODOS os masculinos.", ok: [0, 2, 4, 6] } ] }),
+  { t: "quiz", id: "ge15", q: "Qual é o feminino de rei?", o: ["Rainha", "Reia", "Reina"], a: 0, ex: "Feminino irregular: rainha." },
+  { t: "quiz", id: "ge16", q: "Qual é o feminino de réu?", o: ["Ré", "Réa", "Reusa"], a: 0, ex: "Feminino irregular: ré." },
+  ...SC({ id: "g-ani", img: "cenas/g-ani.jpg", eb: "Radicais diferentes", title: "Animais: palavras diferentes",
+    school: ["**de radicais diferentes**:", "cavalo / **égua** · bode / **cabra** · boi, touro / **vaca**", "carneiro / **ovelha** · javali / **gironda** · zangão ou zângão / **abelha**", "macho / **fêmea**"],
+    spots: [
+      { x: 0, y: 2, w: 17, h: 45, t: "Cavalo", d: "O feminino é égua: uma palavra diferente." },
+      { x: 17, y: 5, w: 16, h: 42, t: "Égua", d: "Feminino de cavalo." },
+      { x: 34, y: 5, w: 16, h: 42, t: "Bode", d: "O feminino é cabra." },
+      { x: 50, y: 8, w: 15, h: 40, t: "Cabra", d: "Feminino de bode." },
+      { x: 67, y: 5, w: 16, h: 42, t: "Boi", d: "Boi ou touro. O feminino é vaca." },
+      { x: 83, y: 8, w: 15, h: 28, t: "Vaca", d: "Feminino de boi e de touro." },
+      { x: 0, y: 55, w: 16, h: 40, t: "Carneiro", d: "O feminino é ovelha." },
+      { x: 16, y: 58, w: 17, h: 37, t: "Ovelha", d: "Feminino de carneiro." },
+      { x: 35, y: 55, w: 14, h: 18, t: "Zangão", d: "Zangão ou zângão. O feminino é abelha." },
+      { x: 51, y: 58, w: 12, h: 15, t: "Abelha", d: "Feminino de zangão." },
+      { x: 67, y: 55, w: 19, h: 40, t: "Javali", d: "O feminino é gironda." },
+      { x: 86, y: 62, w: 14, h: 33, t: "Gironda", d: "Feminino de javali." },
+      { x: 89, y: 38, w: 10, h: 14, t: "Clio", d: "Radicais diferentes: a palavra muda inteira! E macho vira fêmea." } ],
+    chal: [ { q: "Toque na égua.", ok: [1] }, { q: "Toque na gironda, a fêmea do javali.", ok: [11] }, { q: "Toque em TODAS as fêmeas da fileira de cima.", ok: [1, 3, 5] } ] }),
+  { t: "quiz", id: "ge17", q: "Qual é o feminino de bode?", o: ["Cabra", "Boda", "Bodessa"], a: 0, ex: "Radicais diferentes: bode e cabra." },
+  { t: "quiz", id: "ge18", q: "Qual é o feminino de javali?", o: ["Gironda", "Javalina", "Javalesa"], a: 0, ex: "Radicais diferentes: javali e gironda." },
+  { t: "quiz", id: "ge19", q: "Qual é o feminino de zangão?", o: ["Abelha", "Zangoa", "Zangã"], a: 0, ex: "Radicais diferentes: zangão e abelha." },
+  { t: "quiz", id: "ge20", q: "Qual é o feminino de carneiro?", o: ["Ovelha", "Carneira", "Carneirina"], a: 0, ex: "Radicais diferentes: carneiro e ovelha." },
+  ...SC({ id: "g-pes", img: "cenas/g-pes.jpg", eb: "Radicais diferentes", title: "Pessoas: pai e mãe, homem e mulher",
+    school: ["pai / **mãe** · homem / **mulher** · padrinho / **madrinha**", "cavaleiro / **amazona** · cavalheiro / **dama** · frei / **soror** ou **sóror**", "padrasto / **madrasta** · genro / **nora** · compadre / **comadre**"],
+    spots: [
+      { x: 2, y: 2, w: 14, h: 45, t: "Pai", d: "O feminino é mãe." },
+      { x: 16, y: 5, w: 17, h: 42, t: "Mãe", d: "Feminino de pai." },
+      { x: 34, y: 2, w: 14, h: 45, t: "Padrinho", d: "O feminino é madrinha." },
+      { x: 50, y: 5, w: 16, h: 42, t: "Madrinha", d: "Feminino de padrinho." },
+      { x: 67, y: 2, w: 16, h: 46, t: "Cavaleiro", d: "Homem que anda a cavalo. O feminino é amazona." },
+      { x: 83, y: 5, w: 17, h: 43, t: "Amazona", d: "Mulher que anda a cavalo." },
+      { x: 0, y: 52, w: 15, h: 48, t: "Cavalheiro", d: "Homem educado e gentil. O feminino é dama." },
+      { x: 15, y: 55, w: 18, h: 45, t: "Dama", d: "Feminino de cavalheiro." },
+      { x: 34, y: 52, w: 16, h: 48, t: "Frei", d: "O feminino é soror ou sóror." },
+      { x: 50, y: 55, w: 16, h: 45, t: "Soror", d: "Feminino de frei. Também se diz sóror." },
+      { x: 67, y: 52, w: 16, h: 48, t: "Homem", d: "O feminino é mulher." },
+      { x: 83, y: 55, w: 17, h: 45, t: "Mulher", d: "Feminino de homem." },
+      { x: 0, y: 36, w: 9, h: 16, t: "Clio", d: "Lembre também: padrasto e madrasta, genro e nora, compadre e comadre." } ],
+    chal: [ { q: "Toque na amazona, a mulher que anda a cavalo.", ok: [5] }, { q: "Toque na dama.", ok: [7] }, { q: "Toque na madrinha.", ok: [3] } ] }),
+  { t: "quiz", id: "ge21", q: "Qual é o feminino de cavaleiro, o homem que anda a cavalo?", o: ["Amazona", "Cavaleira", "Dama"], a: 0, ex: "Cavaleiro e amazona." },
+  { t: "quiz", id: "ge22", q: "Qual é o feminino de cavalheiro?", o: ["Dama", "Amazona", "Cavalheira"], a: 0, ex: "Cuidado: cavaleiro anda a cavalo (amazona). Cavalheiro é o homem gentil (dama)." },
+  { t: "quiz", id: "ge23", q: "Qual é o feminino de genro?", o: ["Nora", "Genra", "Madrinha"], a: 0, ex: "Radicais diferentes: genro e nora." },
+  { t: "quiz", id: "ge24", q: "Qual é o feminino de frei?", o: ["Soror ou sóror", "Freia", "Freirinha"], a: 0, ex: "Frei e soror (ou sóror)." },
+  ...SC({ id: "g-exc", img: "cenas/g-exc.jpg", eb: "Observação", title: "As exceções",
+    school: ["São exceções:", "barão / **baronesa** · cão / **cadela** · ladrão / **ladra**", "lebrão / **lebre** · maganão / **magana**", "perdigão / **perdiz** · sultão / **sultana**"],
+    spots: [
+      { x: 0, y: 2, w: 16, h: 46, t: "Barão", d: "O feminino é baronesa." },
+      { x: 16, y: 5, w: 17, h: 43, t: "Baronesa", d: "Feminino de barão." },
+      { x: 34, y: 5, w: 16, h: 28, t: "Cão", d: "O feminino é cadela." },
+      { x: 50, y: 8, w: 16, h: 35, t: "Cadela", d: "Feminino de cão." },
+      { x: 67, y: 3, w: 16, h: 44, t: "Ladrão", d: "O feminino é ladra." },
+      { x: 83, y: 3, w: 17, h: 44, t: "Ladra", d: "Feminino de ladrão." },
+      { x: 0, y: 52, w: 18, h: 45, t: "Lebrão", d: "O macho da lebre. O feminino é lebre." },
+      { x: 18, y: 60, w: 15, h: 35, t: "Lebre", d: "Feminino de lebrão." },
+      { x: 34, y: 60, w: 16, h: 33, t: "Perdigão", d: "O feminino é perdiz." },
+      { x: 50, y: 62, w: 16, h: 30, t: "Perdiz", d: "Feminino de perdigão." },
+      { x: 67, y: 52, w: 16, h: 48, t: "Sultão", d: "O feminino é sultana." },
+      { x: 83, y: 55, w: 17, h: 45, t: "Sultana", d: "Feminino de sultão." },
+      { x: 44, y: 35, w: 11, h: 17, t: "Clio", d: "São exceções: terminam em -ão, mas não seguem a regra. E maganão vira magana!" } ],
+    chal: [ { q: "Toque na cadela.", ok: [3] }, { q: "Toque na perdiz.", ok: [9] }, { q: "Toque na sultana.", ok: [11] } ] }),
+  { t: "quiz", id: "ge25", q: "Qual é o feminino de cão?", o: ["Cadela", "Cã", "Cãoa"], a: 0, ex: "Exceção: cão e cadela." },
+  { t: "quiz", id: "ge26", q: "Qual é o feminino de ladrão?", o: ["Ladra", "Ladroa", "Ladrã"], a: 0, ex: "Exceção: ladrão e ladra." },
+  { t: "quiz", id: "ge27", q: "Qual é o feminino de barão?", o: ["Baronesa", "Baroa", "Barã"], a: 0, ex: "Exceção: barão e baronesa." },
+  { t: "sort", id: "s-ge1", title: "Masculino ou feminino?", bins: ["Masculino (o)", "Feminino (a)"], items: [
+    { txt: "ovo", b: 0, why: "O ovo." },
+    { txt: "armário", b: 0, why: "O armário." },
+    { txt: "sol", b: 0, why: "O sol." },
+    { txt: "menino", b: 0, why: "O menino." },
+    { txt: "janela", b: 1, why: "A janela." },
+    { txt: "caneta", b: 1, why: "A caneta." },
+    { txt: "lua", b: 1, why: "A lua." },
+    { txt: "menina", b: 1, why: "A menina." } ] },
+  { t: "sort", id: "s-ge2", title: "-ão vira -ã ou -oa?", bins: ["Vira -ã", "Vira -oa"], items: [
+    { txt: "cidadão", b: 0, why: "Cidadã." },
+    { txt: "irmão", b: 0, why: "Irmã." },
+    { txt: "patrão", b: 1, why: "Patroa." },
+    { txt: "leão", b: 1, why: "Leoa." } ] },
+  { t: "match", id: "m-ge1", title: "Ligue o masculino ao feminino", pairs: [
+    ["pai", "mãe"],
+    ["bode", "cabra"],
+    ["genro", "nora"],
+    ["padrasto", "madrasta"],
+    ["compadre", "comadre"],
+    ["carneiro", "ovelha"] ] },
+  { t: "match", id: "m-ge2", title: "Ligue o masculino ao feminino", pairs: [
+    ["cônsul", "consulesa"],
+    ["conde", "condessa"],
+    ["poeta", "poetisa"],
+    ["maestro", "maestrina"],
+    ["lebrão", "lebre"],
+    ["maganão", "magana"] ] },
+  { t: "write", id: "w-ge1", q: "Escreva o feminino de: leão, conde e rei.", model: "Leoa, condessa e rainha.", ideas: [
+    { l: "leoa", w: ["leoa"] },
+    { l: "condessa", w: ["condessa"] },
+    { l: "rainha", w: ["rainha"] } ] },
+  { t: "write", id: "w-ge2", q: "O que são substantivos biformes? Dê um exemplo.", model: "São substantivos que possuem duas formas: uma para o gênero masculino e outra para o feminino. Exemplo: menino e menina.", ideas: [
+    { l: "Têm duas formas", w: ["duas", "2 formas"] },
+    { l: "Uma masculina e uma feminina", w: ["masculin", "feminin"] },
+    { l: "Um exemplo", w: ["menin", "cidad", "gat", "leo", "rei", "rainha", "pai", "mae", "juiz", "irma"] } ] },
+  { t: "summary", title: "Resumo do Mundo 3", points: ["**Todo substantivo tem gênero**, até os objetos. Para descobrir, ponha o artigo: **o** sol (masculino), **a** lua (feminino).", "**Biformes:** duas formas. menino e menina, cidadão e cidadã.", "**Troca -o ou -e por -a:** gata, pomba, mestra, elefanta, parenta. **Acrescenta -a:** juíza, autora, pastora, embaixadora.", "**-ão vira -ã ou -oa:** cidadã, irmã, patroa, leoa. **-esa, -essa, -isa, -ina, -triz:** consulesa, condessa, poetisa, maestrina, embaixatriz.", "**Irregulares:** freira, ré, rainha, avó. **Radicais diferentes:** égua, cabra, vaca, ovelha, gironda, abelha, fêmea, mãe, mulher, madrinha, amazona, dama, soror, madrasta, nora, comadre.", "**Exceções:** baronesa, cadela, ladra, lebre, magana, perdiz, sultana."] }
+]},
+
+{ id: "uni", n: 4, cls: "w-4", ic: "star", title: "Palavras de forma única", sub: "Comuns de dois gêneros, sobrecomuns e epicenos.", steps: [
+  ...SC({ id: "u-com1", img: "cenas/u-com1.jpg", eb: "Comuns de dois gêneros", title: "O colega e a colega",
+    school: ["São **uniformes** os substantivos que possuem **única forma** para indicar ambos os gêneros. Há três tipos de substantivos uniformes.", "São **comuns de dois gêneros** os substantivos que possuem forma única e variam em gênero. Essa variação ocorre por meio de outras palavras, como **artigos, adjetivos, pronomes e numerais**.", "gênero masculino: **o** colega, **bom** cliente, **meu** fã, **dois** estudantes", "gênero feminino: **a** colega, **boa** cliente, **minha** fã, **duas** estudantes"],
+    spots: [
+      { x: 2, y: 5, w: 23, h: 40, t: "O colega", d: "A palavra é a mesma. Quem mostra o gênero é o artigo o." },
+      { x: 25, y: 5, w: 20, h: 40, t: "A colega", d: "Mesma palavra, artigo a: feminino." },
+      { x: 52, y: 5, w: 14, h: 45, t: "Bom cliente", d: "O adjetivo bom mostra que é masculino." },
+      { x: 66, y: 12, w: 14, h: 38, t: "Boa cliente", d: "O adjetivo boa mostra que é feminino." },
+      { x: 2, y: 60, w: 20, h: 40, t: "Meu fã", d: "O pronome meu mostra que é masculino." },
+      { x: 22, y: 60, w: 25, h: 40, t: "Minha fã", d: "O pronome minha mostra que é feminino." },
+      { x: 52, y: 58, w: 24, h: 42, t: "Dois estudantes", d: "O numeral dois mostra que é masculino." },
+      { x: 76, y: 58, w: 24, h: 42, t: "Duas estudantes", d: "O numeral duas mostra que é feminino." },
+      { x: 42, y: 33, w: 14, h: 24, t: "Clio", d: "A palavra não muda. Muda a palavra do lado: o ou a, bom ou boa, meu ou minha, dois ou duas!" } ],
+    chal: [ { q: "Toque na boa cliente.", ok: [3] }, { q: "Toque em: meu fã.", ok: [4] }, { q: "Toque em TODOS que são do gênero feminino.", ok: [1, 3, 5, 7] } ] }),
+  { t: "quiz", id: "un1", q: "Em \"a colega\", o que mostra que é feminino?", o: ["O artigo a", "A palavra colega muda", "Nada mostra"], a: 0, ex: "Comum de dois gêneros: a palavra não muda, muda o artigo." },
+  { t: "quiz", id: "un2", q: "Qual destas palavras é comum de dois gêneros?", o: ["Estudante", "Menino", "Leão"], a: 0, ex: "O estudante, a estudante: a palavra não muda." },
+  ...SC({ id: "u-com2", img: "cenas/u-com2.jpg", eb: "Comuns de dois gêneros", title: "O artista e a artista",
+    school: ["Outros exemplos de substantivos comuns de dois gêneros:", "o/a **artista** · o/a **jornalista** · o/a **dentista** · o/a **pianista** · o/a **balconista** · o/a **gerente**", "o/a **intérprete** · o/a **imigrante** · o/a **agente** · o/a **jovem** · o/a **mártir** · o/a **presidente**"],
+    spots: [
+      { x: 0, y: 2, w: 33, h: 45, t: "Artista", d: "O artista e a artista." },
+      { x: 34, y: 2, w: 32, h: 34, t: "Jornalista", d: "O jornalista e a jornalista." },
+      { x: 67, y: 2, w: 33, h: 45, t: "Dentista", d: "O dentista e a dentista." },
+      { x: 0, y: 52, w: 33, h: 48, t: "Pianista", d: "O pianista e a pianista." },
+      { x: 34, y: 55, w: 32, h: 45, t: "Balconista", d: "Quem atende no balcão. O balconista e a balconista." },
+      { x: 67, y: 52, w: 33, h: 48, t: "Gerente", d: "O gerente e a gerente." },
+      { x: 44, y: 38, w: 11, h: 16, t: "Clio", d: "Também são assim: intérprete, imigrante, agente, jovem, mártir e presidente." } ],
+    chal: [ { q: "Toque nos dentistas.", ok: [2] }, { q: "Toque nos pianistas.", ok: [3] }, { q: "Toque nos balconistas, que atendem no balcão.", ok: [4] } ] }),
+  { t: "quiz", id: "un3", q: "Como fica o jornalista no feminino?", o: ["A jornalista", "A jornalisa", "A jornaleira"], a: 0, ex: "Comum de dois gêneros: só muda o artigo." },
+  { t: "quiz", id: "un4", q: "Como fica o gerente no feminino?", o: ["A gerente", "A gerenta", "A gerentisa"], a: 0, ex: "No material: o/a gerente." },
+  ...SC({ id: "u-sob", img: "cenas/u-sob.jpg", eb: "Sobrecomuns", title: "A criança e o indivíduo",
+    school: ["São **sobrecomuns** os substantivos que possuem **uma única forma e um único gênero** para representar seres humanos de ambos os sexos.", "**a** criança (gênero feminino): para homem e para mulher", "**o** indivíduo (gênero masculino): para homem e para mulher", "A identificação do sexo é fornecida pelo **contexto**."],
+    spots: [
+      { x: 2, y: 25, w: 22, h: 50, t: "A criança", d: "Este menino é a criança. A palavra é sempre feminina!" },
+      { x: 24, y: 25, w: 20, h: 50, t: "A criança", d: "Esta menina também é a criança." },
+      { x: 55, y: 15, w: 18, h: 75, t: "O indivíduo", d: "Este homem é o indivíduo." },
+      { x: 73, y: 20, w: 18, h: 70, t: "O indivíduo", d: "Esta mulher também é o indivíduo. A palavra é sempre masculina!" },
+      { x: 40, y: 70, w: 17, h: 28, t: "Clio", d: "Sobrecomum: uma forma e um gênero só, para pessoas." } ],
+    chal: [ { q: "Toque em TODOS que chamamos de a criança.", ok: [0, 1] }, { q: "Toque em TODOS que chamamos de o indivíduo.", ok: [2, 3] } ] }),
+  { t: "quiz", id: "un5", q: "A palavra criança é sobrecomum. Ela serve para...", o: ["Meninos e meninas", "Só meninas", "Só meninos"], a: 0, ex: "A criança: um gênero só, para os dois sexos." },
+  { t: "quiz", id: "un6", q: "Nos sobrecomuns, como sabemos se é homem ou mulher?", o: ["Pelo contexto", "Pelo artigo", "Pela última letra"], a: 0, ex: "A identificação do sexo é fornecida pelo contexto." },
+  ...SC({ id: "u-touca", img: "cenas/u-touca.jpg", eb: "Sobrecomuns no texto", title: "A touca de bolinha",
+    school: ["A identificação do sexo é fornecida pelo contexto. Observe:", "[...] Atravessei. Na soleira, encolhida, estava **uma criança**. Com as picadas da bengala ela ergueu apressadamente o rosto, descobrindo-o para a tênue claridade da luminária distante. Era **uma menina**. [...]", "FARACO, Sergio. A touca de bolinha."],
+    spots: [
+      { x: 34, y: 55, w: 26, h: 37, t: "A criança", d: "Uma criança encolhida na soleira. Menino ou menina? Ainda não sabemos!" },
+      { x: 37, y: 37, w: 22, h: 15, t: "A touca", d: "A touca de bolinha. Depois o texto diz: era uma menina. O contexto mostrou!" },
+      { x: 0, y: 18, w: 20, h: 80, t: "A bengala", d: "A bengala tocou a criança, e ela ergueu o rosto." },
+      { x: 85, y: 40, w: 12, h: 40, t: "A luminária", d: "A luminária distante, com uma claridade fraquinha." },
+      { x: 70, y: 0, w: 15, h: 22, t: "Clio", d: "Primeiro: uma criança. Depois o contexto conta: era uma menina!" } ],
+    chal: [ { q: "Toque na criança encolhida na soleira.", ok: [0] }, { q: "Toque na luminária distante.", ok: [3] }, { q: "Toque na bengala.", ok: [2] } ] }),
+  { t: "quiz", id: "un7", q: "No texto, o que mostrou que a criança era uma menina?", o: ["O contexto: \"Era uma menina\"", "A palavra criança", "A bengala"], a: 0, ex: "Criança é sobrecomum. O contexto mostra o sexo." },
+  ...SC({ id: "u-sob2", img: "cenas/u-sob2.jpg", eb: "Sobrecomuns", title: "A pessoa, o cônjuge, a testemunha",
+    school: ["Outros exemplos de substantivos sobrecomuns:", "**a** criatura · **a** vítima · **o** cônjuge", "**o** carrasco · **a** pessoa · **a** testemunha"],
+    spots: [
+      { x: 2, y: 2, w: 22, h: 48, t: "O cônjuge", d: "O marido é o cônjuge." },
+      { x: 24, y: 5, w: 18, h: 45, t: "O cônjuge", d: "A esposa também é o cônjuge!" },
+      { x: 60, y: 5, w: 35, h: 40, t: "A criatura", d: "A criatura: a palavra é sempre feminina." },
+      { x: 2, y: 55, w: 22, h: 45, t: "A testemunha", d: "Quem viu e conta o que aconteceu. Pode ser homem ou mulher." },
+      { x: 52, y: 60, w: 25, h: 40, t: "A vítima", d: "O menino perdeu o sorvete para a gaivota: ele é a vítima!" },
+      { x: 42, y: 35, w: 15, h: 24, t: "Clio", d: "Também são sobrecomuns: o carrasco e a pessoa." } ],
+    chal: [ { q: "Toque em TODOS que chamamos de o cônjuge.", ok: [0, 1] }, { q: "Toque na testemunha.", ok: [3] }, { q: "Toque na vítima da gaivota.", ok: [4] } ] }),
+  { t: "quiz", id: "un8", q: "A palavra cônjuge serve para...", o: ["O marido e a esposa", "Só o marido", "Só a esposa"], a: 0, ex: "O cônjuge é sobrecomum: um gênero só, para os dois." },
+  ...SC({ id: "u-epi", img: "cenas/u-jacare.jpg", eb: "Epicenos", title: "O jacaré macho e o jacaré fêmea",
+    school: ["São **epicenos** os substantivos que, assim como os sobrecomuns, possuem **uma só forma e um só gênero** para representar **animais e plantas** sexuados. A identificação do sexo ocorre por meio das palavras **macho** e **fêmea**.", "**o** jacaré (gênero masculino): o **macho** do jacaré / o jacaré **macho** · a **fêmea** do jacaré / o jacaré **fêmea** ou **fêmeo**", "**a** mosca (gênero feminino): o **macho** da mosca / a mosca **macho** ou **macha** · a **fêmea** da mosca / a mosca **fêmea**"],
+    spots: [
+      { x: 0, y: 39, w: 36, h: 38, t: "O jacaré macho", d: "Jacaré tem uma só forma. Para dizer o sexo, usamos macho: o jacaré macho." },
+      { x: 42, y: 46, w: 37, h: 31, t: "O jacaré fêmea", d: "Não existe jacaroa! Dizemos a fêmea do jacaré, ou o jacaré fêmea." },
+      { x: 77, y: 38, w: 9, h: 13, t: "A mosca macho", d: "Mosca também é epiceno: o macho da mosca, ou a mosca macho." },
+      { x: 86, y: 42, w: 10, h: 12, t: "A mosca fêmea", d: "A fêmea da mosca, ou a mosca fêmea." },
+      { x: 80, y: 4, w: 14, h: 22, t: "Clio", d: "Epicenos são nomes de animais e plantas com uma só forma. O sexo vem com as palavras macho e fêmea." } ],
+    chal: [ { q: "Toque no jacaré fêmea.", ok: [1] }, { q: "Agora toque em TODOS os machos.", ok: [0, 2] } ] }),
+  { t: "quiz", id: "un9", q: "Como dizemos que o jacaré é fêmea?", o: ["O jacaré fêmea", "A jacaroa", "A jacarezona"], a: 0, ex: "Epiceno: usamos a palavra fêmea." },
+  { t: "quiz", id: "un10", q: "Epicenos são nomes de...", o: ["Animais e plantas", "Pessoas", "Objetos da casa"], a: 0, ex: "Para pessoas, são os sobrecomuns." },
+  ...SC({ id: "u-ave", img: "cenas/u-ave.jpg", eb: "Epicenos", title: "Águia, gavião, rouxinol",
+    school: ["Outros exemplos de substantivos epicenos:", "**a** águia · **a** borboleta · **a** onça · **a** cobra · **a** baleia · **a** palmeira", "**o** tatu · **o** besouro · **o** crocodilo · **o** rouxinol · **o** gavião · **o** mamoeiro"],
+    spots: [
+      { x: 20, y: 0, w: 40, h: 30, t: "A águia", d: "A águia macho ou a águia fêmea." },
+      { x: 76, y: 8, w: 24, h: 40, t: "O gavião", d: "O gavião macho ou o gavião fêmea." },
+      { x: 40, y: 32, w: 25, h: 23, t: "O rouxinol", d: "Um passarinho que canta bonito. O rouxinol macho ou fêmea." },
+      { x: 10, y: 58, w: 20, h: 35, t: "A borboleta", d: "A borboleta macho ou a borboleta fêmea." },
+      { x: 67, y: 68, w: 25, h: 22, t: "O besouro", d: "O besouro macho ou o besouro fêmea." },
+      { x: 2, y: 25, w: 18, h: 30, t: "Clio", d: "A palavra não muda. Só acrescentamos macho ou fêmea!" } ],
+    chal: [ { q: "Toque em TODOS que usam o artigo a.", ok: [0, 3] }, { q: "Toque no rouxinol.", ok: [2] } ] }),
+  ...SC({ id: "u-bich", img: "cenas/u-bich.jpg", eb: "Epicenos", title: "Onça, cobra, tatu, baleia, crocodilo",
+    school: ["A identificação do sexo ocorre por meio das palavras **macho** e **fêmea**.", "**a** onça · **a** cobra · **a** baleia", "**o** tatu · **o** crocodilo"],
+    spots: [
+      { x: 2, y: 0, w: 38, h: 25, t: "A onça", d: "A onça macho ou a onça fêmea." },
+      { x: 70, y: 15, w: 27, h: 15, t: "A baleia", d: "A baleia macho ou a baleia fêmea." },
+      { x: 37, y: 30, w: 22, h: 33, t: "A cobra", d: "A cobra macho ou a cobra fêmea." },
+      { x: 3, y: 63, w: 32, h: 30, t: "O tatu", d: "O tatu macho ou o tatu fêmea." },
+      { x: 60, y: 70, w: 38, h: 20, t: "O crocodilo", d: "O crocodilo macho ou o crocodilo fêmea." },
+      { x: 7, y: 27, w: 14, h: 23, t: "Clio", d: "Epiceno: a mesma palavra para o macho e para a fêmea." } ],
+    chal: [ { q: "Toque em TODOS que usam o artigo o.", ok: [3, 4] }, { q: "Toque na baleia.", ok: [1] } ] }),
+  ...SC({ id: "u-pla", img: "cenas/u-pla.jpg", eb: "Epicenos", title: "Plantas também: a palmeira e o mamoeiro",
+    school: ["Epicenos representam **animais e plantas** sexuados.", "**a** palmeira · **o** mamoeiro"],
+    spots: [
+      { x: 5, y: 5, w: 20, h: 85, t: "A palmeira", d: "A palmeira macho ou a palmeira fêmea." },
+      { x: 35, y: 8, w: 30, h: 50, t: "O mamoeiro fêmea", d: "Este mamoeiro dá mamões: é o mamoeiro fêmea." },
+      { x: 68, y: 8, w: 30, h: 60, t: "O mamoeiro macho", d: "Este só tem flores: é o mamoeiro macho. A palavra mamoeiro não muda!" },
+      { x: 48, y: 62, w: 15, h: 30, t: "Clio", d: "Plantas também podem ser epicenos!" } ],
+    chal: [ { q: "Toque no mamoeiro fêmea, o que tem mamões.", ok: [1] }, { q: "Toque na palmeira.", ok: [0] } ] }),
+  { t: "quiz", id: "un11", q: "A onça é epiceno. Como dizemos que ela é macho?", o: ["A onça macho", "O onço", "A onçona"], a: 0, ex: "Epiceno: acrescentamos macho ou fêmea." },
+  { t: "quiz", id: "un12", q: "Qual destas palavras é epiceno?", o: ["Tatu", "Menino", "Colega"], a: 0, ex: "O tatu macho, o tatu fêmea." },
+  { t: "sort", id: "s-un1", title: "Sobrecomum ou epiceno?", bins: ["Sobrecomum (pessoas)", "Epiceno (animais e plantas)"], items: [
+    { txt: "a criança", b: 0, why: "Pessoa: sobrecomum." },
+    { txt: "o indivíduo", b: 0, why: "Pessoa: sobrecomum." },
+    { txt: "a vítima", b: 0, why: "Pessoa: sobrecomum." },
+    { txt: "a testemunha", b: 0, why: "Pessoa: sobrecomum." },
+    { txt: "o cônjuge", b: 0, why: "Pessoa: sobrecomum." },
+    { txt: "o jacaré", b: 1, why: "Animal: epiceno." },
+    { txt: "a mosca", b: 1, why: "Animal: epiceno." },
+    { txt: "a águia", b: 1, why: "Animal: epiceno." },
+    { txt: "o tatu", b: 1, why: "Animal: epiceno." },
+    { txt: "a palmeira", b: 1, why: "Planta: epiceno." } ] },
+  { t: "sort", id: "s-un2", title: "Comum de dois gêneros ou sobrecomum?", bins: ["Comum de dois (muda o artigo)", "Sobrecomum (não muda nada)"], items: [
+    { txt: "estudante", b: 0, why: "O estudante, a estudante." },
+    { txt: "colega", b: 0, why: "O colega, a colega." },
+    { txt: "artista", b: 0, why: "O artista, a artista." },
+    { txt: "jovem", b: 0, why: "O jovem, a jovem." },
+    { txt: "pessoa", b: 1, why: "Sempre a pessoa." },
+    { txt: "criança", b: 1, why: "Sempre a criança." },
+    { txt: "criatura", b: 1, why: "Sempre a criatura." },
+    { txt: "carrasco", b: 1, why: "Sempre o carrasco." } ] },
+  { t: "match", id: "m-un", title: "Ligue o nome ao significado", pairs: [
+    ["Biforme", "Duas formas: menino e menina"],
+    ["Comum de dois gêneros", "Muda só o artigo: o dentista, a dentista"],
+    ["Sobrecomum", "Pessoas, um gênero só: a criança"],
+    ["Epiceno", "Animais e plantas: o jacaré macho"],
+    ["Contexto", "O que mostra o sexo nos sobrecomuns"] ] },
+  { t: "write", id: "w-un1", q: "Qual é a diferença entre sobrecomum e epiceno? Dê um exemplo de cada.", model: "Os dois têm uma só forma e um só gênero. O sobrecomum é para pessoas, como a criança. O epiceno é para animais e plantas, como o jacaré; o sexo é mostrado com macho e fêmea.", ideas: [
+    { l: "Sobrecomum: pessoas", w: ["pessoa", "humano", "gente"] },
+    { l: "Epiceno: animais e plantas", w: ["anima", "planta"] },
+    { l: "Usamos macho e fêmea", w: ["macho", "femea"] },
+    { l: "Exemplo de sobrecomum", w: ["crianca", "individuo", "vitima", "testemunha", "conjuge", "criatura", "carrasco"] },
+    { l: "Exemplo de epiceno", w: ["jacare", "mosca", "aguia", "onca", "tatu", "cobra", "baleia", "besouro", "crocodilo", "rouxinol", "gaviao", "borboleta", "palmeira", "mamoeiro"] } ] },
+  { t: "write", id: "w-un2", q: "Estudante é comum de dois gêneros. Como mostrar que é feminino?", model: "Usando outra palavra junto: a estudante, uma estudante, boa estudante, minha estudante ou duas estudantes.", ideas: [
+    { l: "Com o artigo: a estudante", w: ["a estudante", "uma estudante"] },
+    { l: "Ou com outra palavra: boa, minha, duas", w: ["boa", "minha", "duas"] } ] },
+  { t: "summary", title: "Resumo do Mundo 4", points: ["**Uniformes:** uma forma só para os dois gêneros. São três tipos.", "**Comuns de dois gêneros:** a palavra não muda; muda o artigo, o adjetivo, o pronome ou o numeral. o/a colega, bom/boa cliente, meu/minha fã, dois/duas estudantes. Também: artista, jornalista, dentista, intérprete, pianista, imigrante, agente, jovem, mártir, balconista, presidente, gerente.", "**Sobrecomuns:** um gênero só para pessoas dos dois sexos. a criança, o indivíduo, a criatura, a vítima, o cônjuge, o carrasco, a pessoa, a testemunha. O **contexto** mostra o sexo (\"Era uma menina\").", "**Epicenos:** um gênero só para animais e plantas. Usamos **macho** e **fêmea**: o jacaré macho, o jacaré fêmea; a mosca macho, a mosca fêmea.", "Outros epicenos: a águia, a borboleta, a onça, a cobra, a baleia, a palmeira; o tatu, o besouro, o crocodilo, o rouxinol, o gavião, o mamoeiro."] }
+]}
+];
+
+const PICS = [
+  { id: "girassol", title: "Girassol", fact: "Girassol não tem hífen: o plural é girassóis.", need: null,
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><circle data-r="sol" cx="345" cy="55" r="28"/><path data-r="chao" d="M0 240 Q200 220 400 240 V300 H0Z"/><rect data-r="caule" x="193" y="120" width="14" height="125"/><path data-r="folha1" d="M200 190 Q150 160 120 185 Q160 205 200 195Z"/><path data-r="folha2" d="M200 165 Q250 135 285 160 Q245 180 200 170Z"/><circle data-r="p1" cx="200" cy="52" r="20"/><circle data-r="p2" cx="240" cy="70" r="20"/><circle data-r="p3" cx="250" cy="110" r="20"/><circle data-r="p4" cx="225" cy="145" r="20"/><circle data-r="p5" cx="175" cy="145" r="20"/><circle data-r="p6" cx="150" cy="110" r="20"/><circle data-r="p7" cx="160" cy="70" r="20"/><circle data-r="miolo" cx="200" cy="100" r="36"/>' },
+  { id: "trem", title: "O trem e o vagão", fact: "O artigo vem antes do substantivo, como a locomotiva vem antes do vagão.", need: "plu",
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><ellipse data-r="nuvem" cx="90" cy="55" rx="50" ry="18"/><path data-r="chao" d="M0 230 H400 V300 H0Z"/><rect data-r="trilho" x="0" y="232" width="400" height="8"/><rect data-r="vagao" x="30" y="140" width="170" height="70"/><rect data-r="carga" x="45" y="115" width="140" height="25"/><rect data-r="cabine" x="220" y="110" width="70" height="100"/><rect data-r="caldeira" x="290" y="150" width="80" height="60"/><rect data-r="chamine" x="330" y="110" width="22" height="40"/><ellipse data-r="fumaca" cx="345" cy="80" rx="28" ry="16"/><rect data-r="janela" x="235" y="125" width="40" height="30"/><circle data-r="roda1" cx="70" cy="215" r="20"/><circle data-r="roda2" cx="160" cy="215" r="20"/><circle data-r="roda3" cx="250" cy="215" r="22"/><circle data-r="roda4" cx="335" cy="215" r="22"/>' },
+  { id: "leoa", title: "O leão e a leoa", fact: "Leão vira leoa: -ão muda para -oa.", need: "art",
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><circle data-r="sol" cx="60" cy="55" r="28"/><path data-r="chao" d="M0 235 Q200 215 400 235 V300 H0Z"/><circle data-r="juba" cx="130" cy="150" r="70"/><circle data-r="rosto1" cx="130" cy="155" r="45"/><circle data-r="nariz1" cx="130" cy="168" r="8"/><circle data-r="orelha2a" cx="250" cy="118" r="14"/><circle data-r="orelha2b" cx="310" cy="118" r="14"/><circle data-r="rosto2" cx="280" cy="155" r="45"/><circle data-r="nariz2" cx="280" cy="168" r="8"/><path data-r="capim" d="M0 300 L20 250 L40 300 L60 255 L80 300Z"/>' },
+  { id: "borboleta", title: "A borboleta", fact: "Borboleta é epiceno: a borboleta macho, a borboleta fêmea.", need: "gen",
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><path data-r="chao" d="M0 250 Q200 230 400 250 V300 H0Z"/><path data-r="asa1" d="M195 140 Q120 40 80 90 Q70 150 195 150Z"/><path data-r="asa2" d="M205 140 Q280 40 320 90 Q330 150 205 150Z"/><path data-r="asa3" d="M195 155 Q110 170 120 230 Q160 250 195 165Z"/><path data-r="asa4" d="M205 155 Q290 170 280 230 Q240 250 205 165Z"/><rect data-r="corpo" x="192" y="110" width="16" height="110" rx="8"/><circle data-r="flor" cx="70" cy="245" r="16"/><circle data-r="flor2" cx="330" cy="245" r="16"/>' },
+  { id: "jacare", title: "O jacaré", fact: "O jacaré macho e o jacaré fêmea: a palavra não muda.", need: "uni",
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><path data-r="rio" d="M0 170 H400 V300 H0Z"/><ellipse data-r="corpo" cx="180" cy="185" rx="120" ry="35"/><path data-r="cauda" d="M60 185 Q20 190 0 175 Q30 205 70 200Z"/><ellipse data-r="cabeca" cx="320" cy="175" rx="55" ry="22"/><circle data-r="olho" cx="305" cy="150" r="10"/><ellipse data-r="vitoria" cx="90" cy="250" rx="40" ry="12"/><ellipse data-r="vitoria2" cx="300" cy="255" rx="35" ry="10"/><circle data-r="sol" cx="60" cy="55" r="28"/>' }
+];
+
+W.forEach(w => w.steps.forEach((s, i) => { s.key = s.key || s.id || (w.id + "-" + i); }));
+/*DATA-END*/
+
+/* ---------- Quadros para pintar ---------- */
+const COLORS = ["#E53935", "#FB8C00", "#FDD835", "#7CB342", "#2E7D32", "#4FC3F7", "#1E88E5", "#8E24AA", "#F48FB1", "#8D6E63", "#BDBDBD", "#FFFFFF", "#37474F"];
+
+const ALLQ = {};
+W.forEach(w => w.steps.forEach(s => { if (s.t === "quiz") ALLQ[s.id] = Object.assign({ wid: w.id }, s); }));
+function interactiveIds(w) { return w.steps.filter(s => s.id).map(s => s.id); }
+
+/* ---------- Estado salvo ----------
+   Perfil (personagem, moedas, loja, medalhas): um só para todas as provas do site, para ela levar o personagem junto.
+   Progresso da prova (estrelas, erros, pintura): separado por prova. */
+const AVDEF = { skin: SKINS[1], hair: "longo", hairc: HAIRC[1], shirt: CLOTH[0], pants: CLOTH[7], shoes: CLOTH[9], acc: "", face: "", back: "", pet: "", fx: "" };
+const PKEY = "liloca2-perfil";
+const KEY = "liloca2-" + String(META.titulo).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const PDEF = { name: "", av: Object.assign({}, AVDEF), coins: 0, owned: [], badges: {} };
+const DEF = { worlds: {}, stars: {}, misses: {}, examBest: null, paint: {}, writes: {}, found: {}, obby: {}, settings: { sound: true, autoVoice: true, calm: false } };
+function load(k, d) { try { return Object.assign(JSON.parse(JSON.stringify(d)), JSON.parse(localStorage.getItem(k) || "{}")); } catch (e) { return JSON.parse(JSON.stringify(d)); } }
+let st = load(KEY, DEF), P = load(PKEY, PDEF);
+st.settings = Object.assign({}, DEF.settings, st.settings || {});
+["paint", "writes", "found", "obby"].forEach(k => { st[k] = st[k] || {}; });
+P.av = Object.assign({}, AVDEF, P.av || {}); P.owned = P.owned || []; P.badges = P.badges || {};
+function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+function saveP() { try { localStorage.setItem(PKEY, JSON.stringify(P)); } catch (e) {} }
+function applyCalm() { document.documentElement.classList.toggle("calm", !!st.settings.calm); }
+applyCalm();
+
+/* ---------- Utilidades ---------- */
+const app = document.getElementById("app");
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"); }
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+function shake(el) { el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+function worldStars(w) { return interactiveIds(w).filter(id => st.stars[id]).length; }
+function moving() { if (st.settings.calm) return false; try { return !window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return true; } }
+const YES = ["Parabéns, você acertou!", "Uhul! Você acertou!", "Isso aí! Muito bem!", "Mandou bem!", "Perfeito, você acertou!"];
+const OKS = ["fb-ok", "fb-ok2", "fb-ok3"];
+
+/* Céu do fundo: nuvens passando e estrelinhas piscando. */
+(function sky() {
+  const s = document.createElement("div"); s.className = "sky"; s.setAttribute("aria-hidden", "true");
+  let h = "";
+  for (let i = 0; i < 4; i++) h += '<i class="cloud" style="top:' + (8 + i * 21) + '%;animation-duration:' + (55 + i * 17) + 's;animation-delay:-' + (i * 19) + 's;opacity:' + (.5 + (i % 2) * .3) + ';transform:scale(' + (.6 + (i % 3) * .25) + ')"></i>';
+  for (let i = 0; i < 14; i++) h += '<i class="tw" style="left:' + (Math.random() * 96) + '%;top:' + (Math.random() * 90) + '%;animation-delay:-' + (Math.random() * 3) + 's"></i>';
+  s.innerHTML = h; document.body.insertBefore(s, document.body.firstChild);
+})();
+
+/* ---------- Narração com voz real (arquivos gerados na Higgsfield) ---------- */
+const AUDIO = new Set(/*AUDIO-LIST*/["a-def-c0","a-def-c1","a-def-s0","a-def-s1","a-def-s2","a-def-s3","a-def-txt","a-flex-c0","a-flex-c1","a-flex-c2","a-flex-s0","a-flex-s1","a-flex-s2","a-flex-s3","a-flex-s4","a-flex-txt","a-ind-c0","a-ind-c1","a-ind-s0","a-ind-s1","a-ind-s2","a-ind-s3","a-ind-txt","a-rio-c0","a-rio-c1","a-rio-s0","a-rio-s1","a-rio-s2","a-rio-s3","a-rio-s4","a-rio-s5","a-rio-txt","a-subst-c0","a-subst-c1","a-subst-s0","a-subst-s1","a-subst-s2","a-subst-s3","a-subst-s4","a-subst-txt","a-trem-c0","a-trem-c1","a-trem-s0","a-trem-s1","a-trem-s2","a-trem-txt","a-um-c0","a-um-c1","a-um-c2","a-um-s0","a-um-s1","a-um-s2","a-um-s3","a-um-s4","a-um-txt","ar1","ar1-ex","ar10","ar10-ex","ar11","ar11-ex","ar12","ar12-ex","ar2","ar2-ex","ar3","ar3-ex","ar4","ar4-ex","ar5","ar5-ex","ar6","ar6-ex","ar7","ar7-ex","ar8","ar8-ex","ar9","ar9-ex","art-30","fb-ok","fb-ok2","fb-ok3","fb-quase","fim-ala","g-acr-c0","g-acr-c1","g-acr-s0","g-acr-s1","g-acr-s2","g-acr-s3","g-acr-s4","g-acr-s5","g-acr-s6","g-acr-s7","g-acr-s8","g-acr-txt","g-ani-c0","g-ani-c1","g-ani-c2","g-ani-s0","g-ani-s1","g-ani-s10","g-ani-s11","g-ani-s12","g-ani-s2","g-ani-s3","g-ani-s4","g-ani-s5","g-ani-s6","g-ani-s7","g-ani-s8","g-ani-s9","g-ani-txt","g-ao-c0","g-ao-c1","g-ao-c2","g-ao-s0","g-ao-s1","g-ao-s2","g-ao-s3","g-ao-s4","g-ao-s5","g-ao-s6","g-ao-s7","g-ao-s8","g-ao-txt","g-bif-c0","g-bif-c1","g-bif-s0","g-bif-s1","g-bif-s2","g-bif-s3","g-bif-s4","g-bif-txt","g-esa-c0","g-esa-c1","g-esa-c2","g-esa-s0","g-esa-s1","g-esa-s2","g-esa-s3","g-esa-s4","g-esa-s5","g-esa-s6","g-esa-s7","g-esa-s8","g-esa-txt","g-exc-c0","g-exc-c1","g-exc-c2","g-exc-s0","g-exc-s1","g-exc-s10","g-exc-s11","g-exc-s12","g-exc-s2","g-exc-s3","g-exc-s4","g-exc-s5","g-exc-s6","g-exc-s7","g-exc-s8","g-exc-s9","g-exc-txt","g-gen-c0","g-gen-c1","g-gen-s0","g-gen-s1","g-gen-s2","g-gen-s3","g-gen-s4","g-gen-s5","g-gen-s6","g-gen-s7","g-gen-s8","g-gen-txt","g-irr-c0","g-irr-c1","g-irr-c2","g-irr-s0","g-irr-s1","g-irr-s2","g-irr-s3","g-irr-s4","g-irr-s5","g-irr-s6","g-irr-s7","g-irr-s8","g-irr-txt","g-oa-c0","g-oa-c1","g-oa-c2","g-oa-s0","g-oa-s1","g-oa-s2","g-oa-s3","g-oa-s4","g-oa-s5","g-oa-s6","g-oa-s7","g-oa-s8","g-oa-txt","g-pes-c0","g-pes-c1","g-pes-c2","g-pes-s0","g-pes-s1","g-pes-s10","g-pes-s11","g-pes-s12","g-pes-s2","g-pes-s3","g-pes-s4","g-pes-s5","g-pes-s6","g-pes-s7","g-pes-s8","g-pes-s9","g-pes-txt","ge1","ge1-ex","ge10","ge10-ex","ge11","ge11-ex","ge12","ge12-ex","ge13","ge13-ex","ge14","ge14-ex","ge15","ge15-ex","ge16","ge16-ex","ge17","ge17-ex","ge18","ge18-ex","ge19","ge19-ex","ge2","ge2-ex","ge20","ge20-ex","ge21","ge21-ex","ge22","ge22-ex","ge23","ge23-ex","ge24","ge24-ex","ge25","ge25-ex","ge26","ge26-ex","ge27","ge27-ex","ge3","ge3-ex","ge4","ge4-ex","ge5","ge5-ex","ge6","ge6-ex","ge7","ge7-ex","ge7b","ge7b-ex","ge8","ge8-ex","ge9","ge9-ex","gen-54","inst-scene","m-ar","m-ge1","m-ge2","m-pl","m-un","p-dois-c0","p-dois-c1","p-dois-c2","p-dois-s0","p-dois-s1","p-dois-s2","p-dois-s3","p-dois-s4","p-dois-txt","p-fin-c0","p-fin-c1","p-fin-c2","p-fin-s0","p-fin-s1","p-fin-s2","p-fin-s3","p-fin-s4","p-fin-txt","p-jar-c0","p-jar-c1","p-jar-s0","p-jar-s1","p-jar-s2","p-jar-s3","p-jar-s4","p-jar-txt","p-prep-c0","p-prep-c1","p-prep-c2","p-prep-s0","p-prep-s1","p-prep-s2","p-prep-s3","p-prep-s4","p-prep-txt","p-rep-c0","p-rep-c1","p-rep-s0","p-rep-s1","p-rep-s2","p-rep-txt","p-seg-c0","p-seg-c1","p-seg-c2","p-seg-s0","p-seg-s1","p-seg-s2","p-seg-s3","p-seg-txt","p-sem-c0","p-sem-c1","p-sem-s0","p-sem-s1","p-sem-s2","p-sem-s3","p-sem-txt","pl1","pl1-ex","pl10","pl10-ex","pl11","pl11-ex","pl12","pl12-ex","pl13","pl13-ex","pl14","pl14-ex","pl2","pl2-ex","pl3","pl3-ex","pl4","pl4-ex","pl5","pl5-ex","pl5b","pl5b-ex","pl6","pl6-ex","pl7","pl7-ex","pl8","pl8-ex","pl9","pl9-ex","plu-34","rev-intro","s-ar","s-ge1","s-ge2","s-pl1","s-pl2","s-un1","s-un2","u-ave-c0","u-ave-c1","u-ave-s0","u-ave-s1","u-ave-s2","u-ave-s3","u-ave-s4","u-ave-s5","u-ave-txt","u-bich-c0","u-bich-c1","u-bich-s0","u-bich-s1","u-bich-s2","u-bich-s3","u-bich-s4","u-bich-s5","u-bich-txt","u-com1-c0","u-com1-c1","u-com1-c2","u-com1-s0","u-com1-s1","u-com1-s2","u-com1-s3","u-com1-s4","u-com1-s5","u-com1-s6","u-com1-s7","u-com1-s8","u-com1-txt","u-com2-c0","u-com2-c1","u-com2-c2","u-com2-s0","u-com2-s1","u-com2-s2","u-com2-s3","u-com2-s4","u-com2-s5","u-com2-s6","u-com2-txt","u-epi-c0","u-epi-c1","u-epi-s0","u-epi-s1","u-epi-s2","u-epi-s3","u-epi-s4","u-epi-txt","u-pla-c0","u-pla-c1","u-pla-s0","u-pla-s1","u-pla-s2","u-pla-s3","u-pla-txt","u-sob-c0","u-sob-c1","u-sob-s0","u-sob-s1","u-sob-s2","u-sob-s3","u-sob-s4","u-sob-txt","u-sob2-c0","u-sob2-c1","u-sob2-c2","u-sob2-s0","u-sob2-s1","u-sob2-s2","u-sob2-s3","u-sob2-s4","u-sob2-s5","u-sob2-txt","u-touca-c0","u-touca-c1","u-touca-c2","u-touca-s0","u-touca-s1","u-touca-s2","u-touca-s3","u-touca-s4","u-touca-txt","un1","un1-ex","un10","un10-ex","un11","un11-ex","un12","un12-ex","un2","un2-ex","un3","un3-ex","un4","un4-ex","un5","un5-ex","un6","un6-ex","un7","un7-ex","un8","un8-ex","un9","un9-ex","uni-35","w-ar1","w-ar1-ex","w-ar2","w-ar2-ex","w-ge1","w-ge1-ex","w-ge2","w-ge2-ex","w-pl1","w-pl1-ex","w-pl2","w-pl2-ex","w-un1","w-un1-ex","w-un2","w-un2-ex"]);
+const VIDEOS = new Set(/*VIDEO-LIST*/[]);
+const CLIPS = new Set(/*CLIP-LIST*/[]);
+const canSpeak = AUDIO.size > 0;
+const player = new Audio(); let playToken = 0;
+function speak(key, onend) {
+  const my = ++playToken;
+  const fin = () => { if (my === playToken && onend) onend(); };
+  if (!AUDIO.has(key)) { if (onend) setTimeout(fin, 300); return; }
+  try {
+    player.pause(); player.src = "audio/" + key + ".mp3"; player.onended = fin; player.onerror = fin;
+    const p = player.play(); if (p && p.catch) p.catch(fin);
+  } catch (e) { fin(); }
+}
+function stopSpeak() { playToken++; try { player.pause(); } catch (e) {} }
+
+/* ---------- Sons do jogo (feitos na hora, sem arquivo) ---------- */
+let actx = null;
+function tone(seq, type, vol) {
+  if (!st.settings.sound) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const t = actx.currentTime;
+    seq.forEach(([f, at, dur, f2]) => {
+      const o = actx.createOscillator(), g = actx.createGain(), s = t + at;
+      o.type = type || "triangle"; o.frequency.setValueAtTime(f, s); if (f2) o.frequency.exponentialRampToValueAtTime(f2, s + dur);
+      g.gain.setValueAtTime(0.0001, s); g.gain.exponentialRampToValueAtTime(vol || 0.12, s + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, s + dur);
+      o.connect(g); g.connect(actx.destination); o.start(s); o.stop(s + dur + 0.05);
+    });
+  } catch (e) {}
+}
+const sfx = {
+  win: () => tone([[523.25, 0, .25], [659.25, .09, .25], [783.99, .18, .25], [1046.5, .27, .6]]),
+  coin: () => tone([[987.8, 0, .08], [1318.5, .07, .25]], "square", .05),
+  pop: () => tone([[660, 0, .12, 990]], "sine", .1),
+  jump: () => tone([[300, 0, .25, 820]], "sine", .1),
+  oops: () => tone([[392, 0, .18, 330], [330, .16, .25, 294]], "sine", .08),
+  fanfare: () => tone([[523.25, 0, .18], [523.25, .16, .12], [659.25, .3, .2], [783.99, .48, .5], [1046.5, .48, .7]], "triangle", .1)
+};
+
+/* ---------- Festa do acerto: som, confete, estrelas, moedas e o personagem pulando ---------- */
+function confetti(n) {
+  if (!moving()) return;
+  const cols = ["#F2B632", "#2D6BD3", "#17866A", "#8048CC", "#E53935", "#FB8C00", "#F06AB0", "#3CC4A0"];
+  const box = document.createElement("div"); box.className = "confete";
+  for (let i = 0; i < (n || 48); i++) {
+    const c = document.createElement("i"); c.className = ["", "o", "s"][i % 3];
+    c.style.left = (Math.random() * 100) + "%";
+    c.style.background = cols[i % cols.length];
+    c.style.setProperty("--dx", (Math.random() * 200 - 100) + "px");
+    c.style.setProperty("--rt", (Math.random() * 900 - 450) + "deg");
+    c.style.animationDelay = (Math.random() * 0.35) + "s";
+    c.style.animationDuration = (1.5 + Math.random() * 0.9) + "s";
+    box.appendChild(c);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => box.remove(), 2800);
+}
+function burst(parent, x, y, n, color) {
+  if (!moving() || !parent) return;
+  const b = document.createElement("span"); b.className = "burst"; b.style.left = x; b.style.top = y;
+  for (let i = 0; i < (n || 10); i++) {
+    const s = document.createElement("i"), ang = (i / (n || 10)) * Math.PI * 2, r = 40 + Math.random() * 30;
+    s.style.setProperty("--bx", Math.cos(ang) * r + "px"); s.style.setProperty("--by", Math.sin(ang) * r + "px");
+    if (color) s.style.background = color; else if (i % 2) s.style.background = "#FFFFFF";
+    b.appendChild(s);
+  }
+  parent.appendChild(b); setTimeout(() => b.remove(), 900);
+}
+function buddyAct(cls) {
+  document.querySelectorAll(".buddy-host .av, .fbav .av").forEach(el => { el.classList.remove("idle", "jump", "wobble"); void el.getBoundingClientRect(); el.classList.add(cls); setTimeout(() => { el.classList.remove(cls); el.classList.add("idle"); }, 800); });
+}
+function gain(n, el) {
+  if (!n) return;
+  P.coins += n; saveP();
+  const top = document.getElementById("coinTop");
+  if (top) { top.querySelector("span").textContent = P.coins; top.classList.remove("bump"); void top.offsetWidth; top.classList.add("bump"); }
+  sfx.coin();
+  const r = (el || top || document.body).getBoundingClientRect();
+  const f = document.createElement("div"); f.className = "fly"; f.innerHTML = COIN + "+" + n;
+  f.style.left = (r.left + r.width / 2) + "px"; f.style.top = Math.max(40, r.top) + "px";
+  document.body.appendChild(f); setTimeout(() => f.remove(), 1200);
+}
+let streak = 0;
+function celebrate(after) {
+  sfx.win(); confetti(); buddyAct("jump");
+  streak++; if (streak === 5) badge("seq5"); if (streak === 10) badge("seq10");
+  speak(pick(OKS), after);
+}
+function miss() { streak = 0; sfx.oops(); buddyAct("wobble"); }
+
+/* ---------- Medalhas ---------- */
+const BADGES = [
+  { id: "estrela1", t: "Primeira estrela", d: "Acertou a primeira pergunta.", c: "#F5B800" },
+  { id: "explora", t: "Exploradora", d: "Descobriu todos os pontos de um desenho.", c: "#26A69A" },
+  { id: "seq5", t: "5 seguidas", d: "Acertou 5 respostas seguidas.", c: "#FB8C00" },
+  { id: "seq10", t: "10 seguidas", d: "Acertou 10 respostas seguidas.", c: "#E53935" }
+].concat(W.map(w => ({ id: "mundo-" + w.id, t: "Ilha " + w.n + " completa", d: "Terminou a ilha " + w.title + ".", c: ["#2D6BD3", "#17866A", "#8048CC", "#C2562B"][w.n - 1] || "#2D6BD3" }))).concat([
+  { id: "corrida", t: "Corredora", d: "Chegou ao fim de uma corrida de obstáculos.", c: "#3D5AFE" },
+  { id: "pintora", t: "Artista", d: "Pintou um quadro inteirinho.", c: "#F06AB0" },
+  { id: "estilo", t: "Estilosa", d: "Comprou o primeiro item na loja.", c: "#9B59D0" },
+  { id: "colecao", t: "Colecionadora", d: "Tem 5 itens da loja.", c: "#8E24AA" },
+  { id: "prova", t: "Pronta para a prova", d: "Tirou 13 ou mais na prova simulada.", c: "#198F52" }
+]);
+function medalSvg(c) { return '<svg viewBox="0 0 60 70" aria-hidden="true"><path d="M16 0h10l6 22H22z" fill="#E53935"/><path d="M44 0H34l-6 22h10z" fill="#2D6BD3"/><circle cx="30" cy="44" r="22" fill="' + shade(c, .75) + '"/><circle cx="30" cy="42" r="20" fill="' + c + '"/><circle cx="30" cy="42" r="14" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2.5"/><path d="M30 31l3.4 6.9 7.6 1.1-5.5 5.4 1.3 7.6-6.8-3.6-6.8 3.6 1.3-7.6-5.5-5.4 7.6-1.1z" fill="#FFFFFF"/></svg>'; }
+function badge(id) {
+  if (P.badges[id]) return; const b = BADGES.find(x => x.id === id); if (!b) return;
+  P.badges[id] = Date.now(); saveP();
+  setTimeout(() => {
+    sfx.fanfare();
+    const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status");
+    t.innerHTML = medalSvg(b.c) + '<div><b>Medalha nova: ' + esc(b.t) + '</b><span class="note">' + esc(b.d) + '</span></div>';
+    document.body.appendChild(t); setTimeout(() => t.remove(), 3500);
+  }, 500);
+}
+
+/* ---------- Telas ---------- */
+let S = null;      // sessão do mundo
+let E = null;      // sessão da prova
+let O = null;      // sessão da corrida
+let video = false; // modo vídeo
+let dir = 1;       // direção da transição (1 avançar, -1 voltar)
+
+function coinsHtml() { return '<span class="coins" id="coinTop" aria-label="Moedas">' + COIN + '<span>' + P.coins + '</span></span>'; }
+
+function home() {
+  stopSpeak(); S = null; E = null; O = null; video = false;
+  if (!P.name) { studio(true); return; }
+  document.body.className = "";
+  const cur = W.findIndex(w => !(st.worlds[w.id] || {}).done);
+  const rows = W.map((w, i) => {
+    const ws = st.worlds[w.id] || {}, got = worldStars(w), tot = interactiveIds(w).length, here = i === cur;
+    const status = ws.done ? '<span class="pill done">Completa</span>' : (ws.pos ? '<span class="pill">Continuar</span>' : '<span class="pill">Começar</span>');
+    return '<div class="isl-row ' + (i % 2 ? 'r' : 'l') + '">' + (i ? '<div class="bridge ' + (i % 2 ? 'r' : 'l') + '"></div>' : '') +
+      '<button class="isl ' + w.cls + (here ? ' here' : '') + '" data-w="' + w.id + '"><span class="isl-art">' + islandSvg(false) + '<span class="isl-ic">' + icon(w.ic) + '</span>' + (ws.done ? FLAG : '') +
+      (here ? '<span class="isl-av">' + avSvg(P.av, "idle") + '</span>' : '') + '</span>' +
+      '<span class="isl-t"><span class="k">Ilha ' + w.n + '</span><b>' + esc(w.title) + '</b><span class="meta">' + status + '<span class="starsmall">' + icon("star") + got + ' de ' + tot + '</span></span></span></button>' +
+      (ws.done ? '<button class="ghost obbybtn ' + w.cls + '" data-obby="' + w.id + '">' + 'Corrida de obstáculos' + (st.obby[w.id] ? ' (feita)' : '') + '</button>' : '') + '</div>';
+  }).join("");
+  const castle = '<div class="isl-row ' + (W.length % 2 ? 'r' : 'l') + '"><div class="bridge ' + (W.length % 2 ? 'r' : 'l') + '"></div><button class="isl w-x' + (cur === -1 ? ' here' : '') + '" data-exam="1"><span class="isl-art">' + islandSvg(true) + (cur === -1 ? '<span class="isl-av">' + avSvg(P.av, "idle") + '</span>' : '') + '</span>' +
+    '<span class="isl-t"><span class="k">Castelo final</span><b>Prova simulada</b><span class="meta">' + (st.examBest != null ? '<span class="pill">Melhor nota: ' + st.examBest + ' de 15</span>' : '<span class="pill">Depois das ilhas</span>') + '</span></span></button></div>';
+
+  const gal = '<div class="panel"><h3>Quadros para pintar</h3><p class="note" style="margin:0 0 10px">Termine uma ilha para ganhar um quadro novo. Toque nele para pintar.</p><div class="gal">' + PICS.map(p => {
+    const open = picOpen(p);
+    return '<button class="gitem' + (open ? '' : ' lock') + '" data-pic="' + p.id + '"' + (open ? '' : ' disabled') + '>' + picSvg(p, false) + '<b>' + esc(p.title) + '</b><small>' + (open ? 'Toque para pintar' : 'Termine a Ilha ' + W.find(w => w.id === p.need).n + ' para liberar') + '</small></button>';
+  }).join("") + '</div></div>';
+  const nq = Object.keys(ALLQ).length;
+  const missIds = Object.keys(st.misses).filter(id => ALLQ[id]).sort((a, b) => st.misses[b] - st.misses[a]);
+  const missHtml = missIds.length ? '<ol class="misslist">' + missIds.slice(0, 12).map(id => { const q = ALLQ[id]; return '<li>' + esc(q.q) + ' <small>Resposta: ' + esc(q.o[q.a]) + ' · errou ' + st.misses[id] + 'x</small></li>'; }).join("") + '</ol>' : '<p class="note">Ainda não há erros registrados. Eles aparecem aqui conforme ela joga.</p>';
+  const tw = W.map(w => '<li>' + esc(w.title) + ': ' + worldStars(w) + ' de ' + interactiveIds(w).length + ' acertos' + ((st.worlds[w.id] || {}).done ? ' (concluído)' : '') + '</li>').join("");
+  const nb = Object.keys(P.badges).length;
+
+  app.innerHTML = '<div class="wrap home">' +
+    '<div class="hero"><div class="buddy-host">' + avSvg(P.av, "idle") + '</div><div><h1>Oi, ' + esc(P.name) + '!</h1><p>Aprenda ' + esc(META.materia) + ' para a prova. Cada acerto vale <strong>estrela e moedas</strong>.</p>' +
+      '<div class="row" style="margin-bottom:8px">' + coinsHtml() + '<span class="starsmall">' + icon("medal") + nb + ' medalhas</span></div>' +
+      '<div class="row"><button class="btn sec" data-open="studio">Personagem e loja</button><button class="btn sec" data-open="medals">Medalhas</button></div></div></div>' +
+    '<div class="map">' + rows + castle + '</div>' + gal +
+    '<div class="panel"><h3>Ajustes</h3>' +
+      tog("sound", "Sons do jogo") +
+      (canSpeak ? tog("autoVoice", "A Clio lê cada tela em voz alta") : '') +
+      tog("calm", "Parar as animações") +
+    '</div>' +
+    '<details class="panel parents"><summary>Para os pais</summary>' +
+      '<p class="note">Progresso salvo neste aparelho. ' + nq + ' perguntas no total. Moedas e personagem valem para todas as provas deste site.</p><ul class="ul">' + tw + '<li>Prova simulada: ' + (st.examBest != null ? 'melhor nota ' + st.examBest + ' de 15' : 'ainda não feita') + '</li></ul>' +
+      '<h3 style="margin-top:14px">Perguntas que ela mais errou</h3>' + missHtml +
+      '<div class="row" style="margin-top:14px"><button class="btn sec" id="reset">Apagar progresso desta prova</button></div><p class="note" id="resetmsg" hidden></p>' +
+    '</details>' +
+    '</div>';
+
+  app.querySelectorAll("[data-w]").forEach(b => b.onclick = () => hopTo(b, () => openWorld(b.dataset.w)));
+  app.querySelector("[data-exam]").onclick = e => hopTo(e.currentTarget, openExam);
+  app.querySelectorAll("[data-obby]").forEach(b => b.onclick = () => openObby(b.dataset.obby));
+  app.querySelectorAll("[data-pic]").forEach(b => b.onclick = () => { const p = PICS.find(x => x.id === b.dataset.pic); if (picOpen(p)) openPaint(p); });
+  app.querySelector('[data-open="studio"]').onclick = () => studio(false);
+  app.querySelector('[data-open="medals"]').onclick = medals;
+  app.querySelectorAll(".sw").forEach(b => b.onclick = () => { const k = b.dataset.k; st.settings[k] = !st.settings[k]; save(); applyCalm(); b.setAttribute("aria-checked", st.settings[k]); });
+  let armed = false;
+  document.getElementById("reset").onclick = () => {
+    const msg = document.getElementById("resetmsg");
+    if (!armed) { armed = true; msg.hidden = false; msg.textContent = "Toque de novo para confirmar. Isso apaga estrelas e erros desta prova (o personagem e as moedas ficam)."; return; }
+    st = JSON.parse(JSON.stringify(DEF)); save(); applyCalm(); home();
+  };
+  window.scrollTo(0, 0);
+}
+/* O personagem pula para a ilha escolhida antes de entrar. */
+function hopTo(btn, go) {
+  if (!moving()) { go(); return; }
+  const old = app.querySelector(".isl-av"); if (old && btn.contains(old)) { sfx.jump(); setTimeout(go, 250); return; }
+  if (old) old.remove();
+  const s = document.createElement("span"); s.className = "isl-av hop"; s.innerHTML = avSvg(P.av, "jump");
+  btn.querySelector(".isl-art").appendChild(s); sfx.jump();
+  setTimeout(go, 650);
+}
+function tog(k, label) { return '<div class="toggle"><span id="lb-' + k + '">' + label + '</span><button class="sw" role="switch" aria-labelledby="lb-' + k + '" aria-checked="' + !!st.settings[k] + '" data-k="' + k + '"></button></div>'; }
+
+function shell(cls, title, progress, starsTxt) {
+  document.body.className = cls;
+  app.innerHTML =
+    '<div class="top"><div class="wrap"><div class="topin"><button class="ghost" id="bHome">Início</button><span class="buddy buddy-host">' + avSvg(P.av, "idle") + '</span><span class="ttl">' + esc(title) + '</span>' +
+    coinsHtml() + '<span class="starsmall" id="starsTop">' + icon("star") + starsTxt + '</span>' +
+    (S && canSpeak ? '<button class="ghost' + (video ? ' on' : '') + '" id="bVideo" aria-pressed="' + video + '">' + (video ? 'Pausar' : 'Modo vídeo') + '</button>' : '') +
+    '</div><div class="bar" style="margin-bottom:10px"><i style="width:' + Math.round(progress * 100) + '%"></i></div></div></div>' +
+    '<main class="stage"><div class="wrap" id="box"></div></main>' +
+    '<div class="foot"><div class="wrap footin"><button class="btn sec" id="bBack">Voltar</button>' + (canSpeak ? '<button class="btn sec" id="bSpeak">Ouvir</button>' : '') + '<button class="btn pri" id="bNext">Próximo</button></div></div>';
+  document.getElementById("bHome").onclick = home;
+  window.scrollTo(0, 0);
+  const box = document.getElementById("box");
+  if (dir < 0) setTimeout(() => { const c = box.querySelector(".card"); if (c) c.classList.add("back"); }, 0);
+  dir = 1;
+  return box;
+}
+
+/* ---------- Criar personagem e loja (a mesma tela) ---------- */
+function studio(first) {
+  stopSpeak(); S = null; E = null; O = null; video = false;
+  let tab = 0, trial = null; // trial = item da loja que ela está provando sem ter comprado
+  document.body.className = "w-3";
+  function owned(k, v) { return !v || P.owned.indexOf(k + ":" + v) >= 0; }
+  function priceOf(k, v) { const it = (SHOP[k] || []).find(x => x[0] === v); return it ? it[2] : 0; }
+  function draw() {
+    const cat = CATS[tab], shown = Object.assign({}, P.av, trial ? { [trial[0]]: trial[1] } : {});
+    let choices = "";
+    if (cat.col) choices = cat.col.map(c => '<button class="choice' + (P.av[cat.k] === c ? ' on' : '') + '" data-v="' + c + '" aria-label="Cor"><span class="sw8" style="background:' + c + '"></span></button>').join("");
+    else if (cat.list) choices = cat.list.map(([v, t]) => '<button class="choice' + (P.av[cat.k] === v ? ' on' : '') + '" data-v="' + v + '">' + avSvg(Object.assign({}, P.av, { [cat.k]: v, acc: "", pet: "", fx: "", back: "" })) + t + '</button>').join("");
+    else {
+      choices = '<button class="choice' + (!P.av[cat.k] ? ' on' : '') + '" data-v="">' + avSvg(Object.assign({}, P.av, { [cat.k]: "" })) + 'Nenhum</button>' +
+        SHOP[cat.k].map(([v, t, pr]) => { const has = owned(cat.k, v); return '<button class="choice' + (P.av[cat.k] === v ? ' on' : '') + (has ? '' : ' lock') + '" data-v="' + v + '">' + avSvg(Object.assign({}, P.av, { [cat.k]: v })) + t + (has ? '' : '<span class="price">' + COIN + pr + '</span>') + '</button>'; }).join("");
+    }
+    let buy = "";
+    if (trial) {
+      const pr = priceOf(trial[0], trial[1]), name = SHOP[trial[0]].find(x => x[0] === trial[1])[1];
+      buy = '<div class="buybar"><p>' + esc(name) + ': ' + pr + ' moedas</p>' + (P.coins >= pr ? '<button class="btn gold" id="buy">Comprar</button>' : '<span class="note">Faltam ' + (pr - P.coins) + ' moedas. Acerte mais perguntas!</span>') + '</div>';
+    }
+    box.innerHTML = '<article class="card studio">' +
+      (first ? '<div class="cardhead">' + OWL.replace('class="owl"', 'class="owl" style="width:72px;height:72px;flex:none"') + '<div><p class="eyebrow">Bem-vinda</p><h2>Oi! Eu sou a Clio. Vamos criar o seu personagem?</h2></div></div>' : '<div><p class="eyebrow">Personagem e loja</p><h2>Monte o seu visual</h2></div>') +
+      '<div class="preview"><span class="buddy-host">' + avSvg(shown, "dance") + '</span></div>' +
+      (first ? '<form class="namebox" id="nf"><input id="nameinput" maxlength="24" placeholder="Seu nome" autocomplete="off" value="' + esc(P.name) + '"><button class="btn pri" type="submit">Pronto</button></form>' : '') +
+      '<div class="tabs" role="tablist">' + CATS.map((c, i) => '<button class="tab' + (i === tab ? ' on' : '') + '" data-t="' + i + '" role="tab" aria-selected="' + (i === tab) + '">' + c.t + '</button>').join("") + '</div>' +
+      buy + '<div class="choices">' + choices + '</div>' +
+      (CATS[tab].shop ? '<p class="note">Toque para provar. Os itens com moeda você compra com as moedas que ganha acertando.</p>' : '') + '</article>';
+    box.querySelectorAll(".tab").forEach(b => b.onclick = () => { tab = +b.dataset.t; trial = null; sfx.pop(); draw(); });
+    box.querySelectorAll(".choice").forEach(b => b.onclick = () => {
+      const k = CATS[tab].k, v = b.dataset.v; sfx.pop();
+      if (CATS[tab].shop && !owned(k, v)) { trial = [k, v]; draw(); return; }
+      trial = null; P.av[k] = v; saveP(); draw();
+    });
+    const by = box.querySelector("#buy");
+    if (by) by.onclick = () => {
+      const [k, v] = trial, pr = priceOf(k, v); if (P.coins < pr) return;
+      P.coins -= pr; P.owned.push(k + ":" + v); P.av[k] = v; trial = null; saveP();
+      sfx.fanfare(); confetti(60); badge("estilo"); if (P.owned.length >= 5) badge("colecao"); draw();
+      const t = document.getElementById("coinTop"); if (t) t.querySelector("span").textContent = P.coins;
+    };
+    const nf = box.querySelector("#nf");
+    if (nf) nf.onsubmit = e => { e.preventDefault(); const v = box.querySelector("#nameinput").value.trim(); if (!v) { shake(nf); return; } P.name = v; saveP(); sfx.fanfare(); confetti(); home(); };
+  }
+  const box = shell("w-3", first ? "Criar personagem" : "Personagem e loja", 1, "");
+  document.getElementById("starsTop").hidden = true;
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  if (bSpeak) bSpeak.style.visibility = "hidden";
+  if (first) { document.getElementById("bHome").hidden = true; document.querySelector(".foot").hidden = true; }
+  bBack.textContent = "Início"; bBack.onclick = home; bNext.textContent = "Pronto"; bNext.onclick = home;
+  draw();
+}
+
+function medals() {
+  stopSpeak(); S = null; E = null; O = null;
+  const box = shell("w-x", "Medalhas", 1, "");
+  document.getElementById("starsTop").hidden = true;
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  if (bSpeak) bSpeak.style.visibility = "hidden";
+  bBack.textContent = "Início"; bBack.onclick = home; bNext.textContent = "Voltar ao mapa"; bNext.onclick = home;
+  box.innerHTML = '<article class="card"><div><p class="eyebrow">Sua coleção</p><h2>Medalhas: ' + Object.keys(P.badges).length + ' de ' + BADGES.length + '</h2></div><div class="medals">' +
+    BADGES.map(b => '<div class="medal ' + (P.badges[b.id] ? 'got' : 'no') + '">' + medalSvg(b.c) + '<b>' + esc(b.t) + '</b><small>' + esc(b.d) + '</small></div>').join("") + '</div></article>';
+}
+
+/* ---------- Mundo ---------- */
+function openWorld(wid) {
+  const w = W.find(x => x.id === wid);
+  const ws = st.worlds[wid] || {};
+  let pos = ws.done ? 0 : (ws.pos || 0);
+  if (pos >= w.steps.length) pos = 0;
+  S = { w, steps: w.steps.slice(), pos, review: [], reviewAdded: false, done: false };
+  if (VIDEOS.has(w.id) && pos === 0) S.steps.unshift({ t: "video", key: "v-" + w.id, src: "video/" + w.id + ".mp4", extra: true });
+  renderStep();
+}
+
+function renderStep() {
+  const step = S.steps[S.pos];
+  S.done = (step.t === "card" || step.t === "summary" || step.t === "video" || step.t === "read");
+  const box = shell(S.w.cls, "Ilha " + S.w.n + " · " + S.w.title, (S.pos + 1) / S.steps.length, worldStars(S.w) + "/" + interactiveIds(S.w).length);
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak"), bVideo = document.getElementById("bVideo");
+  bBack.disabled = S.pos === 0; if (S.pos === 0) bBack.style.visibility = "hidden";
+  bNext.textContent = S.pos === S.steps.length - 1 ? "Terminar a ilha" : "Próximo";
+  bNext.onclick = next;
+  bBack.onclick = () => { stopSpeak(); if (S.pos > 0) { S.pos--; dir = -1; renderStep(); } };
+  if (bSpeak) { if (!AUDIO.has(step.key)) bSpeak.style.visibility = "hidden"; bSpeak.onclick = () => speak(step.key); }
+  if (bVideo) bVideo.onclick = () => { video = !video; if (!video) stopSpeak(); bVideo.classList.toggle("on", video); bVideo.textContent = video ? "Pausar" : "Modo vídeo"; bVideo.setAttribute("aria-pressed", video); if (video) playCard(step); };
+
+  if (step.t === "card") renderCard(step, box);
+  else if (step.t === "quiz") renderQuiz(step, box, ok => { stepDone(step, ok); });
+  else if (step.t === "order") renderOrder(step, box);
+  else if (step.t === "match") renderMatch(step, box);
+  else if (step.t === "sort") renderSort(step, box);
+  else if (step.t === "write") renderWrite(step, box);
+  else if (step.t === "summary") renderSummary(step, box);
+  else if (step.t === "video") renderVideo(step, box);
+  else if (step.t === "read") renderRead(step, box);
+  else if (step.t === "scene") renderScene(step, box);
+  updNext();
+
+  if (step.t === "video") return;
+  if (video) playCard(step);
+  else if (st.settings.autoVoice) speak(step.key);
+}
+function playCard(step) {
+  if (step.t !== "card" && step.t !== "read") { speak(step.key); return; }
+  const at = S.pos;
+  speak(step.key, () => { setTimeout(() => { if (video && S && S.pos === at) next(); }, 1300); });
+}
+function updNext() { const b = document.getElementById("bNext"); if (b) b.disabled = !S.done; }
+function earn(id) {
+  if (!id) return;
+  if (!st.stars[id]) {
+    st.stars[id] = true; save(); badge("estrela1"); gain(10, document.getElementById("starsTop"));
+    const el = document.getElementById("starsTop"); if (el) el.innerHTML = icon("star") + worldStars(S.w) + "/" + interactiveIds(S.w).length;
+  } else gain(2);
+}
+function stepDone(step, ok) {
+  S.done = true; updNext();
+  if (step.t === "quiz") {
+    if (ok) earn(step.id); else miss();
+    if (!ok) { st.misses[step.id] = (st.misses[step.id] || 0) + 1; save(); if (!step.review && !S.review.some(r => r.id === step.id)) S.review.push(Object.assign({}, step, { review: true })); }
+  } else if (step.t === "scene") {
+    if (ok) earn(step.id);
+    if (!ok && !step.review && !S.review.some(r => r.id === step.id)) S.review.push(Object.assign({}, step, { review: true }));
+  } else earn(step.id);
+}
+
+function next() {
+  stopSpeak();
+  if (!S.done) return;
+  if (S.pos >= S.steps.length - 1) { finishWorld(); return; }
+  const nx = S.steps[S.pos + 1];
+  if (!S.reviewAdded && S.review.length && nx.t === "summary") {
+    S.reviewAdded = true;
+    const intro = { t: "card", key: "rev-intro", ic: "star", eb: "Revisão rápida", title: "Vamos revisar", text: ["Agora vêm de novo as perguntas que você errou. Errar faz parte de aprender.", "Leia com calma. Você já viu a resposta antes."], review: true };
+    S.steps.splice(S.pos + 1, 0, intro, ...shuffle(S.review));
+  }
+  S.pos++;
+  const base = S.w.steps.indexOf(S.steps[S.pos]);
+  if (base >= 0) { st.worlds[S.w.id] = Object.assign({}, st.worlds[S.w.id], { pos: base }); save(); }
+  renderStep();
+}
+
+function finishWorld() {
+  const first = !(st.worlds[S.w.id] || {}).done;
+  st.worlds[S.w.id] = Object.assign({}, st.worlds[S.w.id], { pos: 0, done: true }); save();
+  const w = S.w; video = false;
+  const idx = W.indexOf(w), nxt = W[idx + 1];
+  const pic = PICS.find(p => p.need === w.id);
+  const box = shell(w.cls, "Ilha " + w.n + " concluída", 1, worldStars(w) + "/" + interactiveIds(w).length);
+  const bv = document.getElementById("bVideo"); if (bv) bv.hidden = true;
+  box.innerHTML = '<div class="card center"><div class="endav">' + avSvg(P.av, "dance") + '</div><p class="eyebrow">Ilha ' + w.n + ' concluída</p><h2>Parabéns, ' + esc(P.name) + '!</h2>' +
+    '<p class="bigscore">' + worldStars(w) + ' de ' + interactiveIds(w).length + '</p><p>estrelas nesta ilha</p>' +
+    (first ? '<div class="dica" style="text-align:left">' + COIN.replace('<svg', '<svg style="width:28px;height:28px;flex:none"') + '<p><b>Prêmio da ilha: 30 moedas.</b> Gaste na loja do personagem.</p></div>' : '') +
+    '<div class="dica" style="text-align:left">' + icon("run") + '<p><b>Corrida de obstáculos liberada!</b> Ela fica embaixo da ilha, no mapa.</p></div>' +
+    (pic ? '<div class="dica" style="text-align:left">' + icon("brush") + '<p><b>Quadro novo liberado:</b> ' + esc(pic.title) + '. Ele está no início, em "Quadros para pintar".</p></div>' : '') +
+    '<div class="dica" style="text-align:left">' + icon("heart") + '<p><b>Hora da pausa.</b> Beba um copo de água, estique os braços e descanse uns minutinhos antes da próxima ilha.</p></div></div>';
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  if (bSpeak) { if (!AUDIO.has("fim-ala")) bSpeak.style.visibility = "hidden"; bSpeak.onclick = () => speak("fim-ala"); }
+  if (st.settings.autoVoice) speak("fim-ala");
+  bBack.style.visibility = "visible"; bBack.disabled = false;
+  bBack.textContent = "Mapa"; bBack.onclick = home;
+  bNext.textContent = pic ? "Pintar o quadro novo" : (nxt ? "Ir para a Ilha " + nxt.n : "Ir para o castelo");
+  bNext.disabled = false;
+  bNext.onclick = () => pic ? openPaint(pic) : (nxt ? openWorld(nxt.id) : openExam());
+  sfx.fanfare(); confetti(80); setTimeout(() => confetti(50), 900);
+  if (first) setTimeout(() => gain(30, box.querySelector(".bigscore")), 600);
+  badge("mundo-" + w.id);
+}
+
+/* ---------- Tipos de tela ---------- */
+function clipOf(img) { const b = String(img).replace(/^cenas\//, "").replace(/\.[a-z]+$/, ""); return CLIPS.has(b) ? "cenas/" + b + ".mp4" : ""; }
+function glints(n) { let h = '<span class="glints" aria-hidden="true">'; for (let i = 0; i < (n || 6); i++) h += '<i style="left:' + (5 + Math.random() * 88) + '%;top:' + (5 + Math.random() * 85) + '%;animation-delay:-' + (Math.random() * 3.2).toFixed(2) + 's"></i>'; return h + '</span>'; }
+function renderRead(step, box) {
+  const clip = clipOf(step.img);
+  const media = clip ? '<video class="clip" src="' + clip + '" poster="' + step.img + '" autoplay muted loop playsinline></video>' : '<img width="1100" height="825" src="' + step.img + '" alt="' + esc(step.title) + '">';
+  box.innerHTML = '<article class="card"><div><p class="eyebrow">' + esc(step.eb) + '</p><h2>' + esc(step.title) + '</h2></div>' +
+    '<div class="scene' + (clip ? '' : ' kb') + '">' + media + glints(5) + '<span class="clio-fly">' + OWL + '</span></div>' +
+    '<div class="school"><span class="tag">Texto da escola</span>' + step.school.map(p => '<p>' + md(p) + '</p>').join("") + '</div>' +
+    '<p class="note">' + (AUDIO.has(step.key) ? 'Toque em Ouvir para a Clio ler junto com você.' : 'Leia com calma. Depois vamos explorar o desenho.') + '</p></article>';
+}
+function renderScene(step, box) {
+  box.innerHTML = '<article class="card"><div><p class="eyebrow">' + (step.review ? 'Revisão' : 'Toque para descobrir') + '</p><h2>' + esc(step.title) + '</h2></div>' +
+    '<div class="scene reveal" id="sc"><img width="1100" height="825" src="' + step.img + '" alt="' + esc(step.title) + '">' + glints(4) + '</div>' +
+    '<div class="slabel" id="sl">Toque nos pontos brilhantes para descobrir o que é cada parte.</div><p class="note" id="scnt"></p>' +
+    '<div class="row"><button class="btn pri" id="sgo">Fazer o desafio</button><button class="btn sec" id="sck" hidden>Conferir</button></div></article>';
+  const sc = box.querySelector("#sc"), lab = box.querySelector("#sl"), cnt = box.querySelector("#scnt"), go = box.querySelector("#sgo"), ck = box.querySelector("#sck");
+  const seen = new Set(), hots = []; let mode = "learn", ci = 0, picks = new Set(), checked = false, allOk = true;
+  const upd = () => { cnt.textContent = mode !== "learn" ? "" : (seen.size === step.spots.length ? "Você descobriu tudo! Agora faça o desafio." : "Descobertas: " + seen.size + " de " + step.spots.length); };
+  const ctr = s => [(s.x + s.w / 2) + "%", (s.y + s.h / 2) + "%"];
+  step.spots.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.className = "hot"; b.setAttribute("aria-label", s.t);
+    b.style.left = s.x + "%"; b.style.top = s.y + "%"; b.style.width = s.w + "%"; b.style.height = s.h + "%";
+    b.onclick = () => {
+      if (mode === "learn") {
+        hots.forEach(x => x.classList.remove("on")); b.classList.add("on", "seen");
+        const isNew = !seen.has(i); seen.add(i);
+        lab.innerHTML = "<b>" + esc(s.t) + ":</b> " + esc(s.d); lab.classList.remove("pop"); void lab.offsetWidth; lab.classList.add("pop");
+        upd(); speak(step.id + "-s" + i);
+        if (isNew) { sfx.pop(); const c = ctr(s); burst(sc, c[0], c[1], 8); const fk = step.id + "-" + i; if (!st.found[fk]) { st.found[fk] = 1; save(); gain(1, b); } }
+        if (seen.size === step.spots.length && isNew) { badge("explora"); confetti(30); }
+        return;
+      }
+      if (mode !== "chal" || checked) return;
+      const c = step.chal[ci];
+      if (c.ok.length === 1) { picks = new Set([i]); check(); return; }
+      sfx.pop();
+      if (picks.has(i)) { picks.delete(i); b.classList.remove("pick"); } else { picks.add(i); b.classList.add("pick"); }
+      ck.hidden = picks.size === 0;
+    };
+    hots.push(b); sc.appendChild(b);
+  });
+  function startChal(k) {
+    mode = "chal"; ci = k; picks = new Set(); checked = false;
+    sc.classList.add("chal"); hots.forEach(x => x.className = "hot");
+    const c = step.chal[ci];
+    lab.innerHTML = '<span class="q">Desafio ' + (ci + 1) + ' de ' + step.chal.length + ':</span> ' + esc(c.q) + (c.ok.length > 1 ? '<br><span class="note">Marque as bolinhas e depois toque em Conferir.</span>' : '');
+    go.hidden = true; ck.hidden = true; ck.textContent = "Conferir"; ck.onclick = check; upd();
+    speak(step.id + "-c" + ci);
+  }
+  function check() {
+    checked = true; const c = step.chal[ci], ok = new Set(c.ok), wrong = [], missed = [];
+    hots.forEach((b, i) => {
+      b.classList.remove("pick");
+      if (ok.has(i) && picks.has(i)) { b.classList.add("right"); const cc = ctr(step.spots[i]); burst(sc, cc[0], cc[1], 12); }
+      else if (!ok.has(i) && picks.has(i)) { b.classList.add("wrong"); wrong.push(step.spots[i]); }
+      else if (ok.has(i)) { b.classList.add("missed"); missed.push(step.spots[i]); }
+    });
+    const perfect = !wrong.length && !missed.length;
+    if (!perfect) allOk = false;
+    let msg = perfect ? "<b>" + pick(YES) + "</b> " + c.ok.map(i => esc(step.spots[i].d)).join(" ") : "<b>Quase!</b>";
+    if (wrong.length) msg += wrong.map(s => "<br><b>" + esc(s.t) + "</b> não entra nesta resposta. " + esc(s.d)).join("");
+    if (missed.length) msg += "<br>Faltou marcar: " + missed.map(s => "<b>" + esc(s.t) + "</b>").join(", ") + " (piscando).";
+    lab.innerHTML = msg;
+    if (perfect) celebrate(); else { miss(); speak("fb-quase"); }
+    const last = ci === step.chal.length - 1;
+    ck.hidden = false;
+    if (last) { ck.textContent = "Fazer de novo"; ck.onclick = () => startChal(0); stepDone(step, allOk); mode = "done"; cnt.textContent = allOk ? "Desafio completo!" : "Desafio completo. Esta cena volta para revisão no final."; }
+    else { ck.textContent = "Próximo desafio"; ck.onclick = () => startChal(ci + 1); }
+  }
+  go.onclick = () => { allOk = true; startChal(0); };
+  upd();
+}
+function renderCard(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon(step.ic) + '</span><div><p class="eyebrow">' + esc(step.eb) + '</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<div class="txt">' + step.text.map(p => '<p>' + md(p) + '</p>').join("") + '</div>' +
+    (step.dica ? '<div class="dica">' + icon("idea") + '<p><b>Truque de memória:</b> ' + md(step.dica) + '</p></div>' : '') + '</article>';
+}
+function renderSummary(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("book") + '</span><div><p class="eyebrow">Cartão-resumo</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<ul class="ul txt">' + step.points.map(p => '<li>' + md(p) + '</li>').join("") + '</ul>' +
+    '<p class="note">Dica: tire uma foto desta tela para revisar antes da prova.</p></article>';
+}
+function renderQuiz(step, box, onResult, label) {
+  const opts = shuffle(step.o.map((t, i) => ({ t, i })));
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("idea") + '</span><div><p class="eyebrow">' + (label || (step.review ? "Revisão" : "Pergunta")) + '</p><h2>' + esc(step.q) + '</h2></div></div>' +
+    '<div class="opts">' + opts.map((o, k) => '<button class="opt" data-i="' + o.i + '"><span class="l">' + "ABC"[k] + '</span><span>' + esc(o.t) + '</span></button>').join("") + '</div><div class="fb" id="fb" hidden></div></article>';
+  let answered = false;
+  box.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+    if (answered) return; answered = true;
+    const i = +b.dataset.i, ok = i === step.a;
+    box.querySelectorAll(".opt").forEach(x => { x.disabled = true; const xi = +x.dataset.i; if (xi === step.a) x.classList.add("right"); else if (x === b) x.classList.add("miss"); else x.classList.add("fade"); });
+    const fb = box.querySelector("#fb"); fb.hidden = false;
+    const explain = () => { if (st.settings.autoVoice || video) speak(step.key + "-ex"); };
+    if (ok) {
+      fb.className = "fb ok withav"; fb.innerHTML = '<span class="fbav">' + avSvg(P.av, "jump") + '</span><b>' + pick(YES) + '</b><span>' + esc(step.ex) + '</span>';
+      const r = b.getBoundingClientRect(), cr = box.getBoundingClientRect(); box.style.position = "relative";
+      burst(box, (r.left - cr.left + r.width / 2) + "px", (r.top - cr.top + r.height / 2) + "px", 12);
+      celebrate(explain);
+    }
+    else { fb.className = "fb almost"; fb.innerHTML = '<b>Quase!</b><span>A resposta certa é: <strong>' + esc(step.o[step.a]) + '</strong>. ' + esc(step.ex) + (step.review || label ? '' : ' Essa pergunta volta no final, para revisar.') + '</span>'; explain(); }
+    onResult(ok);
+  });
+}
+function renderOrder(step, box) {
+  const right = step.items.slice().sort((a, b) => a.y - b.y);
+  let placed = 0, wrongs = 0;
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("calendar") + '</span><div><p class="eyebrow">Jogo da linha do tempo</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<p>Toque nos acontecimentos do <strong>mais antigo</strong> para o <strong>mais novo</strong>.</p><ol class="line" id="line"></ol><div class="pool" id="pool"></div><div class="fb" id="fb" hidden></div></article>';
+  const line = box.querySelector("#line"), pool = box.querySelector("#pool"), fb = box.querySelector("#fb");
+  const btnOf = new Map();
+  shuffle(step.items).forEach(it => {
+    const b = document.createElement("button"); b.className = "chip"; b.textContent = it.txt; btnOf.set(it, b);
+    b.onclick = () => {
+      if (it === right[placed]) {
+        placed++; wrongs = 0; b.remove(); sfx.pop();
+        pool.querySelectorAll(".hint").forEach(x => x.classList.remove("hint"));
+        const li = document.createElement("li"); li.innerHTML = '<span class="yr">' + it.y + '</span><span>' + esc(it.txt) + '</span>'; line.appendChild(li);
+        if (placed === right.length) { fb.hidden = false; fb.className = "fb ok"; fb.innerHTML = '<b>' + pick(YES) + '</b><span>A linha do tempo está completa. Leia os anos mais uma vez.</span>'; celebrate(); stepDone(step, true); }
+        else fb.hidden = true;
+      } else {
+        wrongs++; shake(b); sfx.oops(); fb.hidden = false; fb.className = "fb almost";
+        fb.innerHTML = '<span>Ainda não. Procure o que aconteceu <strong>antes</strong>.' + (wrongs >= 2 ? ' A Clio marcou uma pista com borda amarela.' : '') + '</span>';
+        if (wrongs >= 2) btnOf.get(right[placed]).classList.add("hint");
+      }
+    };
+    pool.appendChild(b);
+  });
+}
+function renderMatch(step, box) {
+  let sel = null, left = step.pairs.length;
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("puzzle") + '</span><div><p class="eyebrow">Jogo de ligar</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<p>1. Toque em uma <strong>palavra</strong>. 2. Depois toque no <strong>significado</strong> dela.</p>' +
+    '<div class="pool" id="terms"></div><div class="defs" id="defs"></div><div class="fb" id="fb" hidden></div></article>';
+  const terms = box.querySelector("#terms"), defs = box.querySelector("#defs"), fb = box.querySelector("#fb");
+  shuffle(step.pairs.map((p, i) => i)).forEach(i => {
+    const b = document.createElement("button"); b.className = "chip"; b.style.fontWeight = "700"; b.textContent = step.pairs[i][0]; b.dataset.i = i;
+    b.onclick = () => { if (b.classList.contains("ok")) return; sfx.pop(); terms.querySelectorAll(".sel").forEach(x => x.classList.remove("sel")); b.classList.add("sel"); sel = i; fb.hidden = true; };
+    terms.appendChild(b);
+  });
+  shuffle(step.pairs.map((p, i) => i)).forEach(i => {
+    const d = document.createElement("button"); d.className = "chip"; d.textContent = step.pairs[i][1];
+    d.onclick = () => {
+      if (d.classList.contains("ok")) return;
+      if (sel === null) { fb.hidden = false; fb.className = "fb almost"; fb.innerHTML = "<span>Primeiro toque em uma palavra lá em cima.</span>"; return; }
+      if (sel === i) {
+        const t = terms.querySelector('[data-i="' + i + '"]'); t.classList.remove("sel"); t.classList.add("ok"); t.disabled = true;
+        d.classList.add("ok"); d.disabled = true; d.innerHTML = '<strong>' + esc(step.pairs[i][0]) + ':</strong> ' + esc(step.pairs[i][1]);
+        sel = null; left--; fb.hidden = false; fb.className = "fb ok";
+        if (left === 0) { fb.innerHTML = '<b>' + pick(YES) + '</b><span>Você ligou todas as palavras.</span>'; celebrate(); stepDone(step, true); }
+        else { fb.innerHTML = '<span>Certo! Faltam ' + left + '.</span>'; sfx.coin(); }
+      } else { shake(d); sfx.oops(); fb.hidden = false; fb.className = "fb almost"; fb.innerHTML = "<span>Esse não combina com <strong>" + esc(step.pairs[sel][0]) + "</strong>. Tente outro.</span>"; }
+    };
+    defs.appendChild(d);
+  });
+}
+function renderSort(step, box) {
+  const items = shuffle(step.items); let k = 0, hits = 0;
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("people") + '</span><div><p class="eyebrow">Jogo de separar</p><h2>' + esc(step.title) + '</h2></div></div><div id="sbody" style="display:flex;flex-direction:column;gap:14px"></div></article>';
+  const body = box.querySelector("#sbody");
+  function show() {
+    const it = items[k];
+    body.innerHTML = '<p class="count">' + (k + 1) + ' de ' + items.length + '</p><div class="sortitem">' + esc(it.txt) + '</div><div class="bins">' + step.bins.map((b, i) => '<button class="bin" data-b="' + i + '">' + esc(b) + '</button>').join("") + '</div><div class="fb" id="fb" hidden></div>';
+    body.querySelectorAll(".bin").forEach(btn => btn.onclick = () => {
+      body.querySelectorAll(".bin").forEach(x => x.disabled = true);
+      const ok = +btn.dataset.b === it.b; if (ok) { hits++; sfx.win(); confetti(18); } else sfx.oops();
+      const fb = body.querySelector("#fb"); fb.hidden = false; fb.className = "fb " + (ok ? "ok" : "almost");
+      fb.innerHTML = '<b>' + (ok ? pick(YES) : "Quase!") + '</b><span>' + (ok ? "" : "O certo é: <strong>" + esc(step.bins[it.b]) + "</strong>. ") + esc(it.why) + '</span>';
+      const c = document.createElement("button"); c.className = "btn sec big"; c.textContent = k < items.length - 1 ? "Continuar" : "Ver resultado";
+      c.onclick = () => { k++; if (k < items.length) show(); else end(); };
+      body.appendChild(c); c.focus();
+    });
+  }
+  function end() { body.innerHTML = '<div class="fb ok"><b>Jogo completo!</b><span>Você acertou ' + hits + ' de ' + items.length + '.</span></div>'; stepDone(step, true); }
+  show();
+}
+
+function norm(s) { return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+function renderWrite(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("pencil") + '</span><div><p class="eyebrow">Treino de resposta escrita</p><h2>' + esc(step.q) + '</h2></div></div>' +
+    '<p>Escreva com as suas palavras, como na prova. Não precisa ficar perfeito.</p>' +
+    '<textarea class="wbox" id="wa-' + step.id + '" placeholder="Escreva aqui a sua resposta"></textarea>' +
+    '<button class="btn sec big" id="wcheck">Ver a resposta da Clio</button><div id="wres" style="display:flex;flex-direction:column;gap:12px"></div></article>';
+  const ta = box.querySelector("textarea"), res = box.querySelector("#wres");
+  ta.value = st.writes[step.id] || "";
+  ta.oninput = () => { st.writes[step.id] = ta.value; save(); };
+  box.querySelector("#wcheck").onclick = () => {
+    const txt = norm(ta.value);
+    if (txt.trim().split(/\s+/).length < 3) { res.innerHTML = '<div class="fb almost"><span>Escreva pelo menos uma frase antes de ver a resposta.</span></div>'; return; }
+    const got = step.ideas.map(i => i.w.some(k => txt.includes(norm(k))));
+    const n = got.filter(Boolean).length, all = n === got.length;
+    res.innerHTML = '<div class="fb ' + (all ? 'ok' : 'almost') + '"><b>' + (all ? 'Resposta completa!' : 'Boa! Você lembrou de ' + n + ' de ' + got.length + ' ideias.') + '</b><span>' + (all ? 'Você colocou todas as ideias importantes.' : 'Veja abaixo o que faltou e leia a resposta da Clio.') + '</span></div>' +
+      '<ul class="ideas">' + step.ideas.map((i, k) => '<li class="' + (got[k] ? 'got' : '') + '"><span>' + (got[k] ? '+' : '?') + '</span>' + (got[k] ? 'Você escreveu: ' : 'Faltou: ') + esc(i.l) + '</li>').join("") + '</ul>' +
+      '<div class="dica">' + icon("idea") + '<p><b>Resposta da Clio:</b> ' + esc(step.model) + '</p></div>';
+    if (all) celebrate();
+    stepDone(step, true);
+    if (st.settings.autoVoice) speak(step.key + "-ex");
+  };
+}
+function renderVideo(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("play") + '</span><div><p class="eyebrow">Vídeo de abertura</p><h2>' + esc(S.w.title) + '</h2></div></div>' +
+    '<video class="vplayer" src="' + step.src + '" controls playsinline preload="metadata"></video><p class="note">Assista e depois toque em Próximo.</p></article>';
+}
+
+/* ---------- Corrida de obstáculos: cada acerto faz aparecer a próxima plataforma ---------- */
+function openObby(wid) {
+  stopSpeak(); S = null; E = null; video = false;
+  const w = W.find(x => x.id === wid);
+  const qs = shuffle(w.steps.filter(s => s.t === "quiz")).slice(0, 8);
+  if (!qs.length) { home(); return; }
+  O = { w, queue: qs, total: qs.length, plat: 0, tries: 0 };
+  renderObby();
+}
+function obbyTrack() {
+  const n = O.total + 1; let h = '<div class="obby" id="obby"><div class="track">';
+  for (let i = 0; i < n; i++) h += '<div class="plat' + (i === n - 1 ? ' goal' : '') + (i > O.plat + 1 ? ' far' : (i === O.plat + 1 ? ' next' : '')) + '"><span></span></div>';
+  h += '</div>' + FLAG.replace('class="flag"', 'class="goalflag"') + '<span class="runner" id="runner" style="left:' + ((O.plat + .5) / n * 100) + '%">' + avSvg(P.av, "idle") + '</span><span class="lava"></span></div>';
+  return h;
+}
+function renderObby() {
+  const q = O.queue[0];
+  const box = shell(O.w.cls, "Corrida · " + O.w.title, O.plat / O.total, O.plat + "/" + O.total);
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  bBack.textContent = "Mapa"; bBack.onclick = home; bNext.disabled = true; bNext.textContent = "Continuar";
+  if (bSpeak) { if (!AUDIO.has(q.key)) bSpeak.style.visibility = "hidden"; bSpeak.onclick = () => speak(q.key); }
+  box.innerHTML = obbyTrack() + '<div id="oq" style="margin-top:14px"></div>';
+  renderQuiz(q, box.querySelector("#oq"), ok => {
+    O.tries++;
+    if (ok) {
+      O.plat++; O.queue.shift(); gain(3);
+      const ob = document.getElementById("obby"), n = O.total + 1;
+      ob.querySelectorAll(".plat").forEach((p, i) => { p.classList.toggle("far", i > O.plat + 1); p.classList.toggle("next", i === O.plat + 1); });
+      const r = document.getElementById("runner"); r.style.left = ((O.plat + .5) / n * 100) + "%";
+      const av = r.querySelector(".av"); av.classList.remove("idle"); void av.getBoundingClientRect(); av.classList.add("jump"); sfx.jump();
+      document.getElementById("starsTop").innerHTML = icon("star") + O.plat + "/" + O.total;
+    } else { miss(); O.queue.push(O.queue.shift()); }
+    bNext.disabled = false;
+  }, "Corrida: plataforma " + (O.plat + 1) + " de " + O.total);
+  if (st.settings.autoVoice) speak(q.key);
+  bNext.onclick = () => { stopSpeak(); if (!O.queue.length) obbyEnd(); else renderObby(); };
+}
+function obbyEnd() {
+  const firstRun = !st.obby[O.w.id]; st.obby[O.w.id] = true; save();
+  const box = shell(O.w.cls, "Corrida completa", 1, O.total + "/" + O.total);
+  box.innerHTML = '<div class="card center"><div class="endav">' + avSvg(P.av, "dance") + '</div><p class="eyebrow">Você chegou à bandeira</p><h2>Corrida completa, ' + esc(P.name) + '!</h2>' +
+    '<p class="bigscore">' + O.total + ' plataformas</p><p>' + (O.tries === O.total ? 'Sem nenhum erro!' : 'Você respondeu ' + O.tries + ' vezes até chegar.') + '</p></div>';
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  if (bSpeak) bSpeak.style.visibility = "hidden";
+  bBack.textContent = "Mapa"; bBack.onclick = home; bNext.disabled = false; bNext.textContent = "Correr de novo"; const wid = O.w.id; bNext.onclick = () => openObby(wid);
+  sfx.fanfare(); confetti(80);
+  setTimeout(() => gain(firstRun ? 40 : 10, box.querySelector(".bigscore")), 500);
+  badge("corrida");
+}
+
+/* ---------- Pintar ---------- */
+function picOpen(p) { return !p.need || !!(st.worlds[p.need] || {}).done; }
+function picSvg(p, live) {
+  const fills = st.paint[p.id] || {};
+  const body = p.svg.replace(/data-r="([^"]+)"/g, (m, r) => m + ' fill="' + (fills[r] || "#FFFFFF") + '"' + (live ? '' : ' stroke="#2A2A2A" stroke-width="2.5"'));
+  return '<svg ' + (live ? 'class="paint" id="paint" ' : '') + 'viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' + esc(p.title) + '">' + body + '</svg>';
+}
+function openPaint(p) {
+  stopSpeak(); S = null; O = null; video = false;
+  let color = COLORS[2]; const hist = [];
+  const box = shell("w-x", "Pintar: " + p.title, 1, "");
+  document.getElementById("starsTop").hidden = true;
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  if (bSpeak) bSpeak.style.visibility = "hidden";
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("brush") + '</span><div><p class="eyebrow">Quadro para pintar</p><h2>' + esc(p.title) + '</h2></div></div>' +
+    '<p>' + esc(p.fact) + '</p><p class="note">Escolha uma cor e toque nas partes do desenho.</p>' +
+    '<div style="position:relative" id="pwrap">' + picSvg(p, true) + '</div><div class="colors" id="cols">' + COLORS.map(c => '<button class="col' + (c === color ? ' sel' : '') + '" style="background:' + c + '" data-c="' + c + '" aria-label="Cor ' + c + '"></button>').join("") + '</div>' +
+    '<div class="row"><button class="btn sec" id="undo">Desfazer</button><button class="btn sec" id="clear">Apagar tudo</button></div><p class="note" id="clearmsg" hidden></p></article>';
+  box.querySelectorAll(".col").forEach(b => b.onclick = () => { color = b.dataset.c; sfx.pop(); box.querySelectorAll(".col").forEach(x => x.classList.toggle("sel", x === b)); });
+  const svg = box.querySelector("#paint"), wrap = box.querySelector("#pwrap");
+  const regions = new Set(Array.from(svg.querySelectorAll("[data-r]")).map(el => el.getAttribute("data-r")));
+  svg.addEventListener("click", e => {
+    const el = e.target.closest("[data-r]"); if (!el) return;
+    const r = el.getAttribute("data-r"); const f = st.paint[p.id] = st.paint[p.id] || {};
+    hist.push([r, f[r] || "#FFFFFF"]); f[r] = color; el.setAttribute("fill", color); save(); sfx.pop();
+    const wr = wrap.getBoundingClientRect(); burst(wrap, (e.clientX - wr.left) + "px", (e.clientY - wr.top) + "px", 6, color);
+    if (Array.from(regions).every(k => f[k] && f[k] !== "#FFFFFF")) badge("pintora");
+  });
+  box.querySelector("#undo").onclick = () => { const h = hist.pop(); if (!h) return; st.paint[p.id][h[0]] = h[1]; svg.querySelector('[data-r="' + h[0] + '"]').setAttribute("fill", h[1]); save(); };
+  let armed = false;
+  box.querySelector("#clear").onclick = () => {
+    const m = box.querySelector("#clearmsg");
+    if (!armed) { armed = true; m.hidden = false; m.textContent = "Toque de novo em \"Apagar tudo\" para confirmar."; return; }
+    st.paint[p.id] = {}; save(); openPaint(p);
+  };
+  bBack.style.visibility = "visible"; bBack.disabled = false; bBack.textContent = "Mapa"; bBack.onclick = home;
+  const nxt = W.find(w => !(st.worlds[w.id] || {}).done);
+  bNext.disabled = false; bNext.textContent = nxt ? "Ir para a Ilha " + nxt.n : "Ir para o castelo";
+  bNext.onclick = () => nxt ? openWorld(nxt.id) : openExam();
+}
+
+/* ---------- Prova simulada (o castelo) ---------- */
+function openExam() {
+  stopSpeak(); S = null; O = null; video = false;
+  const qs = [];
+  // Sempre 15 questões (a nota, a medalha e o castelo contam "de 15"), repartidas entre as ilhas.
+  const porIlha = Math.ceil(15 / W.length);
+  W.forEach(w => { shuffle(w.steps.filter(s => s.t === "quiz")).slice(0, porIlha).forEach(q => qs.push(q)); });
+  E = { qs: shuffle(qs).slice(0, 15), i: 0, score: 0, wrong: [], answered: false };
+  renderExam();
+}
+function renderExam() {
+  const q = E.qs[E.i];
+  const box = shell("w-x", "Prova simulada", (E.i + 1) / E.qs.length, E.score + " acertos");
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  bBack.style.visibility = "hidden"; bNext.disabled = true;
+  bNext.textContent = E.i === E.qs.length - 1 ? "Ver minha nota" : "Próxima";
+  if (bSpeak) { if (!AUDIO.has(q.key)) bSpeak.style.visibility = "hidden"; bSpeak.onclick = () => speak(q.key); }
+  const wtitle = W.find(w => w.steps.includes(q)).title;
+  renderQuiz(q, box, ok => {
+    if (ok) E.score++; else { miss(); E.wrong.push(q); st.misses[q.id] = (st.misses[q.id] || 0) + 1; save(); }
+    document.getElementById("starsTop").innerHTML = icon("star") + E.score + " acertos";
+    bNext.disabled = false;
+  }, "Questão " + (E.i + 1) + " de " + E.qs.length + " · " + wtitle);
+  if (st.settings.autoVoice) speak(q.key);
+  bNext.onclick = () => { stopSpeak(); if (E.i < E.qs.length - 1) { E.i++; renderExam(); } else examEnd(); };
+}
+function examEnd() {
+  const n = E.qs.length, s = E.score;
+  if (st.examBest == null || s > st.examBest) { st.examBest = s; }
+  save();
+  const msg = s >= 13 ? "Você está prontíssima para a prova!" : s >= 10 ? "Muito bom! Revise as que errou e faça de novo." : "Você está aprendendo. Revise os resumos e tente de novo.";
+  const box = shell("w-x", "Prova simulada", 1, s + " acertos");
+  box.innerHTML = '<div class="card center"><div class="endav">' + avSvg(P.av, s >= 10 ? "dance" : "idle") + '</div><p class="eyebrow">Sua nota</p><p class="bigscore">' + s + ' de ' + n + '</p><h2>' + msg + '</h2></div>' +
+    (E.wrong.length ? '<div class="card" style="margin-top:16px"><h2>Para revisar</h2><ol class="ul">' + E.wrong.map(q => '<li>' + esc(q.q) + '<br><strong>' + esc(q.o[q.a]) + '</strong></li>').join("") + '</ol></div>' : '');
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack");
+  bBack.style.visibility = "visible"; bBack.textContent = "Mapa"; bBack.onclick = home;
+  bNext.disabled = false; bNext.textContent = "Fazer outra prova"; bNext.onclick = openExam;
+  if (s >= 10) { sfx.fanfare(); confetti(90); }
+  setTimeout(() => gain(s * 2, box.querySelector(".bigscore")), 500);
+  if (s >= 13) badge("prova");
+}
+
+home();
+})();
+</script>
+</html>
