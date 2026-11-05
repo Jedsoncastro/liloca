@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Missão Geografia 3T</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: uma tela por vez, sempre a mesma estrutura (topo fixo, cartão no centro, botões embaixo). Previsível para TDAH/autismo. */
+:root {
+  --bg: #EAF1F8; --surface: #FFFFFF; --ink: #1C2A44; --muted: #56647F; --line: #D3DFEC;
+  --w1: #2D6BD3; --w1s: #DCE8FB; --w2: #17866A; --w2s: #D5F0E7; --w3: #8048CC; --w3s: #EBDFFA; --w4: #C2562B; --w4s: #FBE2D6;
+  --sun: #E9A919; --suns: #FCF0CF; --ok: #198F52; --oks: #DAF3E5; --almost: #C5701C; --almosts: #FBE8D3;
+  --owl: #7C5A3C; --owlb: #E7CFA8;
+  --display: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", Verdana, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111A2B; --surface: #1A2540; --ink: #EAF0FA; --muted: #A6B2CA; --line: #2B3A58;
+  --w1: #78A6F4; --w1s: #22355A; --w2: #52C6A0; --w2s: #173D36; --w3: #B48DF2; --w3s: #33274F; --w4: #F0936A; --w4s: #45281C;
+  --sun: #F4C455; --suns: #3D3320; --ok: #55CB8D; --oks: #173B2A; --almost: #EFA25A; --almosts: #43301D;
+  --owl: #B78D63; --owlb: #EAD5B3; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #111A2B; --surface: #1A2540; --ink: #EAF0FA; --muted: #A6B2CA; --line: #2B3A58;
+  --w1: #78A6F4; --w1s: #22355A; --w2: #52C6A0; --w2s: #173D36; --w3: #B48DF2; --w3s: #33274F; --w4: #F0936A; --w4s: #45281C;
+  --sun: #F4C455; --suns: #3D3320; --ok: #55CB8D; --oks: #173B2A; --almost: #EFA25A; --almosts: #43301D;
+  --owl: #B78D63; --owlb: #EAD5B3; color-scheme: dark }
+
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 19px; line-height: 1.55; }
+* { box-sizing: border-box; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; margin: 0; text-wrap: balance; }
+strong { font-weight: 700; }
+#app { min-height: 100%; display: flex; flex-direction: column; }
+.wrap { width: 100%; max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+.w-1 { --c: var(--w1); --cs: var(--w1s); }
+.w-2 { --c: var(--w2); --cs: var(--w2s); }
+.w-3 { --c: var(--w3); --cs: var(--w3s); }
+.w-4 { --c: var(--w4); --cs: var(--w4s); }
+.w-x { --c: var(--sun); --cs: var(--suns); }
+
+/* ---------- Início ---------- */
+.home { padding-block: 24px 40px; display: flex; flex-direction: column; gap: 22px; }
+.hello { display: flex; gap: 16px; align-items: center; }
+.owl { width: 92px; height: 92px; flex: none; }
+.hello h1 { font-size: 2rem; }
+.hello p { margin: 4px 0 0; color: var(--muted); }
+.namebox { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.namebox input { font: inherit; padding: 10px 14px; border-radius: 12px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); min-width: 0; flex: 1 1 180px; }
+.worlds { display: grid; gap: 14px; }
+.wcard { display: grid; grid-template-columns: 64px 1fr; gap: 14px; align-items: center; text-align: left; width: 100%; padding: 16px; border-radius: 20px; border: 2px solid var(--line); background: var(--surface); }
+.wcard:hover { border-color: var(--c); }
+.wcard .ic { width: 64px; height: 64px; border-radius: 18px; background: var(--cs); color: var(--c); display: grid; place-items: center; }
+.wcard .ic svg { width: 36px; height: 36px; }
+.wcard .k { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c); font-weight: 700; }
+.wcard h2 { font-size: 1.45rem; }
+.wcard .sub { color: var(--muted); font-size: .95rem; margin: 2px 0 6px; }
+.meta { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; font-size: .9rem; }
+.pill { padding: 2px 10px; border-radius: 99px; background: var(--cs); color: var(--c); font-weight: 700; }
+.pill.done { background: var(--oks); color: var(--ok); }
+.starsmall { display: inline-flex; gap: 4px; align-items: center; color: var(--muted); }
+.starsmall svg { width: 18px; height: 18px; color: var(--sun); fill: var(--sun); }
+.panel { background: var(--surface); border: 2px solid var(--line); border-radius: 20px; padding: 16px; }
+.panel h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.toggle { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); }
+.toggle:first-of-type { border-top: 0; }
+.sw { width: 58px; height: 34px; border-radius: 99px; border: 0; background: var(--line); position: relative; flex: none; }
+.sw::after { content: ""; position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%; background: var(--surface); transition: left .2s; }
+.sw[aria-checked="true"] { background: var(--ok); }
+.sw[aria-checked="true"]::after { left: 28px; }
+details.parents summary { cursor: pointer; font-family: var(--display); font-weight: 700; font-size: 1.15rem; }
+.misslist { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: .95rem; }
+.misslist small { color: var(--muted); display: block; }
+
+/* ---------- Mundo ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.topin { display: flex; align-items: center; gap: 10px; padding-block: 10px; flex-wrap: wrap; }
+.ghost { border: 2px solid var(--line); background: var(--surface); border-radius: 12px; padding: 6px 12px; font-weight: 700; font-size: .95rem; }
+.ghost.on { border-color: var(--c); background: var(--cs); color: var(--c); }
+.ttl { font-family: var(--display); font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar { width: 100%; height: 10px; border-radius: 99px; background: var(--line); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--c); border-radius: 99px; transition: width .4s; }
+.stage { flex: 1; padding-block: 22px 120px; }
+.card { background: var(--surface); border: 2px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 14px; animation: in .35s ease-out; }
+@keyframes in { from { transform: translateY(10px); opacity: .4; } to { transform: none; opacity: 1; } }
+.cardhead { display: flex; gap: 14px; align-items: center; }
+.bigic { width: 72px; height: 72px; flex: none; border-radius: 20px; background: var(--cs); color: var(--c); display: grid; place-items: center; }
+.bigic svg { width: 42px; height: 42px; }
+.eyebrow { margin: 0; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--c); font-weight: 700; }
+.card h2 { font-size: 1.75rem; }
+.card p { margin: 0; }
+.txt { display: flex; flex-direction: column; gap: 10px; font-size: 1.1rem; }
+.txt strong { color: var(--c); }
+.dica { display: flex; gap: 12px; align-items: flex-start; background: var(--suns); border-radius: 16px; padding: 12px 14px; }
+.dica svg { width: 28px; height: 28px; flex: none; color: var(--sun); }
+.dica b { font-family: var(--display); }
+.ul { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+
+.opts { display: grid; gap: 10px; }
+.opt { text-align: left; padding: 14px 16px; border-radius: 16px; border: 2px solid var(--line); background: var(--surface); font-size: 1.05rem; min-height: 58px; display: flex; gap: 12px; align-items: center; }
+.opt .l { width: 32px; height: 32px; flex: none; border-radius: 50%; background: var(--cs); color: var(--c); display: grid; place-items: center; font-weight: 700; font-family: var(--display); }
+.opt:hover:not([disabled]) { border-color: var(--c); }
+.opt[disabled] { cursor: default; }
+.opt.right { border-color: var(--ok); background: var(--oks); }
+.opt.right .l { background: var(--ok); color: var(--surface); }
+.opt.miss { border-color: var(--almost); background: var(--almosts); }
+.opt.fade { opacity: .55; }
+.fb { border-radius: 16px; padding: 12px 14px; font-size: 1.02rem; display: flex; flex-direction: column; gap: 4px; }
+.fb.ok { background: var(--oks); }
+.fb.almost { background: var(--almosts); }
+.fb b { font-family: var(--display); font-size: 1.15rem; }
+
+.line { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 4px solid var(--c); display: grid; gap: 8px; min-height: 20px; }
+.line li { display: flex; gap: 12px; align-items: baseline; background: var(--cs); border-radius: 12px; padding: 8px 12px; position: relative; animation: in .3s ease-out; }
+.line li::before { content: ""; position: absolute; left: -29px; top: 14px; width: 14px; height: 14px; border-radius: 50%; background: var(--c); border: 3px solid var(--surface); }
+.yr { font-family: var(--display); font-weight: 800; color: var(--c); min-width: 3.2em; font-variant-numeric: tabular-nums; }
+.pool { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { padding: 10px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); font-size: 1rem; text-align: left; min-height: 50px; }
+.chip.sel { border-color: var(--c); background: var(--cs); font-weight: 700; }
+.chip.hint { border-color: var(--sun); border-style: dashed; }
+.chip.ok { border-color: var(--ok); background: var(--oks); cursor: default; }
+.defs { display: grid; gap: 10px; }
+.shake { animation: shake .35s; }
+@keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+.sortitem { font-family: var(--display); font-size: 1.35rem; font-weight: 700; padding: 16px; border-radius: 16px; background: var(--cs); text-align: center; }
+.bins { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.bin { padding: 16px 10px; border-radius: 16px; border: 2px solid var(--c); background: var(--surface); font-weight: 700; font-size: 1.05rem; min-height: 64px; }
+.count { color: var(--muted); font-size: .95rem; }
+.badge { width: 120px; height: 120px; margin: 0 auto; border-radius: 50%; background: var(--suns); color: var(--sun); display: grid; place-items: center; }
+.badge svg { width: 70px; height: 70px; fill: var(--sun); }
+.center { text-align: center; align-items: center; }
+.bigscore { font-family: var(--display); font-size: 3rem; font-weight: 800; color: var(--c); line-height: 1; }
+
+.foot { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--bg); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.footin { display: flex; gap: 10px; padding-block: 12px; }
+.btn { border: 0; border-radius: 16px; padding: 12px 18px; font-family: var(--display); font-weight: 700; font-size: 1.15rem; min-height: 56px; }
+.btn.pri { background: var(--c); color: var(--surface); flex: 1; }
+.btn.pri[disabled] { background: var(--line); color: var(--muted); cursor: not-allowed; }
+.btn.sec { background: var(--surface); border: 2px solid var(--line); }
+.btn.big { width: 100%; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; }
+.row .btn { flex: 1 1 200px; }
+.note { color: var(--muted); font-size: .9rem; }
+
+/* ---------- Pintar ---------- */
+.gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.gitem { border: 2px solid var(--line); background: var(--surface); border-radius: 18px; padding: 10px; text-align: left; display: flex; flex-direction: column; gap: 6px; }
+.gitem svg { width: 100%; height: auto; border-radius: 10px; background: #FFFFFF; }
+.gitem.lock { opacity: .55; cursor: default; }
+.gitem b { font-family: var(--display); font-size: 1rem; }
+.gitem small { color: var(--muted); font-size: .82rem; line-height: 1.3; }
+.paint { width: 100%; max-width: 560px; margin: 0 auto; display: block; border-radius: 16px; border: 2px solid var(--line); background: #FFFFFF; touch-action: manipulation; }
+.paint [data-r] { cursor: pointer; stroke: #2A2A2A; stroke-width: 2.5; stroke-linejoin: round; }
+.colors { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.col { width: 46px; height: 46px; border-radius: 50%; border: 3px solid var(--surface); box-shadow: 0 0 0 2px var(--line); }
+.col.sel { box-shadow: 0 0 0 4px var(--ink); }
+/* ---------- Resposta escrita ---------- */
+.wbox { width: 100%; min-height: 130px; font: inherit; font-size: 1.05rem; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--line); background: var(--surface); color: var(--ink); resize: vertical; }
+.ideas { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.ideas li { display: flex; gap: 10px; align-items: center; padding: 8px 12px; border-radius: 12px; background: var(--almosts); }
+.ideas li.got { background: var(--oks); }
+.ideas li span { font-weight: 700; width: 1.4em; text-align: center; }
+.confete { position: fixed; inset: 0; pointer-events: none; z-index: 50; overflow: hidden; }
+.confete i { position: absolute; top: 35%; width: 10px; height: 14px; border-radius: 3px; animation: conf 1.3s ease-out forwards; }
+@keyframes conf { 0% { transform: translate(0, 0) rotate(0); opacity: 1; } 100% { transform: translate(var(--dx), 60vh) rotate(540deg); opacity: 0; } }
+.vplayer { width: 100%; border-radius: 16px; background: #000000; display: block; }
+/* ---------- Cenas desenhadas ---------- */
+.scene { position: relative; border-radius: 16px; overflow: hidden; line-height: 0; }
+.scene img { width: 100%; height: auto; display: block; }
+.hot { position: absolute; border: 0; background: transparent; border-radius: 14px; padding: 0; }
+.hot::after { content: ""; position: absolute; left: 50%; top: 50%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--sun); border: 3px solid #FFFFFF; box-shadow: 0 2px 6px rgba(0,0,0,.3); animation: pulse 1.6s infinite; }
+.hot.seen::after { background: var(--ok); animation: none; }
+.hot.on { outline: 4px solid var(--sun); outline-offset: -4px; background: rgba(255,255,255,.18); }
+@keyframes pulse { 50% { transform: scale(1.25); } }
+.chal .hot::after { background: #FFFFFF; border-color: var(--c); animation: none; }
+.chal .hot.pick::after { background: var(--c); border-color: #FFFFFF; }
+.chal .hot.right::after { background: var(--ok); border-color: #FFFFFF; }
+.chal .hot.right { outline: 4px solid var(--ok); outline-offset: -4px; }
+.chal .hot.wrong::after { background: #E07B22; border-color: #FFFFFF; }
+.chal .hot.wrong { outline: 4px solid #E07B22; outline-offset: -4px; }
+.chal .hot.missed::after { background: var(--sun); animation: pulse 1s infinite; }
+.chal .hot.missed { outline: 4px dashed var(--sun); outline-offset: -4px; }
+.slabel { min-height: 60px; border-radius: 16px; background: var(--suns); padding: 12px 14px; font-size: 1.08rem; }
+.slabel b { font-family: var(--display); }
+.school { border-left: 5px solid var(--c); background: var(--cs); border-radius: 0 16px 16px 0; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; font-size: 1.12rem; }
+.school strong { color: var(--c); }
+.school .tag { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); }
+.q { font-family: var(--display); font-weight: 700; font-size: 1.2rem; }
+@media (max-width: 560px) { .hot::after { width: 18px; height: 18px; margin: -9px 0 0 -9px; border-width: 2px; } }
+html.calm .hot::after { animation: none; }
+html.calm .card, html.calm .line li { animation: none; }
+html.calm .shake { animation: none; }
+html.calm .bar > i, html.calm .sw::after { transition: none; }
+@media (prefers-reduced-motion: reduce) { .card, .line li, .shake { animation: none !important; } .bar > i, .sw::after { transition: none; } }
+@media (max-width: 480px) { body { font-size: 18px; } .card { padding: 18px; } .card h2 { font-size: 1.5rem; } .bigic { width: 60px; height: 60px; } .owl { width: 72px; height: 72px; } .hello h1 { font-size: 1.6rem; } }
+</style>
+
+<div id="app"></div>
+
+<script>
+(function () {
+"use strict";
+
+/* ---------- Ícones ---------- */
+const IC = {
+  vote: '<rect x="4" y="11" width="16" height="9" rx="1.5"/><path d="M8 11V5h8v6"/><path d="M10 8h4"/><path d="M7 15h10"/>',
+  crown: '<path d="M3 17l2-10 5 5 2-7 2 7 5-5 2 10z"/><path d="M5 20h14"/>',
+  people: '<circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M14 14.3c.6-.2 1.3-.3 2-.3 3.3 0 6 2.7 6 6"/>',
+  temple: '<path d="M3 9l9-5 9 5z"/><path d="M5 9v9M9 9v9M15 9v9M19 9v9"/><path d="M3 20h18"/>',
+  tower: '<path d="M5 21V7h3V4h2v3h4V4h2v3h3v14z"/><path d="M10 21v-5h4v5"/>',
+  scroll: '<path d="M7 3h11a2 2 0 0 1 2 2v2h-4"/><path d="M16 5v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2h10"/><path d="M8 8h5M8 12h5"/>',
+  ship: '<path d="M3 16l2 4h14l2-4z"/><path d="M12 3v13"/><path d="M12 4l6 9h-6"/>',
+  chain: '<path d="M9 7H7a5 5 0 0 0 0 10h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><path d="M12 4v3M12 17v3"/>',
+  house: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  flag: '<path d="M5 21V4"/><path d="M5 4h12l-2 4 2 4H5"/>',
+  scale: '<path d="M12 4v16"/><path d="M7 20h10"/><path d="M4 8h16"/><path d="M6 8l-3 6a3 3 0 0 0 6 0z"/><path d="M18 8l-3 6a3 3 0 0 0 6 0z"/>',
+  book: '<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/>',
+  access: '<circle cx="12" cy="4.5" r="1.8"/><path d="M12 7v6h5l2 5"/><path d="M8.5 11a5 5 0 1 0 6.5 6"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+  star: '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>',
+  heart: '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>',
+  calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  idea: '<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+  puzzle: '<path d="M4 8h4a2 2 0 1 1 4 0h4v4a2 2 0 1 1 0 4v4H4z"/>',
+  cross: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 7v10M7 12h10"/>',
+  brush: '<path d="M14 4l6 6-8 8-6-6z"/><path d="M6 12l-2 6 6-2"/>',
+  pencil: '<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>',
+  play: '<path d="M7 4l13 8-13 8z"/>'
+};
+function icon(n) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (IC[n] || IC.star) + '</svg>'; }
+const OWL = '<svg class="owl" viewBox="0 0 100 100" aria-hidden="true"><path d="M20 32 L28 10 L42 25 Q50 21 58 25 L72 10 L80 32 Q89 47 84 67 Q78 93 50 95 Q22 93 16 67 Q11 47 20 32Z" fill="var(--owl)"/><ellipse cx="50" cy="72" rx="20" ry="18" fill="var(--owlb)"/><path d="M38 66q3 3 6 0M47 72q3 3 6 0M56 66q3 3 6 0" stroke="var(--owl)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="37" cy="45" r="12.5" fill="var(--surface)"/><circle cx="63" cy="45" r="12.5" fill="var(--surface)"/><circle cx="38" cy="46" r="6" fill="#1C2A44"/><circle cx="62" cy="46" r="6" fill="#1C2A44"/><circle cx="40" cy="44" r="2" fill="#FFFFFF"/><circle cx="64" cy="44" r="2" fill="#FFFFFF"/><path d="M45.5 55 L50 62 L54.5 55Z" fill="var(--sun)"/></svg>';
+
+/* ---------- Conteúdo (fiel ao material da escola) ---------- */
+/*DATA-START*/
+const SC = d => [
+  { t: "read", key: d.id + "-txt", img: d.img, eb: d.eb, title: d.title, school: d.school },
+  { t: "scene", id: d.id, key: "inst-scene", img: d.img, eb: d.eb, title: d.title, spots: d.spots, chal: d.chal }
+];
+// Dados da prova: META (título e matéria), W (mundos e telas) e PICS (quadros para pintar).
+// Geografia 3T - Maple Bear, Y5, U3 "Qualidade de Vida e Desenvolvimento Humano". Prova: 09/11/2026.
+// Os trechos de "school" saem do material-original.pdf. O motor monta o jogo com:
+//   node ~/.claude/skills/nenetica-liloca/scripts/montar-jogo.js <esta pasta>
+const META = { titulo: "Missão Geografia 3T", materia: "Geografia" };
+
+const W = [
+/* ===================== MUNDO 1 ===================== */
+{ id: "san", n: 1, cls: "w-1", ic: "heart", title: "Saneamento e saúde", sub: "Água potável, esgoto, lixo e qualidade de vida.", steps: [
+  ...SC({ id: "s-oque", img: "cenas/s-saneamento.jpg", eb: "Saneamento básico", title: "O que é saneamento básico",
+    school: ["**Saneamento básico** é um conjunto de medidas e ações que têm como objetivo **garantir a saúde e a qualidade de vida da população**, por meio do acesso a serviços de **água potável**, **coleta e tratamento de esgoto**, **coleta e destinação adequada de resíduos sólidos**, além de medidas de **controle de vetores** e de **promoção de higiene** e saneamento ambiental.","Quando se fala em saneamento básico, é comum associá-lo diretamente à saúde e à qualidade de vida da população, e com razão."],
+    spots: [
+      { x: 0, y: 35, w: 18, h: 23, t: "Água potável", d: "Água limpa, boa para beber, chegando pela torneira." },
+      { x: 13, y: 62, w: 27, h: 21, t: "Coleta de esgoto", d: "O cano leva embora a água suja da casa." },
+      { x: 33, y: 64, w: 37, h: 27, t: "Tratamento de esgoto", d: "Aqui a água suja é limpa antes de voltar para a natureza." },
+      { x: 40, y: 28, w: 35, h: 28, t: "Coleta de lixo", d: "O lixo é um resíduo sólido. O caminhão leva para o lugar certo." },
+      { x: 78, y: 18, w: 22, h: 35, t: "Controle de vetores", d: "Vetores são bichos que espalham doenças, como o mosquito. A caixa-d'água fica tampada." },
+      { x: 80, y: 58, w: 20, h: 35, t: "Higiene", d: "Lavar as mãos com água e sabão também protege a saúde." },
+      { x: 44, y: 2, w: 7, h: 12, t: "Clio", d: "Saneamento cuida da saúde de todo mundo!" } ],
+    chal: [ { q: "Toque onde chega a água potável.", ok: [0] }, { q: "Toque em TODOS os serviços que levam embora a sujeira: esgoto e lixo.", ok: [1, 2, 3] }, { q: "Toque no controle de vetores.", ok: [4] } ] }),
+  { t: "quiz", id: "s1", q: "Para que serve o saneamento básico?", o: ["Para garantir a saúde e a qualidade de vida da população", "Para deixar as ruas mais bonitas para os turistas", "Para fabricar água engarrafada"], a: 0, ex: "O saneamento básico existe para proteger a saúde e a qualidade de vida." },
+  ...SC({ id: "s-agua", img: "cenas/s-agua.jpg", eb: "Água potável", title: "Água limpa é saúde",
+    school: ["O acesso à **água potável** é um dos elementos centrais do saneamento básico, e é **essencial para a manutenção da saúde humana**.", "A falta de água potável pode levar a diversas doenças, como **diarreia, cólera e hepatite A**, além de agravar outras doenças já existentes."],
+    spots: [
+      { x: 9, y: 3, w: 28, h: 50, t: "Água potável", d: "Água limpa da torneira, boa para beber." },
+      { x: 36, y: 25, w: 14, h: 30, t: "Filtro", d: "O filtro ajuda a deixar a água ainda mais limpa." },
+      { x: 0, y: 50, w: 41, h: 42, t: "Crianças com saúde", d: "Quem bebe água potável fica protegido de muitas doenças." },
+      { x: 51, y: 25, w: 22, h: 67, t: "Água contaminada", d: "Água suja do córrego. Ela pode ter micróbios que causam doenças." },
+      { x: 73, y: 13, w: 27, h: 80, t: "Criança doente", d: "A água suja pode causar diarreia, cólera e hepatite A." },
+      { x: 43, y: 71, w: 14, h: 26, t: "Clio", d: "Água potável é essencial para a saúde!" } ],
+    chal: [ { q: "Toque na água contaminada.", ok: [3] }, { q: "Toque em quem ficou doente.", ok: [4] }, { q: "Toque na água potável da torneira.", ok: [0] } ] }),
+  { t: "quiz", id: "s2", q: "Quais doenças a falta de água potável pode causar, segundo o texto?", o: ["Diarreia, cólera e hepatite A", "Gripe, catapora e sarampo", "Dor de dente e miopia"], a: 0, ex: "O texto cita diarreia, cólera e hepatite A." },
+  ...SC({ id: "s-escassez", img: "cenas/s-escassez.jpg", eb: "Água potável", title: "Quando a água falta",
+    school: ["Além disso, a **escassez de água** pode gerar **conflitos e tensões sociais**, especialmente em regiões onde há **disputa por recursos hídricos**."],
+    spots: [
+      { x: 0, y: 31, w: 34, h: 69, t: "Fila com baldes", d: "Muita gente para pouca água. Todos esperam na única torneira." },
+      { x: 45, y: 68, w: 18, h: 29, t: "Chão seco", d: "A terra rachada mostra que faltou chuva e água." },
+      { x: 38, y: 21, w: 23, h: 39, t: "Caixa quase vazia", d: "Quase não tem água guardada." },
+      { x: 36, y: 56, w: 13, h: 38, t: "Torneira", d: "Uma só torneira para todo mundo." },
+      { x: 64, y: 30, w: 23, h: 13, t: "Rio seco", d: "O rio secou. Escassez quer dizer que falta." },
+      { x: 62, y: 40, w: 38, h: 44, t: "Disputa pela água", d: "Quando a água falta, as pessoas brigam por ela. Isso é um conflito." },
+      { x: 4, y: 2, w: 14, h: 19, t: "Clio", d: "Recursos hídricos quer dizer: a água que existe para usar." } ],
+    chal: [ { q: "Toque em quem está disputando a água.", ok: [5] }, { q: "Toque em TODOS os sinais de que falta água.", ok: [1, 2, 4] } ] }),
+  { t: "quiz", id: "s3", q: "O que a escassez (falta) de água pode gerar?", o: ["Conflitos e tensões sociais", "Mais chuva", "Festas na cidade"], a: 0, ex: "Onde há disputa pela água, podem surgir conflitos." },
+  ...SC({ id: "s-esgoto", img: "cenas/s-esgoto.jpg", eb: "Esgoto", title: "Coleta e tratamento de esgoto",
+    school: ["A **coleta e o tratamento de esgoto** também são elementos fundamentais do saneamento básico. A falta desses serviços pode levar ao **acúmulo de dejetos** em áreas urbanas e rurais, o que **favorece a proliferação de doenças**, além de gerar **poluição do solo e dos recursos hídricos**.", "De acordo com a **Organização Mundial da Saúde (OMS)**, a cada ano, **mais de 1,7 milhão de mortes** são causadas por doenças relacionadas à água contaminada e ao saneamento inadequado."],
+    spots: [
+      { x: 12, y: 30, w: 37, h: 24, t: "Esgoto a céu aberto", d: "A água suja corre pela rua. Isso espalha doenças." },
+      { x: 6, y: 42, w: 12, h: 18, t: "Esgoto no rio", d: "Sem tratamento, o esgoto vai direto para o rio." },
+      { x: 0, y: 58, w: 42, h: 42, t: "Rio poluído", d: "O esgoto e o lixo poluem a água. O peixe fica doente." },
+      { x: 71, y: 16, w: 29, h: 23, t: "Estação de tratamento", d: "Aqui o esgoto é limpo antes de voltar para a natureza." },
+      { x: 51, y: 42, w: 40, h: 10, t: "Cano de esgoto", d: "O cano debaixo da terra leva o esgoto até a estação." },
+      { x: 56, y: 57, w: 44, h: 43, t: "Rio limpo", d: "Com esgoto tratado, o rio fica limpo e os peixes felizes." },
+      { x: 42, y: 66, w: 14, h: 28, t: "Clio", d: "Esgoto tratado protege o solo, a água e as pessoas." } ],
+    chal: [ { q: "Toque no esgoto a céu aberto.", ok: [0] }, { q: "Toque onde o esgoto é tratado.", ok: [3] }, { q: "Toque no rio que ficou poluído.", ok: [2] } ] }),
+  { t: "quiz", id: "s4", q: "Segundo a OMS, quantas mortes por ano são causadas por doenças ligadas à água contaminada e ao saneamento inadequado?", o: ["Mais de 1,7 milhão", "Menos de cem", "Nenhuma"], a: 0, ex: "A OMS fala em mais de 1,7 milhão de mortes por ano." },
+  ...SC({ id: "s-lixo", img: "cenas/s-lixo.jpg", eb: "Resíduos sólidos", title: "O lixo no lugar certo",
+    school: ["A **coleta e a destinação adequada de resíduos sólidos** também são fundamentais para o saneamento básico e para a saúde pública.", "O **acúmulo de lixo** em vias públicas e áreas urbanas pode **gerar doenças**, além de **comprometer a qualidade do ar e da água**. A falta de coleta de resíduos sólidos pode levar ao surgimento de **lixões e aterros sanitários clandestinos**, que geram graves impactos ambientais e sociais."],
+    spots: [
+      { x: 0, y: 18, w: 49, h: 42, t: "Lixão", d: "Lixo jogado a céu aberto. Isso gera doenças e polui." },
+      { x: 16, y: 0, w: 26, h: 30, t: "Fumaça", d: "O lixo queimando estraga a qualidade do ar." },
+      { x: 2, y: 46, w: 16, h: 14, t: "Rato e moscas", d: "Eles vivem no lixo e espalham doenças." },
+      { x: 0, y: 60, w: 44, h: 40, t: "Água poluída", d: "O líquido sujo do lixo escorre e polui a água." },
+      { x: 54, y: 52, w: 46, h: 37, t: "Lixeiras de reciclagem", d: "Cada lixo na sua lixeira: destinação adequada." },
+      { x: 82, y: 16, w: 18, h: 25, t: "Coleta de lixo", d: "O caminhão recolhe os resíduos sólidos." },
+      { x: 43, y: 68, w: 13, h: 26, t: "Clio", d: "Resíduos sólidos é o nome do lixo na Geografia." } ],
+    chal: [ { q: "Toque no lixão.", ok: [0] }, { q: "Toque em TODOS os problemas que o lixão causa.", ok: [1, 2, 3] }, { q: "Toque onde o lixo vai para o lugar certo.", ok: [4] } ] }),
+  { t: "quiz", id: "s5", q: "O que são resíduos sólidos?", o: ["O lixo", "A água da chuva", "As pedras do rio"], a: 0, ex: "Resíduos sólidos é o nome do lixo." },
+  ...SC({ id: "s-qual", img: "cenas/s-qualidade.jpg", eb: "Qualidade de vida", title: "Saneamento e qualidade de vida",
+    school: ["Além desses aspectos, o saneamento básico também é fundamental para a **qualidade de vida** da população. A falta de acesso a serviços básicos de saneamento pode gerar **exclusão social e econômica**, além de **comprometer o desenvolvimento humano** e o **bem-estar** das pessoas.","Além disso, a falta de saneamento básico pode levar a um **aumento dos gastos públicos em saúde**, devido ao surgimento de doenças e agravos relacionados à falta de saneamento."],
+    spots: [
+      { x: 0, y: 17, w: 41, h: 41, t: "Posto de saúde cheio", d: "Sem saneamento, mais gente fica doente e precisa de atendimento." },
+      { x: 0, y: 46, w: 30, h: 43, t: "Atendimento", d: "A enfermeira cuida da criança. Cuidar das doenças custa caro." },
+      { x: 31, y: 35, w: 36, h: 46, t: "Dinheiro público", d: "O governo gasta mais dinheiro com saúde quando falta saneamento." },
+      { x: 69, y: 36, w: 27, h: 58, t: "Criança doente em casa", d: "Doente, ela perdeu a aula. Isso atrapalha o desenvolvimento." },
+      { x: 81, y: 20, w: 16, h: 15, t: "Ônibus da escola", d: "Ele foi embora sem ela." },
+      { x: 45, y: 11, w: 13, h: 25, t: "Clio", d: "Sem saneamento, todo mundo perde." } ],
+    chal: [ { q: "Toque no dinheiro público que vai para a saúde.", ok: [2] }, { q: "Toque em quem perdeu a aula porque ficou doente.", ok: [3] } ] }),
+  { t: "quiz", id: "s6", q: "O que acontece com os gastos públicos em saúde quando falta saneamento?", o: ["Aumentam, porque surgem mais doenças", "Diminuem, porque ninguém fica doente", "Ficam iguais"], a: 0, ex: "Mais doenças = mais gastos públicos em saúde." },
+  ...SC({ id: "s-pol", img: "cenas/s-politica.jpg", eb: "Quem resolve", title: "Políticas públicas e participação",
+    school: ["Para garantir a saúde e a qualidade de vida da população, é fundamental que o saneamento básico seja **priorizado pelos governos e pela sociedade** em geral.","É necessário investir em **políticas públicas** que garantam o **acesso universal** a serviços de água potável, coleta e tratamento de esgoto, coleta e destinação adequada de resíduos sólidos, além de medidas de promoção de higiene e saneamento ambiental.","É importante também que haja **transparência e participação social** na definição e execução dessas políticas, garantindo que as necessidades e demandas das comunidades sejam atendidas."],
+    spots: [
+      { x: 0, y: 29, w: 33, h: 29, t: "Governo", d: "O governo deve priorizar o saneamento e investir nele." },
+      { x: 35, y: 19, w: 30, h: 36, t: "Plano à vista de todos", d: "Mostrar o plano para todos é transparência." },
+      { x: 50, y: 48, w: 50, h: 52, t: "População participando", d: "Os moradores dão ideias e fazem perguntas: participação social." },
+      { x: 66, y: 28, w: 34, h: 24, t: "Obra de água e esgoto", d: "Política pública virando obra: canos novos para todos." },
+      { x: 46, y: 7, w: 9, h: 14, t: "Clio", d: "Acesso universal quer dizer: para todas as pessoas." } ],
+    chal: [ { q: "Toque no governo.", ok: [0] }, { q: "Toque na população participando.", ok: [2] }, { q: "Toque na obra de água e esgoto.", ok: [3] } ] }),
+  { t: "quiz", id: "s7", q: "Na escolha das políticas de saneamento, o texto diz que é importante haver...", o: ["Transparência e participação social", "Segredo e pressa", "Só a opinião de uma pessoa"], a: 0, ex: "Todos devem saber e poder participar das decisões." },
+  ...SC({ id: "s-rev", img: "cenas/s-revisao.jpg", eb: "Revisão", title: "Caça aos problemas na rua",
+    school: ["A falta de saneamento básico pode ser um **fator determinante para o surgimento e a disseminação de doenças**, além de gerar diversos **problemas ambientais e sociais**."],
+    spots: [
+      { x: 1, y: 40, w: 19, h: 25, t: "Água parada", d: "No pneu com água parada nascem mosquitos. Eles são vetores." },
+      { x: 19, y: 40, w: 24, h: 19, t: "Lixo espalhado", d: "Lixo na calçada atrai bichos e gera doenças." },
+      { x: 42, y: 37, w: 20, h: 33, t: "Esgoto a céu aberto", d: "Esgoto sem cano espalha doenças." },
+      { x: 62, y: 7, w: 11, h: 11, t: "Caixa-d'água tampada", d: "Tampada, não vira casa de mosquito." },
+      { x: 69, y: 35, w: 11, h: 22, t: "Lixeira tampada", d: "Lixo guardado no lugar certo." },
+      { x: 83, y: 27, w: 16, h: 37, t: "Lavando as mãos", d: "Higiene também faz parte do saneamento." },
+      { x: 42, y: 67, w: 14, h: 23, t: "Clio", d: "Você virou detetive do saneamento!" } ],
+    chal: [ { q: "Toque em TODOS os problemas de saneamento.", ok: [0, 1, 2] }, { q: "Agora toque em TODAS as coisas certas.", ok: [3, 4, 5] } ] }),
+  { t: "sort", id: "so-san", title: "É saneamento básico?", bins: ["Faz parte do saneamento", "Não faz parte"], items: [
+    { txt: "Água potável na torneira", b: 0, why: "Água potável é um dos serviços do saneamento." },
+    { txt: "Coleta e tratamento de esgoto", b: 0, why: "Esgoto faz parte do saneamento." },
+    { txt: "Coleta de lixo", b: 0, why: "Coleta e destinação de resíduos sólidos faz parte." },
+    { txt: "Controle de mosquitos (vetores)", b: 0, why: "Controle de vetores faz parte." },
+    { txt: "Construir um shopping", b: 1, why: "Shopping não é serviço de saneamento." },
+    { txt: "Comprar um celular novo", b: 1, why: "Celular não tem relação com saneamento." } ] },
+  { t: "match", id: "m-san", title: "Ligue cada palavra ao seu significado", pairs: [
+    ["Água potável", "Água limpa, boa para beber"],
+    ["Esgoto", "Água suja que sai das casas"],
+    ["Resíduos sólidos", "O lixo"],
+    ["Vetores", "Bichos que espalham doenças, como o mosquito"],
+    ["Escassez", "Quando falta alguma coisa"],
+    ["OMS", "Organização Mundial da Saúde"] ] },
+  { t: "write", id: "w-san1", q: "O que é saneamento básico? Cite os serviços que fazem parte dele.", model: "Saneamento básico é um conjunto de medidas e ações para garantir a saúde e a qualidade de vida da população. Fazem parte: água potável, coleta e tratamento de esgoto, coleta e destinação adequada do lixo (resíduos sólidos), controle de vetores e higiene.", ideas: [
+    { l: "Garante saúde e qualidade de vida", w: ["saude", "qualidade"] },
+    { l: "Água potável", w: ["agua"] },
+    { l: "Esgoto", w: ["esgoto"] },
+    { l: "Lixo (resíduos sólidos)", w: ["lixo", "residuo"] },
+    { l: "Controle de vetores ou higiene", w: ["vetor", "higiene", "mosquito"] } ] },
+  { t: "write", id: "w-san2", q: "Por que a falta de saneamento básico prejudica a saúde?", model: "Porque, sem água potável, sem esgoto tratado e sem coleta de lixo, surgem e se espalham doenças como diarreia, cólera e hepatite A. Também há poluição do solo, da água e do ar, e o governo gasta mais com saúde.", ideas: [
+    { l: "Surgem e se espalham doenças", w: ["doenc"] },
+    { l: "Cita uma doença (diarreia, cólera, hepatite A)", w: ["diarreia", "colera", "hepatite"] },
+    { l: "Poluição da água, do solo ou do ar", w: ["polui", "contamin"] } ] },
+  { t: "summary", title: "Resumo do Mundo 1", points: ["**Saneamento básico:** medidas para garantir **saúde e qualidade de vida**: água potável, esgoto, lixo, controle de vetores e higiene.", "**Sem água potável:** diarreia, cólera e hepatite A. A **escassez** de água gera **conflitos**.", "**Sem esgoto:** acúmulo de dejetos, doenças e poluição do solo e da água. **OMS:** mais de 1,7 milhão de mortes por ano.", "**Sem coleta de lixo (resíduos sólidos):** doenças, ar e água poluídos, **lixões**.", "Falta de saneamento = **exclusão social** e **mais gastos públicos em saúde**.", "**Solução:** políticas públicas, **acesso universal**, **transparência e participação social**."] }
+]},
+
+/* ===================== MUNDO 2 ===================== */
+{ id: "edu", n: 2, cls: "w-2", ic: "house", title: "Educação, moradia e segurança", sub: "Três pilares do bem-estar, ligados entre si.", steps: [
+  ...SC({ id: "e-tres", img: "cenas/e-tres.jpg", eb: "Três elementos", title: "Os três pilares",
+    school: ["A **educação**, a **moradia** e a **segurança** são três elementos fundamentais para o **desenvolvimento humano** e o **bem-estar** das pessoas.", "Cada um desses elementos tem um papel importante na formação de indivíduos e comunidades saudáveis e prósperas, e a **interconexão entre eles** pode impactar diretamente a **qualidade de vida** das pessoas."],
+    spots: [
+      { x: 6, y: 8, w: 82, h: 28, t: "Bem-estar", d: "O arco é a qualidade de vida. Os três pilares seguram ele." },
+      { x: 5, y: 33, w: 15, h: 59, t: "Educação", d: "Os livros: o pilar da educação." },
+      { x: 40, y: 24, w: 18, h: 22, t: "Moradia", d: "A casa: o pilar da moradia." },
+      { x: 66, y: 35, w: 16, h: 58, t: "Segurança", d: "O escudo: o pilar da segurança." },
+      { x: 76, y: 34, w: 22, h: 60, t: "Policial", d: "Ele ajuda na segurança pública." },
+      { x: 23, y: 42, w: 31, h: 55, t: "Família", d: "Com os três pilares, a família vive bem." },
+      { x: 68, y: 1, w: 12, h: 18, t: "Clio", d: "Se um pilar cair, o arco balança!" } ],
+    chal: [ { q: "Toque em TODOS os três pilares.", ok: [1, 2, 3] }, { q: "Toque no que os três pilares sustentam.", ok: [0] } ] }),
+  { t: "quiz", id: "e1", q: "Quais são os três elementos fundamentais para o desenvolvimento humano, neste texto?", o: ["Educação, moradia e segurança", "Futebol, música e dança", "Carro, celular e televisão"], a: 0, ex: "O texto fala de educação, moradia e segurança." },
+  ...SC({ id: "e-edu", img: "cenas/e-educacao.jpg", eb: "Educação", title: "A educação abre portas",
+    school: ["A **educação** é um dos **pilares da formação humana**, e é essencial para o desenvolvimento de habilidades e competências necessárias para a vida em sociedade.", "Uma educação de qualidade pode **abrir portas para oportunidades de trabalho** e contribuir para o **desenvolvimento econômico de um país**.", "Além disso, a educação tem um papel importante na promoção da **cidadania**, da **inclusão social** e do **respeito aos direitos humanos**."],
+    spots: [
+      { x: 5, y: 17, w: 19, h: 38, t: "Professora", d: "Ela ensina habilidades para a vida em sociedade." },
+      { x: 18, y: 46, w: 33, h: 36, t: "Estudantes", d: "Aprender juntos forma cidadãos." },
+      { x: 0, y: 51, w: 22, h: 49, t: "Inclusão", d: "Na escola há lugar para todos. Isso é inclusão social." },
+      { x: 49, y: 14, w: 15, h: 80, t: "Porta aberta", d: "A educação abre portas para o trabalho." },
+      { x: 64, y: 29, w: 36, h: 50, t: "Trabalhos", d: "Médica, engenheiro, agricultor, cientista: oportunidades de trabalho." },
+      { x: 53, y: 2, w: 10, h: 16, t: "Clio", d: "Estudar ajuda você e ajuda o país!" } ],
+    chal: [ { q: "Toque na porta que a educação abre.", ok: [3] }, { q: "Toque nas oportunidades de trabalho.", ok: [4] }, { q: "Toque onde a escola mostra inclusão.", ok: [2] } ] }),
+  { t: "quiz", id: "e2", q: "Uma educação de qualidade pode...", o: ["Abrir portas para oportunidades de trabalho", "Fazer a pessoa nunca mais precisar aprender", "Acabar com a necessidade de moradia"], a: 0, ex: "A educação abre portas para o trabalho e ajuda o país a se desenvolver." },
+  ...SC({ id: "e-mor", img: "cenas/e-moradia.jpg", eb: "Moradia", title: "Moradia adequada e precária",
+    school: ["A **moradia** é outro elemento fundamental para a qualidade de vida das pessoas. A **habitação adequada** pode impactar diretamente a **saúde, a segurança e a qualidade de vida** das pessoas, além de contribuir para a **redução da pobreza e da exclusão social**.", "A **falta de moradia** ou o **acesso precário** a habitações pode gerar **condições insalubres e perigosas**, que comprometem a saúde e a segurança das pessoas."],
+    spots: [
+      { x: 0, y: 0, w: 50, h: 70, t: "Moradia adequada", d: "Casa firme, protegida, com luz e água. Faz bem à saúde." },
+      { x: 22, y: 18, w: 6, h: 9, t: "Luz elétrica", d: "A casa adequada tem luz." },
+      { x: 40, y: 42, w: 7, h: 11, t: "Água encanada", d: "A casa adequada tem água na torneira." },
+      { x: 34, y: 25, w: 13, h: 19, t: "Janela", d: "Entra luz do sol e ar fresco." },
+      { x: 50, y: 7, w: 50, h: 75, t: "Moradia precária", d: "Casa improvisada e frágil. Faz mal à saúde e é perigosa." },
+      { x: 60, y: 10, w: 40, h: 20, t: "Teto com buracos", d: "A chuva entra. Fica úmido: condição insalubre." },
+      { x: 84, y: 66, w: 10, h: 13, t: "Balde", d: "Para aparar a goteira." },
+      { x: 43, y: 69, w: 14, h: 27, t: "Clio", d: "Insalubre quer dizer: que faz mal à saúde." } ],
+    chal: [ { q: "Toque na moradia adequada.", ok: [0] }, { q: "Toque em TODOS os sinais de moradia precária.", ok: [5, 6] }, { q: "Toque em TODAS as coisas boas que a casa adequada tem.", ok: [1, 2, 3] } ] }),
+  { t: "quiz", id: "e3", q: "O que quer dizer \"condições insalubres\"?", o: ["Condições que fazem mal à saúde", "Condições muito confortáveis", "Condições de festa"], a: 0, ex: "Insalubre é o que faz mal à saúde." },
+  ...SC({ id: "e-segp", img: "cenas/e-seg-publica.jpg", eb: "Segurança", title: "Segurança pública",
+    school: ["A segurança é um elemento essencial para a vida em sociedade, e engloba aspectos como a **segurança pública**, a **segurança alimentar** e a **segurança no trabalho**.","A **segurança pública** é uma **responsabilidade do Estado**, e é essencial para garantir a **proteção dos cidadãos** e a **manutenção da ordem social**.","Além disso, a **segurança** é fundamental para garantir a proteção das pessoas e das propriedades, o que pode contribuir para a formação de comunidades mais seguras e resilientes. A falta de segurança pode gerar medo e insegurança, o que pode prejudicar a qualidade de vida das pessoas e comprometer a convivência social."],
+    spots: [
+      { x: 0, y: 0, w: 41, h: 47, t: "Estado (governo)", d: "A segurança pública é responsabilidade do Estado." },
+      { x: 6, y: 40, w: 30, h: 55, t: "Cidadãos", d: "A vovó e as crianças atravessam a rua protegidas." },
+      { x: 38, y: 18, w: 22, h: 70, t: "Policial ajudando", d: "Ele protege os cidadãos." },
+      { x: 55, y: 36, w: 45, h: 32, t: "Praça segura", d: "Com segurança, as famílias usam a praça com tranquilidade." },
+      { x: 89, y: 1, w: 9, h: 15, t: "Clio", d: "Segurança pública protege todo mundo." } ],
+    chal: [ { q: "De quem é a responsabilidade pela segurança pública? Toque.", ok: [0] }, { q: "Toque em quem protege os cidadãos.", ok: [2] }, { q: "Toque na praça segura.", ok: [3] } ] }),
+  { t: "quiz", id: "e4", q: "A segurança pública é responsabilidade de quem?", o: ["Do Estado", "Só das crianças", "Das lojas"], a: 0, ex: "O texto diz: a segurança pública é responsabilidade do Estado." },
+  ...SC({ id: "e-sega", img: "cenas/e-seg-alimentar.jpg", eb: "Segurança", title: "Segurança alimentar",
+    school: ["A **segurança alimentar** é fundamental para garantir o **acesso a alimentos saudáveis e nutritivos**, enquanto a segurança no trabalho é essencial para prevenir acidentes e doenças ocupacionais."],
+    spots: [
+      { x: 0, y: 48, w: 34, h: 48, t: "Verduras e legumes", d: "Alimentos saudáveis da feira." },
+      { x: 0, y: 19, w: 18, h: 31, t: "Feirante", d: "Ela vende alimentos frescos." },
+      { x: 62, y: 55, w: 29, h: 15, t: "Arroz e feijão", d: "Comida nutritiva no prato." },
+      { x: 65, y: 66, w: 16, h: 13, t: "Salada", d: "Verdura também é nutritiva." },
+      { x: 82, y: 65, w: 18, h: 20, t: "Frutas", d: "Banana, maçã e laranja: alimentos saudáveis." },
+      { x: 56, y: 28, w: 44, h: 26, t: "Família alimentada", d: "Toda a família tem acesso à comida. Isso é segurança alimentar." },
+      { x: 44, y: 64, w: 13, h: 23, t: "Clio", d: "Nutritivo é o que alimenta e dá energia." } ],
+    chal: [ { q: "Toque em TODOS os alimentos saudáveis.", ok: [0, 2, 3, 4] }, { q: "Toque na família com segurança alimentar.", ok: [5] } ] }),
+  ...SC({ id: "e-segt", img: "cenas/e-seg-trabalho.jpg", eb: "Segurança", title: "Segurança no trabalho",
+    school: ["A segurança alimentar é fundamental para garantir o acesso a alimentos saudáveis e nutritivos, enquanto a **segurança no trabalho** é essencial para **prevenir acidentes e doenças ocupacionais**."],
+    spots: [
+      { x: 3, y: 0, w: 30, h: 63, t: "Trabalhador protegido", d: "Capacete, cinto de segurança, luvas e botas evitam acidentes." },
+      { x: 40, y: 17, w: 27, h: 60, t: "Protetor de ouvido", d: "Protege contra o barulho. Evita doenças do trabalho." },
+      { x: 67, y: 23, w: 33, h: 77, t: "Cuidado com a saúde", d: "Doenças ocupacionais são doenças causadas pelo trabalho." },
+      { x: 27, y: 59, w: 15, h: 25, t: "Clio", d: "Trabalhar com segurança é um direito." } ],
+    chal: [ { q: "Toque em quem está protegido contra acidentes de altura.", ok: [0] }, { q: "Toque em quem protege os ouvidos.", ok: [1] } ] }),
+  { t: "sort", id: "so-seg", title: "Que segurança é essa?", bins: ["Segurança pública ou no trabalho", "Segurança alimentar"], items: [
+    { txt: "Policial protegendo os cidadãos", b: 0, why: "É segurança pública, responsabilidade do Estado." },
+    { txt: "Capacete e luvas na obra", b: 0, why: "É segurança no trabalho: previne acidentes." },
+    { txt: "Comida saudável na mesa de todos", b: 1, why: "É segurança alimentar: acesso a alimentos nutritivos." },
+    { txt: "Feira com frutas e verduras", b: 1, why: "Acesso a alimentos saudáveis é segurança alimentar." },
+    { txt: "Protetor de ouvido para não ficar doente", b: 0, why: "É segurança no trabalho: previne doenças ocupacionais." } ] },
+  { t: "quiz", id: "e5", q: "A segurança no trabalho serve para...", o: ["Prevenir acidentes e doenças ocupacionais", "Garantir comida para todos", "Escolher o presidente"], a: 0, ex: "Doenças ocupacionais são as causadas pelo trabalho." },
+  ...SC({ id: "e-ciclo", img: "cenas/e-ciclo.jpg", eb: "Tudo ligado", title: "A interconexão",
+    school: ["A **interconexão** entre educação, moradia e segurança pode impactar diretamente a qualidade de vida das pessoas.", "Uma **educação de qualidade** pode contribuir para o acesso a **melhores empregos** e para a **melhoria da renda familiar**, o que pode facilitar o acesso a **moradias adequadas e seguras**.", "Por outro lado, a **falta de moradia adequada** pode comprometer a segurança e a saúde das pessoas, o que pode impactar negativamente o **desempenho escolar** e a capacidade de aprendizado."],
+    spots: [
+      { x: 0, y: 21, w: 25, h: 45, t: "Estudar", d: "Primeiro passo: educação de qualidade." },
+      { x: 25, y: 13, w: 24, h: 53, t: "Formatura", d: "Com estudo, ela se forma." },
+      { x: 50, y: 15, w: 25, h: 51, t: "Emprego e renda", d: "Melhor emprego, melhor renda familiar." },
+      { x: 76, y: 10, w: 24, h: 62, t: "Moradia adequada", d: "Com renda, ela consegue uma casa segura." },
+      { x: 40, y: 68, w: 15, h: 24, t: "Clio", d: "Uma coisa puxa a outra: isso é interconexão." } ],
+    chal: [ { q: "Toque no primeiro passo do caminho.", ok: [0] }, { q: "Toque onde ela melhora a renda.", ok: [2] }, { q: "Toque no fim do caminho.", ok: [3] } ] }),
+  { t: "quiz", id: "e6", q: "Segundo o texto, a falta de moradia adequada pode prejudicar...", o: ["O desempenho escolar e o aprendizado", "A previsão do tempo", "O tamanho das árvores"], a: 0, ex: "Sem moradia adequada, a saúde e a segurança pioram, e o estudo também." },
+  ...SC({ id: "e-conv", img: "cenas/e-convivencia.jpg", eb: "Soluções", title: "Políticas públicas e convivência",
+    school: ["Para garantir a educação, a moradia e a segurança, é fundamental que haja **políticas públicas e ações integradas**, que contemplem esses três elementos de forma interconectada.","É necessário que haja **investimentos em educação de qualidade**, que promovam a inclusão social e o desenvolvimento humano. É importante também que haja **políticas de habitação** que garantam o acesso à moradia adequada e segura para toda a população.","Além disso, é fundamental que cada um tenha **consciência crítica** de seu papel na sociedade, promovendo uma **convivência pacífica** e a **solidariedade** entre os indivíduos e as comunidades."],
+    spots: [
+      { x: 0, y: 12, w: 30, h: 42, t: "Escola nova", d: "Investimento em educação de qualidade." },
+      { x: 30, y: 17, w: 44, h: 31, t: "Casas populares", d: "Política de habitação: moradia adequada para quem precisa." },
+      { x: 31, y: 35, w: 29, h: 47, t: "Família recebe a chave", d: "Agora eles têm uma moradia segura." },
+      { x: 77, y: 31, w: 21, h: 32, t: "Solidariedade", d: "Ajudar o vizinho é ser solidário." },
+      { x: 58, y: 59, w: 42, h: 35, t: "Convivência pacífica", d: "Crianças diferentes brincando juntas, com respeito." },
+      { x: 7, y: 2, w: 9, h: 14, t: "Clio", d: "Cada um de nós tem um papel na sociedade." } ],
+    chal: [ { q: "Toque nas casas da política de habitação.", ok: [1] }, { q: "Toque em quem está sendo solidário.", ok: [3] }, { q: "Toque na convivência pacífica.", ok: [4] } ] }),
+  { t: "match", id: "m-edu", title: "Ligue cada palavra ao seu significado", pairs: [
+    ["Moradia adequada", "Casa firme, segura, com água e luz"],
+    ["Moradia precária", "Casa improvisada, frágil e perigosa"],
+    ["Insalubre", "Que faz mal à saúde"],
+    ["Segurança alimentar", "Acesso a alimentos saudáveis e nutritivos"],
+    ["Doença ocupacional", "Doença causada pelo trabalho"],
+    ["Solidariedade", "Ajudar o outro"] ] },
+  { t: "write", id: "w-edu1", q: "Explique como a educação, a moradia e a segurança estão ligadas (interconexão).", model: "Uma educação de qualidade ajuda a pessoa a conseguir um emprego melhor e a melhorar a renda da família. Com mais renda, fica mais fácil ter uma moradia adequada e segura. Já a falta de moradia adequada prejudica a saúde e a segurança e atrapalha o desempenho na escola.", ideas: [
+    { l: "Educação leva a melhores empregos", w: ["emprego", "trabalho"] },
+    { l: "Melhora a renda", w: ["renda", "dinheiro", "salario"] },
+    { l: "Facilita a moradia adequada", w: ["moradia", "casa"] },
+    { l: "Sem moradia, a escola é prejudicada", w: ["escola", "escolar", "aprend", "estud"] } ] },
+  { t: "write", id: "w-edu2", q: "Quais são os três tipos de segurança citados no texto? Explique um deles.", model: "Segurança pública, segurança alimentar e segurança no trabalho. A segurança pública é responsabilidade do Estado e protege os cidadãos.", ideas: [
+    { l: "Segurança pública", w: ["public"] },
+    { l: "Segurança alimentar", w: ["aliment"] },
+    { l: "Segurança no trabalho", w: ["trabalho"] } ] },
+  { t: "summary", title: "Resumo do Mundo 2", points: ["**Educação, moradia e segurança:** três elementos fundamentais para o **desenvolvimento humano** e o **bem-estar**.", "**Educação:** abre portas para o **trabalho**, ajuda o país e promove **cidadania, inclusão e direitos humanos**.", "**Moradia adequada:** saúde e segurança. **Moradia precária:** condições **insalubres** e perigosas.", "**Segurança pública** (responsabilidade do **Estado**), **segurança alimentar** (alimentos saudáveis) e **segurança no trabalho** (prevenir acidentes e doenças ocupacionais).", "**Interconexão:** educação, melhor emprego, mais renda, moradia adequada.", "**Soluções:** políticas públicas, educação de qualidade, **políticas de habitação**, convivência pacífica e solidariedade."] }
+]},
+
+/* ===================== MUNDO 3 ===================== */
+{ id: "des", n: 3, cls: "w-3", ic: "people", title: "Desigualdades sociais", sub: "A cidade invisível e as pessoas em situação de rua.", steps: [
+  ...SC({ id: "d-invis", img: "cenas/d-invisivel.jpg", eb: "A cidade invisível", title: "O que é a cidade invisível",
+    school: ["**Cidade invisível** é um conceito que se refere às **desigualdades sociais** presentes nas grandes cidades, muitas vezes **invisíveis para a maioria da população**, mas que afetam de forma significativa a vida de muitas pessoas."],
+    spots: [
+      { x: 0, y: 2, w: 46, h: 34, t: "Bairro com serviços", d: "Tem hospital, escola, ônibus e parque perto." },
+      { x: 0, y: 36, w: 40, h: 62, t: "Quem não percebe", d: "Muita gente passa e não vê a desigualdade. Por isso ela é invisível." },
+      { x: 47, y: 2, w: 12, h: 82, t: "Barreira", d: "Separa uma parte da cidade da outra." },
+      { x: 59, y: 12, w: 41, h: 55, t: "Comunidade e palafitas", d: "Casas simples, algumas sobre o rio. Aqui há menos serviços." },
+      { x: 60, y: 68, w: 22, h: 32, t: "Rua de terra", d: "Sem asfalto e sem ônibus: falta acesso a serviços básicos." },
+      { x: 34, y: 63, w: 20, h: 30, t: "Clio", d: "Vamos enxergar o que muita gente não vê!" } ],
+    chal: [ { q: "Toque na barreira que separa a cidade.", ok: [2] }, { q: "Toque em quem não percebe a cidade invisível.", ok: [1] }, { q: "Toque em TODOS os lugares onde faltam serviços.", ok: [3, 4] } ] }),
+  { t: "quiz", id: "d1", q: "O que é a \"cidade invisível\"?", o: ["As desigualdades sociais das grandes cidades que muita gente não vê", "Uma cidade de mentira dos desenhos", "Uma cidade escondida debaixo da terra"], a: 0, ex: "São as desigualdades que a maioria não percebe, mas que afetam muitas pessoas." },
+  ...SC({ id: "d-seg", img: "cenas/d-segregacao.jpg", eb: "A cidade invisível", title: "Segregação socioespacial",
+    school: ["As desigualdades sociais podem se manifestar de diversas formas na cidade invisível. Uma delas é a **segregação socioespacial**, que ocorre quando determinadas áreas da cidade são destinadas a determinados grupos sociais, **excluindo outros grupos**.", "Essa segregação pode se dar tanto de **forma voluntária**, quando os grupos **se autoexcluem**, quanto de **forma imposta**, quando são criadas **barreiras físicas ou sociais** que impedem o acesso de certos grupos a determinadas áreas da cidade."],
+    spots: [
+      { x: 0, y: 0, w: 49, h: 40, t: "Condomínio fechado", d: "Eles escolheram ficar separados: segregação voluntária." },
+      { x: 0, y: 40, w: 37, h: 37, t: "Portão e guarita", d: "Muros e portão separam o condomínio do resto da cidade." },
+      { x: 51, y: 30, w: 49, h: 32, t: "Cerca trancada", d: "Uma barreira física impede a entrada: segregação imposta." },
+      { x: 55, y: 56, w: 45, h: 44, t: "Pessoas impedidas", d: "Este grupo não pode entrar. Foi excluído." },
+      { x: 51, y: 0, w: 49, h: 30, t: "Praia", d: "Um lugar bonito da cidade que nem todos podem usar." },
+      { x: 43, y: 73, w: 14, h: 24, t: "Clio", d: "Socioespacial: a sociedade separada no espaço da cidade." } ],
+    chal: [ { q: "Toque na segregação voluntária, de quem escolheu se separar.", ok: [0] }, { q: "Toque na barreira da segregação imposta.", ok: [2] }, { q: "Toque em quem foi excluído.", ok: [3] } ] }),
+  { t: "quiz", id: "d2", q: "Quando são criadas barreiras que impedem certos grupos de entrar em áreas da cidade, a segregação é...", o: ["Imposta", "Voluntária", "Alimentar"], a: 0, ex: "Imposta = obrigada por barreiras. Voluntária = quando o grupo escolhe se separar." },
+  ...SC({ id: "d-serv", img: "cenas/d-servicos.jpg", eb: "A cidade invisível", title: "Longe dos serviços básicos",
+    school: ["Outra forma de desigualdade na cidade invisível é a **falta de acesso a serviços básicos**, como **saúde, educação, transporte e lazer**.", "Muitas vezes, as **áreas mais pobres** da cidade são aquelas que têm **menos acesso** a esses serviços, o que acaba **perpetuando a desigualdade** social e econômica."],
+    spots: [
+      { x: 2, y: 2, w: 18, h: 18, t: "Hospital", d: "Saúde: perto de quem mora no centro." },
+      { x: 16, y: 19, w: 18, h: 14, t: "Escola", d: "Educação: também no centro." },
+      { x: 25, y: 44, w: 8, h: 7, t: "Ônibus", d: "Transporte: muitos ônibus no centro." },
+      { x: 53, y: 35, w: 8, h: 13, t: "Caminho longo", d: "Ela anda muito para chegar à escola." },
+      { x: 79, y: 32, w: 21, h: 23, t: "Ponto lotado", d: "Na periferia, o ônibus quase não passa." },
+      { x: 71, y: 0, w: 29, h: 30, t: "Periferia", d: "Área mais pobre, sem hospital, sem escola e sem parque." },
+      { x: 48, y: 73, w: 10, h: 19, t: "Clio", d: "Perpetuar quer dizer: fazer continuar por muito tempo." } ],
+    chal: [ { q: "Toque em TODOS os serviços do centro.", ok: [0, 1, 2] }, { q: "Toque na periferia.", ok: [5] }, { q: "Toque em quem anda muito para chegar à escola.", ok: [3] } ] }),
+  { t: "quiz", id: "d3", q: "Quais serviços básicos faltam nas áreas mais pobres, segundo o texto?", o: ["Saúde, educação, transporte e lazer", "Shopping, cinema e aeroporto", "Joalheria e loja de brinquedos"], a: 0, ex: "O texto cita saúde, educação, transporte e lazer." },
+  ...SC({ id: "d-aut", img: "cenas/d-autoridades.jpg", eb: "A cidade invisível", title: "Invisível para quem?",
+    school: ["A cidade invisível também pode passar **despercebida para as próprias autoridades**, que muitas vezes não têm conhecimento da existência de áreas de pobreza extrema ou de comunidades marginais, que ficam **à margem das políticas públicas** e dos programas sociais.","Além disso, ela também pode ser **invisível para a própria população**, que muitas vezes vive em uma **realidade paralela**, sem perceber a existência das desigualdades e dos problemas sociais que afetam a vida de muitas pessoas."],
+    spots: [
+      { x: 0, y: 17, w: 37, h: 24, t: "Autoridades", d: "Olham para o lado errado e não veem a comunidade." },
+      { x: 21, y: 24, w: 52, h: 68, t: "População na bolha", d: "Vive numa realidade paralela, sem perceber as desigualdades." },
+      { x: 73, y: 10, w: 27, h: 55, t: "Comunidade esquecida", d: "Fica à margem: as políticas públicas não chegam até ela." },
+      { x: 75, y: 66, w: 19, h: 28, t: "Clio", d: "À margem quer dizer: deixado de lado." } ],
+    chal: [ { q: "Toque nas autoridades que não veem a comunidade.", ok: [0] }, { q: "Toque na população que vive em uma realidade paralela.", ok: [1] }, { q: "Toque na comunidade que ficou à margem.", ok: [2] } ] }),
+  ...SC({ id: "d-aces", img: "cenas/d-acessivel.jpg", eb: "Soluções", title: "Uma cidade para todos",
+    school: ["Para combater a cidade invisível e reduzir as desigualdades sociais nos ambientes urbanos, é fundamental promover **políticas públicas inclusivas**, que garantam o acesso a serviços básicos e à **igualdade de oportunidades para todos**.","Isso inclui a promoção de uma **cidade mais acessível**, com **transporte público de qualidade**, **calçadas adequadas**, **equipamentos urbanos adaptados** para pessoas com deficiência e **áreas de lazer acessíveis** a todos.","Além disso, é fundamental promover a integração social e a inclusão das populações marginalizadas pela sociedade, como as que vivem em periferias, comunidades e pessoas em situação de rua, garantindo o acesso à educação, saúde e outros serviços básicos, além da promoção de políticas de inclusão social, como o acesso a programas de habitação popular, microcrédito e capacitação profissional.","Por fim, é importante promover a conscientização da população em geral sobre a existência das desigualdades sociais na cidade invisível, para que a sociedade como um todo possa se engajar na luta por uma cidade mais justa e igualitária. A construção de uma cidade mais inclusiva e equitativa é um desafio que envolve a mobilização de todos os setores da sociedade, mas que é fundamental para garantir o pleno exercício da cidadania e dos direitos humanos para todos."],
+    spots: [
+      { x: 0, y: 0, w: 32, h: 71, t: "Ônibus com rampa", d: "Transporte público de qualidade, que todos conseguem usar." },
+      { x: 33, y: 11, w: 24, h: 68, t: "Calçada adequada", d: "Larga, lisa e com piso tátil para quem não enxerga." },
+      { x: 62, y: 11, w: 38, h: 52, t: "Lazer acessível", d: "Brinquedo adaptado: todos podem brincar." },
+      { x: 47, y: 69, w: 15, h: 26, t: "Clio", d: "Acessível quer dizer: que todo mundo consegue usar." } ],
+    chal: [ { q: "Toque no transporte público acessível.", ok: [0] }, { q: "Toque na calçada adequada.", ok: [1] }, { q: "Toque na área de lazer acessível.", ok: [2] } ] }),
+  { t: "quiz", id: "d4", q: "Qual destas é uma forma de combater a cidade invisível, segundo o texto?", o: ["Uma cidade acessível, com transporte, calçadas e lazer para todos", "Construir muros mais altos", "Fechar as praças públicas"], a: 0, ex: "Políticas públicas inclusivas tornam a cidade de todos." },
+  ...SC({ id: "d-fav", img: "cenas/d-favela.jpg", eb: "Final do século XIX", title: "Como começaram as favelas",
+    school: ["O processo de “**favelização**” iniciou-se ao **final do século XIX** no Brasil, **após a abolição da escravatura** e da **Guerra dos Canudos**.","Muitas **pessoas negras ex-escravizadas**, **sem nenhum suporte ou ação pública** para sua inclusão na sociedade, foram segregadas da população branca e tiveram de se alocar em **moradias improvisadas, morros e zonas de risco**, para sobreviver.","Ainda hoje essa desigualdade permanece, não somente espacial, mas também social (raça, educação, condição financeira, saúde, segurança e outros aspectos são diferentes de um espaço para o outro)."],
+    spots: [
+      { x: 10, y: 12, w: 60, h: 68, t: "Pessoas libertas", d: "Foram escravizadas e ficaram livres, mas sem nenhum apoio do governo." },
+      { x: 24, y: 84, w: 44, h: 12, t: "Corrente quebrada", d: "O fim da escravidão: a abolição." },
+      { x: 0, y: 23, w: 10, h: 30, t: "Cidade antiga", d: "Elas foram afastadas desta parte da cidade." },
+      { x: 67, y: 4, w: 33, h: 27, t: "Moradias improvisadas", d: "Casas feitas por elas mesmas, no alto do morro." },
+      { x: 73, y: 35, w: 15, h: 15, t: "Morro", d: "Morros e zonas de risco: onde surgiram as favelas." },
+      { x: 81, y: 53, w: 14, h: 27, t: "Clio", d: "A favelização começou no final do século dezenove." } ],
+    chal: [ { q: "Toque nas pessoas que tinham sido escravizadas.", ok: [0] }, { q: "Toque onde elas foram morar.", ok: [3] }, { q: "Toque no sinal do fim da escravidão.", ok: [1] } ] }),
+  { t: "quiz", id: "d5", q: "Quando começou a \"favelização\" no Brasil?", o: ["No final do século XIX, depois da abolição da escravatura", "Na semana passada", "Antes de os portugueses chegarem"], a: 0, ex: "Começou no final do século XIX, após a abolição e a Guerra dos Canudos." },
+  { t: "quiz", id: "d6", q: "Por que as pessoas ex-escravizadas foram morar em moradias improvisadas e morros?", o: ["Porque não tiveram nenhum suporte ou ação pública para sua inclusão", "Porque queriam ver a paisagem", "Porque o governo deu casas para elas"], a: 0, ex: "Elas ficaram sem nenhum apoio e foram segregadas." },
+  ...SC({ id: "d-dob", img: "cenas/d-dobrou.jpg", eb: "Dados do IBGE", title: "As favelas dobraram",
+    school: ["O número de favelas no Brasil **dobrou nos últimos dez anos**, de acordo com dados do **IBGE**.", "Entre **2010 e 2019**, a quantidade de **aglomerados subnormais**, como **favelas e palafitas**, foi de **6.329** em 323 municípios para **13.151** em 743 cidades."],
+    spots: [
+      { x: 0, y: 10, w: 49, h: 58, t: "Antes: 2010", d: "Eram 6.329 favelas e palafitas no Brasil." },
+      { x: 51, y: 7, w: 49, h: 46, t: "Depois: 2019", d: "Passaram a 13.151. O número dobrou!" },
+      { x: 51, y: 53, w: 49, h: 16, t: "Palafitas", d: "Casas de madeira sobre a água, em cima de estacas." },
+      { x: 44, y: 71, w: 13, h: 25, t: "Clio", d: "Aglomerado subnormal é o nome que o IBGE dá para favelas e palafitas." } ],
+    chal: [ { q: "Toque no morro em 2010.", ok: [0] }, { q: "Toque no morro em 2019, quando o número dobrou.", ok: [1] }, { q: "Toque nas palafitas.", ok: [2] } ] }),
+  { t: "quiz", id: "d7", q: "O que aconteceu com o número de favelas no Brasil entre 2010 e 2019?", o: ["Dobrou: de 6.329 para 13.151", "Diminuiu pela metade", "Ficou igual"], a: 0, ex: "Segundo o IBGE, o número dobrou." },
+  { t: "order", id: "o-des", title: "Do mais antigo ao mais novo", items: [
+    { y: 1888, txt: "Abolição da escravatura; depois dela começa a favelização" },
+    { y: 2010, txt: "6.329 favelas e palafitas" },
+    { y: 2019, txt: "13.151 favelas e palafitas" },
+    { y: 2022, txt: "281.472 pessoas em situação de rua" } ] },
+  ...SC({ id: "d-rua", img: "cenas/d-rua.jpg", eb: "Pessoas em situação de rua", title: "Quem vive na rua",
+    school: ["Perfil da População de Rua no Brasil. **Estimativa da população de rua em 2022: 281.472 pessoas.** **47%** Têm ensino fundamental incompleto. **68%** São negros (pretos e pardos). **87%** São do sexo masculino. **87%** Com idade entre 18 e 59 anos.","Uma das maiores dificuldades enfrentadas atualmente é lidar com as **pessoas em situação de rua**, indivíduos que, por diferentes motivos, **perderam suas casas e vivem nas ruas**, muitas vezes em condições precárias e de **extrema vulnerabilidade**."],
+    spots: [
+      { x: 7, y: 34, w: 29, h: 60, t: "Pessoa em situação de rua", d: "Ele perdeu a casa e vive na rua." },
+      { x: 0, y: 88, w: 48, h: 12, t: "Papelão", d: "O papelão no chão vira cama. Condição precária." },
+      { x: 63, y: 30, w: 8, h: 28, t: "Pessoas passando", d: "Muita gente passa sem perceber." },
+      { x: 71, y: 33, w: 28, h: 42, t: "Outras pessoas na rua", d: "Em 2022, eram cerca de 281 mil pessoas na rua no Brasil." },
+      { x: 38, y: 28, w: 26, h: 65, t: "Pesquisadora", d: "Ela conversa e conta as pessoas. Assim se faz a estimativa." },
+      { x: 44, y: 1, w: 10, h: 14, t: "Clio", d: "Vulnerabilidade quer dizer: ficar desprotegido." } ],
+    chal: [ { q: "Toque em TODAS as pessoas em situação de rua.", ok: [0, 3] }, { q: "Toque em quem está contando as pessoas.", ok: [4] } ] }),
+  { t: "quiz", id: "d8", q: "Qual era a estimativa da população de rua no Brasil em 2022?", o: ["281.472 pessoas", "100 pessoas", "Nenhuma pessoa"], a: 0, ex: "A estimativa de 2022 é de 281.472 pessoas." },
+  { t: "quiz", id: "d9", q: "Segundo o perfil de 2022, 87% das pessoas em situação de rua são...", o: ["Do sexo masculino", "Crianças", "Do sexo feminino"], a: 0, ex: "87% são do sexo masculino e 87% têm entre 18 e 59 anos." },
+  { t: "quiz", id: "d10", q: "Quantas pessoas em situação de rua são negras (pretas e pardas), segundo o quadro?", o: ["68%", "10%", "100%"], a: 0, ex: "68% são negros (pretos e pardos). E 47% têm ensino fundamental incompleto." },
+  ...SC({ id: "d-des", img: "cenas/d-desafios.jpg", eb: "Pessoas em situação de rua", title: "Causas e desafios",
+    school: ["As **causas** da situação de rua são **diversas e complexas**, envolvendo questões **sociais, econômicas e psicológicas**. Muitas vezes, essas pessoas são vítimas de violência doméstica, abuso sexual, negligência familiar ou conflitos comunitários. Outras vezes, a situação de rua é resultado da **falta de oportunidades de emprego e moradia** ou de problemas relacionados à **saúde mental** ou à **dependência química**.","Independentemente das **causas**, as pessoas em situação de rua enfrentam uma série de **desafios diários** para sobreviver, como **falta de abrigo, comida, água potável, roupas limpas e higiene pessoal**. Além disso, estão sujeitas a doenças, agressões e violência urbana, o que aumenta ainda mais sua vulnerabilidade."],
+    spots: [
+      { x: 18, y: 24, w: 48, h: 53, t: "Falta de abrigo", d: "Só um plástico para se proteger da chuva." },
+      { x: 2, y: 68, w: 25, h: 23, t: "Falta de comida", d: "O prato e a sacola estão vazios." },
+      { x: 26, y: 67, w: 7, h: 22, t: "Falta de água potável", d: "A garrafa está vazia." },
+      { x: 38, y: 73, w: 43, h: 22, t: "Falta de roupas limpas", d: "As roupas estão molhadas e sujas." },
+      { x: 74, y: 31, w: 25, h: 52, t: "Falta de higiene", d: "A pia está trancada. Não dá para se lavar." },
+      { x: 77, y: 6, w: 13, h: 20, t: "Clio", d: "Ninguém escolhe passar por isso. Precisamos de respeito." } ],
+    chal: [ { q: "Toque em TODOS os desafios que ela enfrenta.", ok: [0, 1, 2, 3, 4] }, { q: "Toque no que mostra falta de higiene pessoal.", ok: [4] } ] }),
+  { t: "quiz", id: "d11", q: "Qual é um dos desafios diários das pessoas em situação de rua?", o: ["Falta de abrigo, comida e água potável", "Escolher o que assistir na TV", "Arrumar o quarto"], a: 0, ex: "Elas enfrentam falta de abrigo, comida, água potável, roupas limpas e higiene." },
+  { t: "quiz", id: "d12", q: "Segundo o texto, a situação de rua pode ser resultado de...", o: ["Falta de oportunidades de emprego e moradia", "Gostar de acampar", "Morar perto da praia"], a: 0, ex: "As causas são diversas: sociais, econômicas e psicológicas." },
+  ...SC({ id: "d-aju", img: "cenas/d-ajuda.jpg", eb: "Soluções", title: "Como ajudar",
+    school: ["Para enfrentar esses desafios, é necessário abordar a situação de rua de forma **integral e multidisciplinar**, envolvendo diferentes setores da sociedade. Isso inclui a promoção de **políticas públicas** que garantam o **acesso à moradia, saúde, educação e trabalho** para todos, além da criação de redes de apoio social e de programas de reabilitação para dependentes químicos e portadores de transtornos mentais.","Também é importante que a sociedade como um todo se envolva nessa luta, combatendo os **estereótipos e a discriminação** contra as pessoas em situação de rua e promovendo a conscientização sobre a necessidade de solidariedade e apoio mútuo. Além disso, é fundamental que as pessoas em situação de rua **sejam ouvidas** e participem ativamente das decisões que afetam suas vidas, garantindo a **autonomia e a dignidade** delas.","Nesse sentido, ações de mobilização social podem contribuir para sensibilizar a população e criar redes de apoio para as pessoas em situação de rua, por meio da promoção de ações de **doação de alimentos, roupas** e outros itens essenciais, bem como ações de conscientização sobre o tema. O papel das organizações não governamentais (**ONGs**), das **igrejas** e das **instituições de assistência social** também é importante na promoção de **políticas públicas** e no oferecimento de serviços de apoio e assistência às pessoas em situação de rua.","Em resumo, cabe a todos apoiar e realizar ações que promovam a dignidade e os direitos humanos das vidas que estão marginalizadas, em busca de uma sociedade mais justa e igualitária."],
+    spots: [
+      { x: 0, y: 10, w: 28, h: 67, t: "Doação de alimentos", d: "Voluntários servem comida quente." },
+      { x: 24, y: 31, w: 28, h: 45, t: "Doação de roupas", d: "Roupas e cobertores doados." },
+      { x: 43, y: 2, w: 23, h: 34, t: "Igreja", d: "Igrejas e ONGs também ajudam." },
+      { x: 51, y: 36, w: 31, h: 51, t: "Assistência social", d: "Ela ouve o que ele precisa. Ser ouvido traz dignidade." },
+      { x: 76, y: 7, w: 24, h: 60, t: "Acesso à moradia", d: "Política pública: uma casa para recomeçar." },
+      { x: 41, y: 68, w: 15, h: 26, t: "Clio", d: "Cabe a todos apoiar a dignidade das pessoas." } ],
+    chal: [ { q: "Toque em TODAS as doações.", ok: [0, 1] }, { q: "Toque em quem está ouvindo a pessoa.", ok: [3] }, { q: "Toque no acesso à moradia.", ok: [4] } ] }),
+  { t: "quiz", id: "d13", q: "O texto diz que é fundamental que as pessoas em situação de rua...", o: ["Sejam ouvidas e participem das decisões sobre suas vidas", "Fiquem escondidas", "Não recebam ajuda"], a: 0, ex: "Ser ouvido garante autonomia e dignidade." },
+  { t: "match", id: "m-des", title: "Ligue cada palavra ao seu significado", pairs: [
+    ["Cidade invisível", "Desigualdades da cidade que muita gente não vê"],
+    ["Segregação socioespacial", "Grupos sociais separados em áreas da cidade"],
+    ["Palafitas", "Casas de madeira sobre a água, em estacas"],
+    ["Aglomerados subnormais", "Nome do IBGE para favelas e palafitas"],
+    ["Vulnerabilidade", "Ficar desprotegido"],
+    ["ONG", "Organização não governamental"] ] },
+  { t: "write", id: "w-des1", q: "O que é a cidade invisível? Dê um exemplo de desigualdade dela.", model: "A cidade invisível são as desigualdades sociais das grandes cidades, que muitas vezes a maioria da população não vê, mas que afetam muitas pessoas. Um exemplo é a segregação socioespacial; outro é a falta de acesso a saúde, educação, transporte e lazer nas áreas mais pobres.", ideas: [
+    { l: "Desigualdades sociais", w: ["desigual"] },
+    { l: "Que muita gente não vê", w: ["invisi", "nao ve", "nao perceb", "percebe"] },
+    { l: "Um exemplo: segregação ou falta de serviços", w: ["segrega", "servic", "saude", "educac", "transporte", "lazer"] } ] },
+  { t: "write", id: "w-des2", q: "Como a sociedade pode ajudar as pessoas em situação de rua?", model: "Com políticas públicas que garantam moradia, saúde, educação e trabalho; combatendo os estereótipos e a discriminação; ouvindo essas pessoas; e com doações de alimentos e roupas, junto com ONGs, igrejas e a assistência social.", ideas: [
+    { l: "Políticas públicas (moradia, saúde, trabalho)", w: ["politica", "moradia", "trabalho", "saude"] },
+    { l: "Combater a discriminação", w: ["discrimin", "estereotip", "preconceit", "respeit"] },
+    { l: "Doações", w: ["doa", "aliment", "roupa", "comida"] },
+    { l: "Ouvir as pessoas", w: ["ouvi", "escut", "particip"] } ] },
+  { t: "summary", title: "Resumo do Mundo 3", points: ["**Cidade invisível:** desigualdades sociais das grandes cidades que a maioria **não vê**.", "**Segregação socioespacial:** áreas da cidade separadas por grupos. Pode ser **voluntária** (o grupo se autoexclui) ou **imposta** (barreiras físicas ou sociais).", "Áreas pobres têm **menos acesso** a saúde, educação, transporte e lazer. Ficam **à margem** das políticas públicas.", "**Favelização:** começou no **final do século XIX**, após a **abolição** e a **Guerra dos Canudos**. Ex-escravizados ficaram **sem nenhum apoio**.", "**IBGE:** favelas e palafitas **dobraram** de 2010 (6.329) a 2019 (13.151).", "**Situação de rua (2022):** **281.472 pessoas**. 47% fundamental incompleto, 68% negros, 87% homens, 87% de 18 a 59 anos.", "**Soluções:** políticas públicas, cidade acessível, combater a discriminação, **ouvir** as pessoas, doações, ONGs, igrejas e assistência social."] }
+]}
+];
+
+const PICS = [
+  { id: "casa", title: "Casa com saneamento", fact: "Água potável, esgoto e lixo no lugar certo: saúde para a família.", need: "san",
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><circle data-r="sol" cx="345" cy="55" r="28"/><path data-r="chao" d="M0 240 H400 V300 H0Z"/><rect data-r="parede" x="70" y="140" width="170" height="100"/><path data-r="telhado" d="M55 146 L155 80 L255 146Z"/><rect data-r="porta" x="140" y="180" width="34" height="60"/><rect data-r="janela" x="88" y="165" width="34" height="30"/><rect data-r="caixa" x="180" y="88" width="44" height="34" rx="6"/><rect data-r="tampa" x="176" y="82" width="52" height="10" rx="4"/><rect data-r="lixeira" x="285" y="200" width="36" height="40" rx="4"/><rect data-r="tampalixo" x="281" y="192" width="44" height="10" rx="3"/><path data-r="cano" d="M0 268 H400 V280 H0Z"/>' },
+  { id: "escola", title: "Escola para todos", fact: "A educação abre portas para o trabalho e promove a inclusão social.", need: "edu",
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><circle data-r="sol" cx="345" cy="55" r="28"/><path data-r="chao" d="M0 240 H400 V300 H0Z"/><rect data-r="predio" x="80" y="122" width="230" height="118"/><path data-r="telhado" d="M68 126 L195 66 L322 126Z"/><circle data-r="relogio" cx="195" cy="100" r="13"/><rect data-r="jan1" x="100" y="145" width="40" height="34"/><rect data-r="jan2" x="250" y="145" width="40" height="34"/><rect data-r="degrau" x="160" y="222" width="70" height="18"/><rect data-r="porta" x="172" y="162" width="46" height="60"/><path data-r="rampa" d="M230 240 L330 240 L230 222Z"/><circle data-r="placa" cx="120" cy="212" r="14"/>' },
+  { id: "morro", title: "Casa à beira do rio", fact: "Palafitas são casas de madeira sobre a água, em cima de estacas.", need: "des",
+    svg: '<rect data-r="ceu" x="0" y="0" width="400" height="300"/><circle data-r="sol" cx="70" cy="60" r="30"/><path data-r="morro" d="M150 200 Q260 90 400 170 V240 H150Z"/><path data-r="chao" d="M0 228 Q200 210 400 228 V300 H0Z"/><path data-r="rio" d="M0 272 Q120 252 220 274 T400 266 V300 H0Z"/><rect data-r="parede" x="95" y="160" width="150" height="72"/><path data-r="telhado" d="M80 166 L170 100 L260 166Z"/><rect data-r="porta" x="155" y="190" width="30" height="42"/><rect data-r="janela" x="110" y="178" width="26" height="22"/><path data-r="tronco" d="M318 236 Q312 170 330 120 L338 122 Q322 172 328 236Z"/><path data-r="folha1" d="M334 120 Q300 92 266 108 Q302 104 334 124Z"/><path data-r="folha2" d="M334 120 Q366 90 396 104 Q362 102 334 124Z"/><path data-r="folha3" d="M334 120 Q330 84 350 66 Q340 94 338 122Z"/>' }
+];
+
+W.forEach(w => w.steps.forEach((s, i) => { s.key = s.key || s.id || (w.id + "-" + i); }));
+/*DATA-END*/
+
+/* ---------- Quadros para pintar ---------- */
+const COLORS = ["#E53935", "#FB8C00", "#FDD835", "#7CB342", "#2E7D32", "#4FC3F7", "#1E88E5", "#8E24AA", "#F48FB1", "#8D6E63", "#BDBDBD", "#FFFFFF", "#37474F"];
+
+const ALLQ = {};
+W.forEach(w => w.steps.forEach(s => { if (s.t === "quiz") ALLQ[s.id] = Object.assign({ wid: w.id }, s); }));
+function interactiveIds(w) { return w.steps.filter(s => s.id).map(s => s.id); }
+
+/* ---------- Estado salvo ---------- */
+const KEY = META.titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); // "Missão História 3T" -> "missao-historia-3t"
+const DEF = { name: "", worlds: {}, stars: {}, misses: {}, examBest: null, paint: {}, writes: {}, settings: { sound: true, autoVoice: true, calm: false } };
+let st;
+try { st = Object.assign({}, DEF, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) { st = Object.assign({}, DEF); }
+st.settings = Object.assign({}, DEF.settings, st.settings || {});
+st.paint = st.paint || {}; st.writes = st.writes || {};
+function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+function applyCalm() { document.documentElement.classList.toggle("calm", !!st.settings.calm); }
+applyCalm();
+
+/* ---------- Utilidades ---------- */
+const app = document.getElementById("app");
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"); }
+function plain(s) { return String(s).replace(/\*\*/g, ""); }
+function shuffle(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+function shake(el) { el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); }
+function worldStars(w) { return interactiveIds(w).filter(id => st.stars[id]).length; }
+const YES = ["Parabéns, você acertou!", "Uhul! Você acertou!", "Isso aí! Muito bem!", "Mandou bem!", "Perfeito, você acertou!"];
+const OKS = ["fb-ok", "fb-ok2", "fb-ok3"];
+
+/* ---------- Narração com voz real (arquivos gerados na Higgsfield) ---------- */
+const AUDIO = new Set(/*AUDIO-LIST*/["d-aces-c0","d-aces-c1","d-aces-c2","d-aces-s0","d-aces-s1","d-aces-s2","d-aces-s3","d-aces-txt","d-aju-c0","d-aju-c1","d-aju-c2","d-aju-s0","d-aju-s1","d-aju-s2","d-aju-s3","d-aju-s4","d-aju-s5","d-aju-txt","d-aut-c0","d-aut-c1","d-aut-c2","d-aut-s0","d-aut-s1","d-aut-s2","d-aut-s3","d-aut-txt","d-des-c0","d-des-c1","d-des-s0","d-des-s1","d-des-s2","d-des-s3","d-des-s4","d-des-s5","d-des-txt","d-dob-c0","d-dob-c1","d-dob-c2","d-dob-s0","d-dob-s1","d-dob-s2","d-dob-s3","d-dob-txt","d-fav-c0","d-fav-c1","d-fav-c2","d-fav-s0","d-fav-s1","d-fav-s2","d-fav-s3","d-fav-s4","d-fav-s5","d-fav-txt","d-invis-c0","d-invis-c1","d-invis-c2","d-invis-s0","d-invis-s1","d-invis-s2","d-invis-s3","d-invis-s4","d-invis-s5","d-invis-txt","d-rua-c0","d-rua-c1","d-rua-s0","d-rua-s1","d-rua-s2","d-rua-s3","d-rua-s4","d-rua-s5","d-rua-txt","d-seg-c0","d-seg-c1","d-seg-c2","d-seg-s0","d-seg-s1","d-seg-s2","d-seg-s3","d-seg-s4","d-seg-s5","d-seg-txt","d-serv-c0","d-serv-c1","d-serv-c2","d-serv-s0","d-serv-s1","d-serv-s2","d-serv-s3","d-serv-s4","d-serv-s5","d-serv-s6","d-serv-txt","d1","d1-ex","d10","d10-ex","d11","d11-ex","d12","d12-ex","d13","d13-ex","d2","d2-ex","d3","d3-ex","d4","d4-ex","d5","d5-ex","d6","d6-ex","d7","d7-ex","d8","d8-ex","d9","d9-ex","des-37","e-ciclo-c0","e-ciclo-c1","e-ciclo-c2","e-ciclo-s0","e-ciclo-s1","e-ciclo-s2","e-ciclo-s3","e-ciclo-s4","e-ciclo-txt","e-conv-c0","e-conv-c1","e-conv-c2","e-conv-s0","e-conv-s1","e-conv-s2","e-conv-s3","e-conv-s4","e-conv-s5","e-conv-txt","e-edu-c0","e-edu-c1","e-edu-c2","e-edu-s0","e-edu-s1","e-edu-s2","e-edu-s3","e-edu-s4","e-edu-s5","e-edu-txt","e-mor-c0","e-mor-c1","e-mor-c2","e-mor-s0","e-mor-s1","e-mor-s2","e-mor-s3","e-mor-s4","e-mor-s5","e-mor-s6","e-mor-s7","e-mor-txt","e-sega-c0","e-sega-c1","e-sega-s0","e-sega-s1","e-sega-s2","e-sega-s3","e-sega-s4","e-sega-s5","e-sega-s6","e-sega-txt","e-segp-c0","e-segp-c1","e-segp-c2","e-segp-s0","e-segp-s1","e-segp-s2","e-segp-s3","e-segp-s4","e-segp-txt","e-segt-c0","e-segt-c1","e-segt-s0","e-segt-s1","e-segt-s2","e-segt-s3","e-segt-txt","e-tres-c0","e-tres-c1","e-tres-s0","e-tres-s1","e-tres-s2","e-tres-s3","e-tres-s4","e-tres-s5","e-tres-s6","e-tres-txt","e1","e1-ex","e2","e2-ex","e3","e3-ex","e4","e4-ex","e5","e5-ex","e6","e6-ex","edu-26","fb-ok","fb-ok2","fb-ok3","fb-quase","fim-ala","inst-scene","m-des","m-edu","m-san","o-des","rev-intro","s-agua-c0","s-agua-c1","s-agua-c2","s-agua-s0","s-agua-s1","s-agua-s2","s-agua-s3","s-agua-s4","s-agua-s5","s-agua-txt","s-escassez-c0","s-escassez-c1","s-escassez-s0","s-escassez-s1","s-escassez-s2","s-escassez-s3","s-escassez-s4","s-escassez-s5","s-escassez-s6","s-escassez-txt","s-esgoto-c0","s-esgoto-c1","s-esgoto-c2","s-esgoto-s0","s-esgoto-s1","s-esgoto-s2","s-esgoto-s3","s-esgoto-s4","s-esgoto-s5","s-esgoto-s6","s-esgoto-txt","s-lixo-c0","s-lixo-c1","s-lixo-c2","s-lixo-s0","s-lixo-s1","s-lixo-s2","s-lixo-s3","s-lixo-s4","s-lixo-s5","s-lixo-s6","s-lixo-txt","s-oque-c0","s-oque-c1","s-oque-c2","s-oque-s0","s-oque-s1","s-oque-s2","s-oque-s3","s-oque-s4","s-oque-s5","s-oque-s6","s-oque-txt","s-pol-c0","s-pol-c1","s-pol-c2","s-pol-s0","s-pol-s1","s-pol-s2","s-pol-s3","s-pol-s4","s-pol-txt","s-qual-c0","s-qual-c1","s-qual-s0","s-qual-s1","s-qual-s2","s-qual-s3","s-qual-s4","s-qual-s5","s-qual-txt","s-rev-c0","s-rev-c1","s-rev-s0","s-rev-s1","s-rev-s2","s-rev-s3","s-rev-s4","s-rev-s5","s-rev-s6","s-rev-txt","s1","s1-ex","s2","s2-ex","s3","s3-ex","s4","s4-ex","s5","s5-ex","s6","s6-ex","s7","s7-ex","san-27","so-san","so-seg","w-des1","w-des1-ex","w-des2","w-des2-ex","w-edu1","w-edu1-ex","w-edu2","w-edu2-ex","w-san1","w-san1-ex","w-san2","w-san2-ex"]);
+const VIDEOS = new Set(/*VIDEO-LIST*/[]);
+const canSpeak = AUDIO.size > 0;
+const player = new Audio(); let playToken = 0;
+function speak(key, onend) {
+  const my = ++playToken;
+  const fin = () => { if (my === playToken && onend) onend(); };
+  if (!AUDIO.has(key)) { if (onend) setTimeout(fin, 300); return; }
+  try {
+    player.pause(); player.src = "audio/" + key + ".mp3"; player.onended = fin; player.onerror = fin;
+    const p = player.play(); if (p && p.catch) p.catch(fin);
+  } catch (e) { fin(); }
+}
+function stopSpeak() { playToken++; try { player.pause(); } catch (e) {} }
+
+/* ---------- Comemoração do acerto: som alegre + confete + voz ---------- */
+let actx = null;
+function chime() {
+  if (!st.settings.sound) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const t = actx.currentTime;
+    [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => {
+      const o = actx.createOscillator(), g = actx.createGain(), at = t + i * 0.09;
+      o.type = "triangle"; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(0.12, at + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + (i === 3 ? 0.6 : 0.25));
+      o.connect(g); g.connect(actx.destination); o.start(at); o.stop(at + 0.65);
+    });
+  } catch (e) {}
+  confetti();
+}
+function confetti() {
+  if (st.settings.calm) return;
+  try { if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; } catch (e) {}
+  const cols = ["#F2B632", "#2D6BD3", "#17866A", "#8048CC", "#E53935", "#FB8C00"];
+  const box = document.createElement("div"); box.className = "confete";
+  for (let i = 0; i < 28; i++) {
+    const c = document.createElement("i");
+    c.style.left = (10 + Math.random() * 80) + "%";
+    c.style.background = cols[i % cols.length];
+    c.style.setProperty("--dx", (Math.random() * 160 - 80) + "px");
+    c.style.animationDelay = (Math.random() * 0.15) + "s";
+    box.appendChild(c);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => box.remove(), 1600);
+}
+function celebrate(after) { chime(); speak(pick(OKS), after); }
+
+/* ---------- Telas ---------- */
+let S = null;      // sessão do mundo
+let E = null;      // sessão da prova
+let video = false; // modo vídeo
+
+function home() {
+  stopSpeak(); S = null; E = null; video = false;
+  document.body.className = "";
+  const name = st.name;
+  const wc = W.map(w => {
+    const tot = interactiveIds(w).length, got = worldStars(w), ws = st.worlds[w.id] || {};
+    const status = ws.done ? '<span class="pill done">Concluído</span>' : (ws.pos ? '<span class="pill">Continuar</span>' : '<span class="pill">Começar</span>');
+    return '<button class="wcard ' + w.cls + '" data-w="' + w.id + '"><span class="ic">' + icon(w.ic) + '</span><span><span class="k">Mundo ' + w.n + '</span><h2>' + esc(w.title) + '</h2><p class="sub">' + esc(w.sub) + '</p><span class="meta">' + status + '<span class="starsmall">' + icon("star") + got + ' de ' + tot + ' estrelas</span></span></span></button>';
+  }).join("");
+  const gal = '<div class="panel"><h3>Quadros para pintar</h3><p class="note" style="margin:0 0 10px">Termine um mundo para ganhar um quadro novo. Toque nele para pintar.</p><div class="gal">' + PICS.map(p => {
+    const open = picOpen(p);
+    return '<button class="gitem' + (open ? '' : ' lock') + '" data-pic="' + p.id + '"' + (open ? '' : ' disabled') + '>' + picSvg(p, false) + '<b>' + esc(p.title) + '</b><small>' + (open ? 'Toque para pintar' : 'Termine o Mundo ' + W.find(w => w.id === p.need).n + ' para liberar') + '</small></button>';
+  }).join("") + '</div></div>';
+  const nq = Object.keys(ALLQ).length;
+  const exam = '<button class="wcard w-x" data-exam="1"><span class="ic">' + icon("star") + '</span><span><span class="k">Desafio final</span><h2>Prova simulada</h2><p class="sub">15 perguntas misturadas dos ' + W.length + ' mundos, como na prova.</p><span class="meta">' + (st.examBest != null ? '<span class="pill">Melhor nota: ' + st.examBest + ' de 15</span>' : '<span class="pill">Faça depois dos ' + W.length + ' mundos</span>') + '</span></span></button>';
+
+  const missIds = Object.keys(st.misses).filter(id => ALLQ[id]).sort((a, b) => st.misses[b] - st.misses[a]);
+  const missHtml = missIds.length ? '<ol class="misslist">' + missIds.slice(0, 12).map(id => { const q = ALLQ[id]; return '<li>' + esc(q.q) + ' <small>Resposta: ' + esc(q.o[q.a]) + ' · errou ' + st.misses[id] + 'x</small></li>'; }).join("") + '</ol>' : '<p class="note">Ainda não há erros registrados. Eles aparecem aqui conforme ela joga.</p>';
+  const tw = W.map(w => '<li>' + esc(w.title) + ': ' + worldStars(w) + ' de ' + interactiveIds(w).length + ' acertos' + ((st.worlds[w.id] || {}).done ? ' (concluído)' : '') + '</li>').join("");
+
+  app.innerHTML = '<div class="wrap home">' +
+    '<div class="hello">' + OWL + '<div><h1>' + (name ? 'Oi, ' + esc(name) + '!' : 'Oi! Eu sou a Clio.') + '</h1><p>' + (name ? 'Eu sou a Clio, a corujinha da ' + esc(META.materia) + '. Vamos estudar juntas?' : 'Sou a corujinha da ' + esc(META.materia) + '. Como você se chama?') + '</p>' +
+    (name ? '' : '<form class="namebox" id="nf"><input id="nameinput" maxlength="24" placeholder="Seu nome" autocomplete="off"><button class="btn sec" type="submit">Pronto</button></form>') + '</div></div>' +
+    '<p>Sua missão: aprender a matéria de ' + esc(META.materia) + ' para a prova. Cada resposta certa vale uma <strong>estrela</strong>. São <strong>' + W.length + ' mundos</strong>. Faça <strong>um de cada vez</strong>, com calma. Dá para parar no meio e continuar depois.</p>' +
+    '<div class="worlds">' + wc + exam + '</div>' + gal +
+    '<div class="panel"><h3>Ajustes</h3>' +
+      tog("sound", "Som baixinho quando acerta") +
+      (canSpeak ? tog("autoVoice", "A Clio lê cada tela em voz alta") : '') +
+      tog("calm", "Modo calmo (sem movimentos na tela)") +
+    '</div>' +
+    '<details class="panel parents"><summary>Para os pais</summary>' +
+      '<p class="note">Progresso salvo neste aparelho. ' + nq + ' perguntas no total.</p><ul class="ul">' + tw + '<li>Prova simulada: ' + (st.examBest != null ? 'melhor nota ' + st.examBest + ' de 15' : 'ainda não feita') + '</li></ul>' +
+      '<h3 style="margin-top:14px">Perguntas que ela mais errou</h3>' + missHtml +
+      '<div class="row" style="margin-top:14px"><button class="btn sec" id="reset">Apagar progresso</button></div><p class="note" id="resetmsg" hidden></p>' +
+    '</details>' +
+    '</div>';
+
+  app.querySelectorAll("[data-w]").forEach(b => b.onclick = () => openWorld(b.dataset.w));
+  app.querySelectorAll("[data-pic]").forEach(b => b.onclick = () => { const p = PICS.find(x => x.id === b.dataset.pic); if (picOpen(p)) openPaint(p); });
+  app.querySelector("[data-exam]").onclick = openExam;
+  app.querySelectorAll(".sw").forEach(b => b.onclick = () => { const k = b.dataset.k; st.settings[k] = !st.settings[k]; save(); applyCalm(); b.setAttribute("aria-checked", st.settings[k]); });
+  const nf = document.getElementById("nf");
+  if (nf) nf.onsubmit = e => { e.preventDefault(); const v = document.getElementById("nameinput").value.trim(); if (v) { st.name = v; save(); home(); } };
+  let armed = false;
+  document.getElementById("reset").onclick = () => {
+    const msg = document.getElementById("resetmsg");
+    if (!armed) { armed = true; msg.hidden = false; msg.textContent = "Toque de novo em \"Apagar progresso\" para confirmar. Isso apaga estrelas e erros."; return; }
+    st = JSON.parse(JSON.stringify(DEF)); save(); applyCalm(); home();
+  };
+  window.scrollTo(0, 0);
+}
+function tog(k, label) { return '<div class="toggle"><span id="lb-' + k + '">' + label + '</span><button class="sw" role="switch" aria-labelledby="lb-' + k + '" aria-checked="' + !!st.settings[k] + '" data-k="' + k + '"></button></div>'; }
+
+function shell(cls, title, progress, starsTxt) {
+  document.body.className = cls;
+  app.innerHTML =
+    '<div class="top"><div class="wrap"><div class="topin"><button class="ghost" id="bHome">Início</button><span class="ttl">' + esc(title) + '</span>' +
+    '<span class="starsmall" id="starsTop">' + icon("star") + starsTxt + '</span>' +
+    (S && canSpeak ? '<button class="ghost' + (video ? ' on' : '') + '" id="bVideo" aria-pressed="' + video + '">' + (video ? 'Pausar' : 'Modo vídeo') + '</button>' : '') +
+    '</div><div class="bar" style="margin-bottom:10px"><i style="width:' + Math.round(progress * 100) + '%"></i></div></div></div>' +
+    '<main class="stage"><div class="wrap" id="box"></div></main>' +
+    '<div class="foot"><div class="wrap footin"><button class="btn sec" id="bBack">Voltar</button>' + (canSpeak ? '<button class="btn sec" id="bSpeak">Ouvir</button>' : '') + '<button class="btn pri" id="bNext">Próximo</button></div></div>';
+  document.getElementById("bHome").onclick = home;
+  window.scrollTo(0, 0);
+  return document.getElementById("box");
+}
+
+/* ---------- Mundo ---------- */
+function openWorld(wid) {
+  const w = W.find(x => x.id === wid);
+  const ws = st.worlds[wid] || {};
+  let pos = ws.done ? 0 : (ws.pos || 0);
+  if (pos >= w.steps.length) pos = 0;
+  S = { w, steps: w.steps.slice(), pos, review: [], reviewAdded: false, done: false };
+  if (VIDEOS.has(w.id) && pos === 0) S.steps.unshift({ t: "video", key: "v-" + w.id, src: "video/" + w.id + ".mp4", extra: true });
+  renderStep();
+}
+
+function renderStep() {
+  const step = S.steps[S.pos];
+  S.done = (step.t === "card" || step.t === "summary" || step.t === "video" || step.t === "read");
+  const box = shell(S.w.cls, "Mundo " + S.w.n + " · " + S.w.title, (S.pos + 1) / S.steps.length, worldStars(S.w) + "/" + interactiveIds(S.w).length);
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak"), bVideo = document.getElementById("bVideo");
+  bBack.disabled = S.pos === 0; if (S.pos === 0) bBack.style.visibility = "hidden";
+  bNext.textContent = S.pos === S.steps.length - 1 ? "Terminar mundo" : "Próximo";
+  bNext.onclick = next;
+  bBack.onclick = () => { stopSpeak(); if (S.pos > 0) { S.pos--; renderStep(); } };
+  if (bSpeak) { if (!AUDIO.has(step.key)) bSpeak.style.visibility = "hidden"; bSpeak.onclick = () => speak(step.key); }
+  if (bVideo) bVideo.onclick = () => { video = !video; if (!video) stopSpeak(); bVideo.classList.toggle("on", video); bVideo.textContent = video ? "Pausar" : "Modo vídeo"; bVideo.setAttribute("aria-pressed", video); if (video) playCard(step); };
+
+  if (step.t === "card") renderCard(step, box);
+  else if (step.t === "quiz") renderQuiz(step, box, ok => { stepDone(step, ok); });
+  else if (step.t === "order") renderOrder(step, box);
+  else if (step.t === "match") renderMatch(step, box);
+  else if (step.t === "sort") renderSort(step, box);
+  else if (step.t === "write") renderWrite(step, box);
+  else if (step.t === "summary") renderSummary(step, box);
+  else if (step.t === "video") renderVideo(step, box);
+  else if (step.t === "read") renderRead(step, box);
+  else if (step.t === "scene") renderScene(step, box);
+  updNext();
+
+  if (step.t === "video") return;
+  if (video) playCard(step);
+  else if (st.settings.autoVoice) speak(step.key);
+}
+function playCard(step) {
+  if (step.t !== "card" && step.t !== "read") { speak(step.key); return; }
+  const at = S.pos;
+  speak(step.key, () => { setTimeout(() => { if (video && S && S.pos === at) next(); }, 1300); });
+}
+function updNext() { const b = document.getElementById("bNext"); if (b) b.disabled = !S.done; }
+function earn(id) { if (id && !st.stars[id]) { st.stars[id] = true; save(); const el = document.getElementById("starsTop"); if (el) el.innerHTML = icon("star") + worldStars(S.w) + "/" + interactiveIds(S.w).length; } }
+function stepDone(step, ok) {
+  S.done = true; updNext();
+  if (step.t === "quiz") {
+    if (ok && !step.review) earn(step.id);
+    if (!ok) { st.misses[step.id] = (st.misses[step.id] || 0) + 1; save(); if (!step.review && !S.review.some(r => r.id === step.id)) S.review.push(Object.assign({}, step, { review: true })); }
+  } else if (step.t === "scene") {
+    if (ok && !step.review) earn(step.id);
+    if (!ok && !step.review && !S.review.some(r => r.id === step.id)) S.review.push(Object.assign({}, step, { review: true }));
+  } else earn(step.id);
+}
+
+function next() {
+  stopSpeak();
+  if (!S.done) return;
+  if (S.pos >= S.steps.length - 1) { finishWorld(); return; }
+  const nx = S.steps[S.pos + 1];
+  if (!S.reviewAdded && S.review.length && nx.t === "summary") {
+    S.reviewAdded = true;
+    const intro = { t: "card", key: "rev-intro", ic: "star", eb: "Revisão rápida", title: "Vamos revisar", text: ["Agora vêm de novo as perguntas que você errou. Errar faz parte de aprender.", "Leia com calma. Você já viu a resposta antes."], review: true };
+    S.steps.splice(S.pos + 1, 0, intro, ...shuffle(S.review));
+  }
+  S.pos++;
+  const base = S.w.steps.indexOf(S.steps[S.pos]);
+  if (base >= 0) { st.worlds[S.w.id] = Object.assign({}, st.worlds[S.w.id], { pos: base }); save(); }
+  renderStep();
+}
+
+function finishWorld() {
+  st.worlds[S.w.id] = Object.assign({}, st.worlds[S.w.id], { pos: 0, done: true }); save();
+  const w = S.w; video = false;
+  const idx = W.indexOf(w), nxt = W[idx + 1];
+  const pic = PICS.find(p => p.need === w.id);
+  const box = shell(w.cls, "Mundo " + w.n + " concluído", 1, worldStars(w) + "/" + interactiveIds(w).length);
+  const bv = document.getElementById("bVideo"); if (bv) bv.hidden = true;
+  box.innerHTML = '<div class="card center"><div class="badge">' + icon("star") + '</div><p class="eyebrow">Mundo ' + w.n + ' concluído</p><h2>Parabéns' + (st.name ? ', ' + esc(st.name) : '') + '!</h2>' +
+    '<p class="bigscore">' + worldStars(w) + ' de ' + interactiveIds(w).length + '</p><p>estrelas neste mundo</p>' +
+    (pic ? '<div class="dica" style="text-align:left">' + icon("brush") + '<p><b>Quadro novo liberado:</b> ' + esc(pic.title) + '. Ele está na tela de início, em "Quadros para pintar".</p></div>' : '') +
+    '<div class="dica" style="text-align:left">' + icon("heart") + '<p><b>Hora da pausa.</b> Beba um copo de água, estique os braços e descanse uns minutinhos antes do próximo mundo.</p></div></div>';
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  if (bSpeak) { if (!AUDIO.has("fim-ala")) bSpeak.style.visibility = "hidden"; bSpeak.onclick = () => speak("fim-ala"); }
+  if (st.settings.autoVoice) speak("fim-ala");
+  bBack.style.visibility = "visible"; bBack.disabled = false;
+  bBack.textContent = "Início"; bBack.onclick = home;
+  bNext.textContent = pic ? "Pintar o quadro novo" : (nxt ? "Ir para o Mundo " + nxt.n : "Fazer a prova simulada");
+  bNext.disabled = false;
+  bNext.onclick = () => pic ? openPaint(pic) : (nxt ? openWorld(nxt.id) : openExam());
+  chime();
+}
+
+/* ---------- Tipos de tela ---------- */
+function renderRead(step, box) {
+  box.innerHTML = '<article class="card"><div><p class="eyebrow">' + esc(step.eb) + '</p><h2>' + esc(step.title) + '</h2></div>' +
+    '<div class="scene"><img width="1100" height="825" src="' + step.img + '" alt="' + esc(step.title) + '"></div>' +
+    '<div class="school"><span class="tag">Texto da escola</span>' + step.school.map(p => '<p>' + md(p) + '</p>').join("") + '</div>' +
+    '<p class="note">' + (AUDIO.has(step.key) ? 'Toque em Ouvir para a Clio ler junto com você.' : 'Leia com calma. Depois vamos explorar o desenho.') + '</p></article>';
+}
+function renderScene(step, box) {
+  box.innerHTML = '<article class="card"><div><p class="eyebrow">' + (step.review ? 'Revisão' : 'Toque para descobrir') + '</p><h2>' + esc(step.title) + '</h2></div>' +
+    '<div class="scene" id="sc"><img width="1100" height="825" src="' + step.img + '" alt="' + esc(step.title) + '"></div>' +
+    '<div class="slabel" id="sl">Toque nos pontos amarelos para descobrir o que é cada parte.</div><p class="note" id="scnt"></p>' +
+    '<div class="row"><button class="btn pri" id="sgo">Fazer o desafio</button><button class="btn sec" id="sck" hidden>Conferir</button></div></article>';
+  const sc = box.querySelector("#sc"), lab = box.querySelector("#sl"), cnt = box.querySelector("#scnt"), go = box.querySelector("#sgo"), ck = box.querySelector("#sck");
+  const seen = new Set(), hots = []; let mode = "learn", ci = 0, picks = new Set(), checked = false, allOk = true;
+  const upd = () => { cnt.textContent = mode !== "learn" ? "" : (seen.size === step.spots.length ? "Você descobriu tudo! Agora faça o desafio." : "Descobertas: " + seen.size + " de " + step.spots.length); };
+  step.spots.forEach((s, i) => {
+    const b = document.createElement("button");
+    b.className = "hot"; b.setAttribute("aria-label", s.t);
+    b.style.left = s.x + "%"; b.style.top = s.y + "%"; b.style.width = s.w + "%"; b.style.height = s.h + "%";
+    b.onclick = () => {
+      if (mode === "learn") { hots.forEach(x => x.classList.remove("on")); b.classList.add("on", "seen"); seen.add(i); lab.innerHTML = "<b>" + esc(s.t) + ":</b> " + esc(s.d); upd(); speak(step.id + "-s" + i); return; }
+      if (mode !== "chal" || checked) return;
+      const c = step.chal[ci];
+      if (c.ok.length === 1) { picks = new Set([i]); check(); return; }
+      if (picks.has(i)) { picks.delete(i); b.classList.remove("pick"); } else { picks.add(i); b.classList.add("pick"); }
+      ck.hidden = picks.size === 0;
+    };
+    hots.push(b); sc.appendChild(b);
+  });
+  function startChal(k) {
+    mode = "chal"; ci = k; picks = new Set(); checked = false;
+    sc.classList.add("chal"); hots.forEach(x => x.className = "hot");
+    const c = step.chal[ci];
+    lab.innerHTML = '<span class="q">Desafio ' + (ci + 1) + ' de ' + step.chal.length + ':</span> ' + esc(c.q) + (c.ok.length > 1 ? '<br><span class="note">Marque as bolinhas e depois toque em Conferir.</span>' : '');
+    go.hidden = true; ck.hidden = true; ck.textContent = "Conferir"; ck.onclick = check; upd();
+    speak(step.id + "-c" + ci);
+  }
+  function check() {
+    checked = true; const c = step.chal[ci], ok = new Set(c.ok), wrong = [], missed = [];
+    hots.forEach((b, i) => {
+      b.classList.remove("pick");
+      if (ok.has(i) && picks.has(i)) b.classList.add("right");
+      else if (!ok.has(i) && picks.has(i)) { b.classList.add("wrong"); wrong.push(step.spots[i]); }
+      else if (ok.has(i)) { b.classList.add("missed"); missed.push(step.spots[i]); }
+    });
+    const perfect = !wrong.length && !missed.length;
+    if (!perfect) allOk = false;
+    let msg = perfect ? "<b>" + pick(YES) + "</b> " + c.ok.map(i => esc(step.spots[i].d)).join(" ") : "<b>Quase!</b>";
+    if (wrong.length) msg += wrong.map(s => "<br><b>" + esc(s.t) + "</b> não entra nesta resposta. " + esc(s.d)).join("");
+    if (missed.length) msg += "<br>Faltou marcar: " + missed.map(s => "<b>" + esc(s.t) + "</b>").join(", ") + " (piscando).";
+    lab.innerHTML = msg;
+    if (perfect) celebrate(); else speak("fb-quase");
+    const last = ci === step.chal.length - 1;
+    ck.hidden = false;
+    if (last) { ck.textContent = "Fazer de novo"; ck.onclick = () => startChal(0); stepDone(step, allOk); mode = "done"; cnt.textContent = allOk ? "Desafio completo!" : "Desafio completo. Esta cena volta para revisão no final."; }
+    else { ck.textContent = "Próximo desafio"; ck.onclick = () => startChal(ci + 1); }
+  }
+  go.onclick = () => { allOk = true; startChal(0); };
+  upd();
+}
+function renderCard(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon(step.ic) + '</span><div><p class="eyebrow">' + esc(step.eb) + '</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<div class="txt">' + step.text.map(p => '<p>' + md(p) + '</p>').join("") + '</div>' +
+    (step.dica ? '<div class="dica">' + icon("idea") + '<p><b>Truque de memória:</b> ' + md(step.dica) + '</p></div>' : '') + '</article>';
+}
+function renderSummary(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("book") + '</span><div><p class="eyebrow">Cartão-resumo</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<ul class="ul txt">' + step.points.map(p => '<li>' + md(p) + '</li>').join("") + '</ul>' +
+    '<p class="note">Dica: tire uma foto desta tela para revisar antes da prova.</p></article>';
+}
+function renderQuiz(step, box, onResult, label) {
+  const opts = shuffle(step.o.map((t, i) => ({ t, i })));
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("idea") + '</span><div><p class="eyebrow">' + (label || (step.review ? "Revisão" : "Pergunta")) + '</p><h2>' + esc(step.q) + '</h2></div></div>' +
+    '<div class="opts">' + opts.map((o, k) => '<button class="opt" data-i="' + o.i + '"><span class="l">' + "ABC"[k] + '</span><span>' + esc(o.t) + '</span></button>').join("") + '</div><div class="fb" id="fb" hidden></div></article>';
+  let answered = false;
+  box.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+    if (answered) return; answered = true;
+    const i = +b.dataset.i, ok = i === step.a;
+    box.querySelectorAll(".opt").forEach(x => { x.disabled = true; const xi = +x.dataset.i; if (xi === step.a) x.classList.add("right"); else if (x === b) x.classList.add("miss"); else x.classList.add("fade"); });
+    const fb = box.querySelector("#fb"); fb.hidden = false;
+    const explain = () => { if (st.settings.autoVoice || video) speak(step.key + "-ex"); };
+    if (ok) { fb.className = "fb ok"; fb.innerHTML = '<b>' + pick(YES) + '</b><span>' + esc(step.ex) + '</span>'; celebrate(explain); }
+    else { fb.className = "fb almost"; fb.innerHTML = '<b>Quase!</b><span>A resposta certa é: <strong>' + esc(step.o[step.a]) + '</strong>. ' + esc(step.ex) + (step.review || label ? '' : ' Essa pergunta volta no final, para revisar.') + '</span>'; explain(); }
+    onResult(ok);
+  });
+}
+function renderOrder(step, box) {
+  const right = step.items.slice().sort((a, b) => a.y - b.y);
+  let placed = 0, wrongs = 0;
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("calendar") + '</span><div><p class="eyebrow">Jogo da linha do tempo</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<p>Toque nos acontecimentos do <strong>mais antigo</strong> para o <strong>mais novo</strong>.</p><ol class="line" id="line"></ol><div class="pool" id="pool"></div><div class="fb" id="fb" hidden></div></article>';
+  const line = box.querySelector("#line"), pool = box.querySelector("#pool"), fb = box.querySelector("#fb");
+  const btnOf = new Map();
+  shuffle(step.items).forEach(it => {
+    const b = document.createElement("button"); b.className = "chip"; b.textContent = it.txt; btnOf.set(it, b);
+    b.onclick = () => {
+      if (it === right[placed]) {
+        placed++; wrongs = 0; b.remove();
+        pool.querySelectorAll(".hint").forEach(x => x.classList.remove("hint"));
+        const li = document.createElement("li"); li.innerHTML = '<span class="yr">' + it.y + '</span><span>' + esc(it.txt) + '</span>'; line.appendChild(li);
+        if (placed === right.length) { fb.hidden = false; fb.className = "fb ok"; fb.innerHTML = '<b>' + pick(YES) + '</b><span>A linha do tempo está completa. Leia os anos mais uma vez.</span>'; celebrate(); stepDone(step, true); }
+        else fb.hidden = true;
+      } else {
+        wrongs++; shake(b); fb.hidden = false; fb.className = "fb almost";
+        fb.innerHTML = '<span>Ainda não. Procure o que aconteceu <strong>antes</strong>.' + (wrongs >= 2 ? ' A Clio marcou uma pista com borda amarela.' : '') + '</span>';
+        if (wrongs >= 2) btnOf.get(right[placed]).classList.add("hint");
+      }
+    };
+    pool.appendChild(b);
+  });
+}
+function renderMatch(step, box) {
+  let sel = null, left = step.pairs.length;
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("puzzle") + '</span><div><p class="eyebrow">Jogo de ligar</p><h2>' + esc(step.title) + '</h2></div></div>' +
+    '<p>1. Toque em uma <strong>palavra</strong>. 2. Depois toque no <strong>significado</strong> dela.</p>' +
+    '<div class="pool" id="terms"></div><div class="defs" id="defs"></div><div class="fb" id="fb" hidden></div></article>';
+  const terms = box.querySelector("#terms"), defs = box.querySelector("#defs"), fb = box.querySelector("#fb");
+  shuffle(step.pairs.map((p, i) => i)).forEach(i => {
+    const b = document.createElement("button"); b.className = "chip"; b.style.fontWeight = "700"; b.textContent = step.pairs[i][0]; b.dataset.i = i;
+    b.onclick = () => { if (b.classList.contains("ok")) return; terms.querySelectorAll(".sel").forEach(x => x.classList.remove("sel")); b.classList.add("sel"); sel = i; fb.hidden = true; };
+    terms.appendChild(b);
+  });
+  shuffle(step.pairs.map((p, i) => i)).forEach(i => {
+    const d = document.createElement("button"); d.className = "chip"; d.textContent = step.pairs[i][1];
+    d.onclick = () => {
+      if (d.classList.contains("ok")) return;
+      if (sel === null) { fb.hidden = false; fb.className = "fb almost"; fb.innerHTML = "<span>Primeiro toque em uma palavra lá em cima.</span>"; return; }
+      if (sel === i) {
+        const t = terms.querySelector('[data-i="' + i + '"]'); t.classList.remove("sel"); t.classList.add("ok"); t.disabled = true;
+        d.classList.add("ok"); d.disabled = true; d.innerHTML = '<strong>' + esc(step.pairs[i][0]) + ':</strong> ' + esc(step.pairs[i][1]);
+        sel = null; left--; fb.hidden = false; fb.className = "fb ok";
+        if (left === 0) { fb.innerHTML = '<b>' + pick(YES) + '</b><span>Você ligou todas as palavras.</span>'; celebrate(); stepDone(step, true); }
+        else fb.innerHTML = '<span>Certo! Faltam ' + left + '.</span>';
+      } else { shake(d); fb.hidden = false; fb.className = "fb almost"; fb.innerHTML = "<span>Esse não combina com <strong>" + esc(step.pairs[sel][0]) + "</strong>. Tente outro.</span>"; }
+    };
+    defs.appendChild(d);
+  });
+}
+function renderSort(step, box) {
+  const items = shuffle(step.items); let k = 0, hits = 0;
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("people") + '</span><div><p class="eyebrow">Jogo de separar</p><h2>' + esc(step.title) + '</h2></div></div><div id="sbody" style="display:flex;flex-direction:column;gap:14px"></div></article>';
+  const body = box.querySelector("#sbody");
+  function show() {
+    const it = items[k];
+    body.innerHTML = '<p class="count">' + (k + 1) + ' de ' + items.length + '</p><div class="sortitem">' + esc(it.txt) + '</div><div class="bins">' + step.bins.map((b, i) => '<button class="bin" data-b="' + i + '">' + esc(b) + '</button>').join("") + '</div><div class="fb" id="fb" hidden></div>';
+    body.querySelectorAll(".bin").forEach(btn => btn.onclick = () => {
+      body.querySelectorAll(".bin").forEach(x => x.disabled = true);
+      const ok = +btn.dataset.b === it.b; if (ok) { hits++; chime(); }
+      const fb = body.querySelector("#fb"); fb.hidden = false; fb.className = "fb " + (ok ? "ok" : "almost");
+      fb.innerHTML = '<b>' + (ok ? pick(YES) : "Quase!") + '</b><span>' + (ok ? "" : "O certo é: <strong>" + esc(step.bins[it.b]) + "</strong>. ") + esc(it.why) + '</span>';
+      const c = document.createElement("button"); c.className = "btn sec big"; c.textContent = k < items.length - 1 ? "Continuar" : "Ver resultado";
+      c.onclick = () => { k++; if (k < items.length) show(); else end(); };
+      body.appendChild(c); c.focus();
+    });
+  }
+  function end() { body.innerHTML = '<div class="fb ok"><b>Jogo completo!</b><span>Você acertou ' + hits + ' de ' + items.length + '.</span></div>'; stepDone(step, true); }
+  show();
+}
+
+function norm(s) { return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+function renderWrite(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("pencil") + '</span><div><p class="eyebrow">Treino de resposta escrita</p><h2>' + esc(step.q) + '</h2></div></div>' +
+    '<p>Escreva com as suas palavras, como na prova. Não precisa ficar perfeito.</p>' +
+    '<textarea class="wbox" id="wa-' + step.id + '" placeholder="Escreva aqui a sua resposta"></textarea>' +
+    '<button class="btn sec big" id="wcheck">Ver a resposta da Clio</button><div id="wres" style="display:flex;flex-direction:column;gap:12px"></div></article>';
+  const ta = box.querySelector("textarea"), res = box.querySelector("#wres");
+  ta.value = st.writes[step.id] || "";
+  ta.oninput = () => { st.writes[step.id] = ta.value; save(); };
+  box.querySelector("#wcheck").onclick = () => {
+    const txt = norm(ta.value);
+    if (txt.trim().split(/\s+/).length < 3) { res.innerHTML = '<div class="fb almost"><span>Escreva pelo menos uma frase antes de ver a resposta.</span></div>'; return; }
+    const got = step.ideas.map(i => i.w.some(k => txt.includes(norm(k))));
+    const n = got.filter(Boolean).length, all = n === got.length;
+    res.innerHTML = '<div class="fb ' + (all ? 'ok' : 'almost') + '"><b>' + (all ? 'Resposta completa!' : 'Boa! Você lembrou de ' + n + ' de ' + got.length + ' ideias.') + '</b><span>' + (all ? 'Você colocou todas as ideias importantes.' : 'Veja abaixo o que faltou e leia a resposta da Clio.') + '</span></div>' +
+      '<ul class="ideas">' + step.ideas.map((i, k) => '<li class="' + (got[k] ? 'got' : '') + '"><span>' + (got[k] ? '+' : '?') + '</span>' + (got[k] ? 'Você escreveu: ' : 'Faltou: ') + esc(i.l) + '</li>').join("") + '</ul>' +
+      '<div class="dica">' + icon("idea") + '<p><b>Resposta da Clio:</b> ' + esc(step.model) + '</p></div>';
+    if (all) celebrate();
+    stepDone(step, true);
+    if (st.settings.autoVoice) speak(step.key + "-ex");
+  };
+}
+function renderVideo(step, box) {
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("play") + '</span><div><p class="eyebrow">Vídeo de abertura</p><h2>' + esc(S.w.title) + '</h2></div></div>' +
+    '<video class="vplayer" src="' + step.src + '" controls playsinline preload="metadata"></video><p class="note">Assista e depois toque em Próximo.</p></article>';
+}
+
+/* ---------- Pintar ---------- */
+function picOpen(p) { return !p.need || !!(st.worlds[p.need] || {}).done; }
+function picSvg(p, live) {
+  const fills = st.paint[p.id] || {};
+  const body = p.svg.replace(/data-r="([^"]+)"/g, (m, r) => m + ' fill="' + (fills[r] || "#FFFFFF") + '"' + (live ? '' : ' stroke="#2A2A2A" stroke-width="2.5"'));
+  return '<svg ' + (live ? 'class="paint" id="paint" ' : '') + 'viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="' + esc(p.title) + '">' + body + '</svg>';
+}
+function openPaint(p) {
+  stopSpeak(); S = null; video = false;
+  let color = COLORS[2]; const hist = [];
+  const box = shell("w-x", "Pintar: " + p.title, 1, "");
+  document.getElementById("starsTop").hidden = true;
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  if (bSpeak) bSpeak.style.visibility = "hidden";
+  box.innerHTML = '<article class="card"><div class="cardhead"><span class="bigic">' + icon("brush") + '</span><div><p class="eyebrow">Quadro para pintar</p><h2>' + esc(p.title) + '</h2></div></div>' +
+    '<p>' + esc(p.fact) + '</p><p class="note">Escolha uma cor e toque nas partes do desenho.</p>' +
+    picSvg(p, true) + '<div class="colors" id="cols">' + COLORS.map(c => '<button class="col' + (c === color ? ' sel' : '') + '" style="background:' + c + '" data-c="' + c + '" aria-label="Cor ' + c + '"></button>').join("") + '</div>' +
+    '<div class="row"><button class="btn sec" id="undo">Desfazer</button><button class="btn sec" id="clear">Apagar tudo</button></div><p class="note" id="clearmsg" hidden></p></article>';
+  box.querySelectorAll(".col").forEach(b => b.onclick = () => { color = b.dataset.c; box.querySelectorAll(".col").forEach(x => x.classList.toggle("sel", x === b)); });
+  const svg = box.querySelector("#paint");
+  svg.addEventListener("click", e => {
+    const el = e.target.closest("[data-r]"); if (!el) return;
+    const r = el.getAttribute("data-r"); const f = st.paint[p.id] = st.paint[p.id] || {};
+    hist.push([r, f[r] || "#FFFFFF"]); f[r] = color; el.setAttribute("fill", color); save();
+  });
+  box.querySelector("#undo").onclick = () => { const h = hist.pop(); if (!h) return; st.paint[p.id][h[0]] = h[1]; svg.querySelector('[data-r="' + h[0] + '"]').setAttribute("fill", h[1]); save(); };
+  let armed = false;
+  box.querySelector("#clear").onclick = () => {
+    const m = box.querySelector("#clearmsg");
+    if (!armed) { armed = true; m.hidden = false; m.textContent = "Toque de novo em \"Apagar tudo\" para confirmar."; return; }
+    st.paint[p.id] = {}; save(); openPaint(p);
+  };
+  bBack.style.visibility = "visible"; bBack.disabled = false; bBack.textContent = "Início"; bBack.onclick = home;
+  const nxt = W.find(w => !(st.worlds[w.id] || {}).done);
+  bNext.disabled = false; bNext.textContent = nxt ? "Ir para o Mundo " + nxt.n : "Fazer a prova simulada";
+  bNext.onclick = () => nxt ? openWorld(nxt.id) : openExam();
+}
+
+/* ---------- Prova simulada ---------- */
+function openExam() {
+  stopSpeak(); S = null; video = false;
+  const qs = [];
+  W.forEach(w => { shuffle(w.steps.filter(s => s.t === "quiz")).slice(0, 5).forEach(q => qs.push(q)); });
+  E = { qs: shuffle(qs), i: 0, score: 0, wrong: [], answered: false };
+  renderExam();
+}
+function renderExam() {
+  const q = E.qs[E.i];
+  const box = shell("w-x", "Prova simulada", (E.i + 1) / E.qs.length, E.score + " acertos");
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack"), bSpeak = document.getElementById("bSpeak");
+  bBack.style.visibility = "hidden"; bNext.disabled = true;
+  bNext.textContent = E.i === E.qs.length - 1 ? "Ver minha nota" : "Próxima";
+  if (bSpeak) { if (!AUDIO.has(q.key)) bSpeak.style.visibility = "hidden"; bSpeak.onclick = () => speak(q.key); }
+  const wtitle = W.find(w => w.steps.includes(q)).title;
+  renderQuiz(q, box, ok => {
+    if (ok) E.score++; else { E.wrong.push(q); st.misses[q.id] = (st.misses[q.id] || 0) + 1; save(); }
+    document.getElementById("starsTop").innerHTML = icon("star") + E.score + " acertos";
+    bNext.disabled = false;
+  }, "Questão " + (E.i + 1) + " de " + E.qs.length + " · " + wtitle);
+  if (st.settings.autoVoice) speak(q.key);
+  bNext.onclick = () => { stopSpeak(); if (E.i < E.qs.length - 1) { E.i++; renderExam(); } else examEnd(); };
+}
+function examEnd() {
+  const n = E.qs.length, s = E.score;
+  if (st.examBest == null || s > st.examBest) { st.examBest = s; }
+  save();
+  const msg = s >= 13 ? "Você está prontíssima para a prova!" : s >= 10 ? "Muito bom! Revise as que errou e faça de novo." : "Você está aprendendo. Revise os resumos e tente de novo.";
+  const box = shell("w-x", "Prova simulada", 1, s + " acertos");
+  box.innerHTML = '<div class="card center"><div class="badge">' + icon("star") + '</div><p class="eyebrow">Sua nota</p><p class="bigscore">' + s + ' de ' + n + '</p><h2>' + msg + '</h2></div>' +
+    (E.wrong.length ? '<div class="card" style="margin-top:16px"><h2>Para revisar</h2><ol class="ul">' + E.wrong.map(q => '<li>' + esc(q.q) + '<br><strong>' + esc(q.o[q.a]) + '</strong></li>').join("") + '</ol></div>' : '');
+  const bNext = document.getElementById("bNext"), bBack = document.getElementById("bBack");
+  bBack.style.visibility = "visible"; bBack.textContent = "Início"; bBack.onclick = home;
+  bNext.disabled = false; bNext.textContent = "Fazer outra prova"; bNext.onclick = openExam;
+  if (s >= 10) chime();
+}
+
+home();
+})();
+</script>
+</html>
